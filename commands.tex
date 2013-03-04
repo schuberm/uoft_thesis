@@ -1,0 +1,189 @@
+\newcolumntype{x}[1]{%
+>{\centering\hspace{0pt}}p{#1}}%
+
+%Definition of new commands
+\newcommand{\f}[2]{\ensuremath{\frac{\displaystyle{#1}}{\displaystyle{#2}}}}
+\newcommand{\lr}[1]{\langle{#1}\rangle}
+\newcommand{\colv}[2] {\left(\begin{array}{c} #1 \\ #2 \end{array}\right)}
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+\newcommand{\be} {\begin{eqnarray}}
+\newcommand{\ee} {\end{eqnarray}}
+%--------------------------------------------------------------------------
+%EQ COMMANDS
+%--------------------------------------------------------------------------
+\newcommand{\two}{\mspace{-2.0mu}}
+\newcommand{\four}{\mspace{-4.0mu}}
+\newcommand{\plus}{\mspace{-4.5mu}+\mspace{-3.5mu}}
+\newcommand{\minus}{\mspace{-4.5mu}-\mspace{-3.5mu}}
+\newcommand{\pp}{'\mspace{-2.0mu}'}
+\newcommand{\xlb}[4]{#1\ifthenelse{\equal{#2}{0}}{}{_{\alpha #2}}
+\mspace{-2.0mu}\genfrac{(}{)}{0pt}{1}{\ifthenelse{\equal{#3}{0}}{0}{l #3}} 
+{\ifthenelse{\equal{#4}{0}}{0}{b #4}}}
+
+\newcommand{\xkv}[4]{#1\mspace{-5.0mu}\left(\mspace{-8.0mu}
+\begin{smallmatrix}#2\four{}\four{}\mspace{-8.0mu}&\pmb{\kappa}#3\\&\nu 
+#4\end{smallmatrix}\mspace{-5.0mu}\right)}
+
+\newcommand{\evect}[6]{#1\mspace{-4.0mu}\left(\mspace{-8.0mu}
+\begin{smallmatrix}#2\mspace{-8.0mu}&\pmb{\kappa} #3 &b #5\\&\nu #4 &
+\alpha #6\end{smallmatrix}\mspace{-5.0mu}\right)}
+
+\newcommand{\varmat}[8]{\mspace{-5.0mu}\left(\mspace{-8.0mu}
+\begin{smallmatrix}\ifthenelse{\equal{#3}{0}}{\mspace{-8.0mu}&b_{#1}&b_{#2}
+\\&\alpha_{#1}&\alpha_{#2}} {\ifthenelse{\equal{#7}{0}}{#1\mspace{-8.0mu}&
+\pmb{\kappa}#2#3\mspace{-8.0mu}&\pmb{\kappa}#4#5\mspace{-8.0mu}&\pmb{\kappa}
+#6\\&\nu#2&\nu#4&\nu#6} {#1\mspace{-8.0mu}&\pmb{\kappa}#2#3\mspace{-8.0mu}&
+\pmb{\kappa}#4#5\mspace{-8.0mu}&\pmb{\kappa}#6#7\mspace{-8.0mu}&\pmb{\kappa}
+#8\\&\nu#2&\nu#4&\nu#6&\nu#8}}\end{smallmatrix}\mspace{-5.0mu}\right)}
+
+\newcommand{\EXP}[1]{\exp\mspace{-5.0mu}\left[#1\right]\mspace{-3.0mu}}
+
+\newcommand{\tpp}[2]{\left(\mspace{-2.0mu}\xkv{\omega}{}{}{}#1\xkv{\omega}
+{}{'}{'}#2\xkv{\omega}{}{\pp}{\pp}\mspace{-2.0mu}\right)}
+
+\newcommand{\SUM}[2]{\ifthenelse{\equal{#1}{0}}{\sum_{
+\alpha_{#2},b_{#2},l_{#2}}^{3,n,N}} {\ifthenelse{\equal{#1}{1}}{\sum_{
+\alpha_{#2},b_{#2}}^{3,n}}{\sum_{\pmb{\kappa}#2,\nu#2}^{N,3n}}}}
+
+\newcommand{\SUMprime}[2]{\ifthenelse{\equal{#1}{0}}
+{\sum_{\alpha_{#2},b_{#2},l_{#2}}^{3,n,N}} 
+{\ifthenelse{\equal{#1}{1}}{\sum_{\alpha_{#2},b_{#2}}^{3,n}}
+{\sum_{\pmb{\kappa}^{'}#2,\nu#2}^{N,3n}}}}
+
+\newcommand{\SUMalpha}[2]{\ifthenelse{\equal{#1}{0}}
+{\sum_{\alpha_{#2}}^{3}} {\ifthenelse{\equal{#1}{1}}
+{\sum_{\alpha_{#2},b_{#2}}^{3,n}}{\sum_{\pmb{\kappa}#2,\nu#2}^{N,3n}}}}
+
+\newcommand{\SUMalphap}[2]{\ifthenelse{\equal{#1}{0}}
+{\sum_{\alpha'_{#2}}^{3}} {\ifthenelse{\equal{#1}{1}}
+{\sum_{\alpha'_{#2},b'_{#2}}^{3,n}}{\sum_{\pmb{\kappa}#2,\nu#2}^{N,3n}}}}
+
+\newcommand{\SUMb}[2]{\ifthenelse{\equal{#1}{0}}{\sum_{b_{#2}}^{n}}
+ {\ifthenelse{\equal{#1}{1}}{\sum_{\alpha_{#2},b_{#2}}^{3,n}}
+{\sum_{\pmb{\kappa}#2,\nu#2}^{N,3n}}}}
+
+\newcommand{\SUMbp}[2]{\ifthenelse{\equal{#1}{0}}{\sum_{b'_{#2}}^{n}}
+ {\ifthenelse{\equal{#1}{1}}{\sum_{\alpha'_{#2},b'_{#2}}^{3,n}}
+{\sum_{\pmb{\kappa}#2,\nu#2}^{N,3n}}}}
+
+\newcommand{\SUMl}[2]{\ifthenelse{\equal{#1}{0}}{\sum_{l_{#2}}^{N}}
+ {\ifthenelse{\equal{#1}{1}}{\sum_{\alpha_{#2},b_{#2}}^{3,n}}
+{\sum_{\pmb{\kappa}#2,\nu#2}^{N,3n}}}}
+
+\newcommand{\SUMlp}[2]{\ifthenelse{\equal{#1}{0}}{\sum_{l'_{#2}}^{N}}
+ {\ifthenelse{\equal{#1}{1}}{\sum_{\alpha'_{#2},b'_{#2}}^{3,n}}
+{\sum_{\pmb{\kappa}#2,\nu#2}^{N,3n}}}}
+
+\newcommand{\abcdt}[5]{\mspace{-4.0mu}\left(\mspace{-8.0mu}
+\begin{smallmatrix}&\ifthenelse{\equal{#1}{}}{a}{#1}&\ifthenelse
+{\equal{#3}{}}{c}{#3}\\&\ifthenelse{\equal{#2}{}}{b}{#2}&\ifthenelse
+{\equal{#4}{}}{d}{#4}\end{smallmatrix}\mspace{-2.0mu};\ifthenelse
+{\equal{#5}{}}{t}{#5}\right)}
+
+\newcommand{\abcd}[4]{\mspace{-4.0mu}\left(\mspace{-8.0mu}
+\begin{smallmatrix}&\ifthenelse{\equal{#1}{}}{a}{#1}&\ifthenelse
+{\equal{#3}{}}{c}{#3}\\&\ifthenelse{\equal{#2}{}}{b}{#2}&\ifthenelse
+{\equal{#4}{}}{d}{#4}\end{smallmatrix}\mspace{-3.0mu}\right)}
+
+\newcommand{\abt}[3]{\mspace{-4.0mu}\left(\mspace{-8.0mu}\begin
+{smallmatrix}&\ifthenelse{\equal{#1}{}}{a}{#1} \\&\ifthenelse{
+\equal{#2}{}}{b}{#2}\end{smallmatrix}\mspace{-2.0mu};
+\ifthenelse{\equal{#3}{}}{t}{#3}\right)}
+
+\newcommand{\ab}[2]{\mspace{-4.0mu}\left(\mspace{-8.0mu}
+\begin{smallmatrix}&\ifthenelse{\equal{#1}{}}{a}{#1} \\&\ifthenelse
+{\equal{#2}{}}{b}{#2}\end{smallmatrix}\mspace{-3.0mu}\right)}
+
+\newcommand{\kvbat}{\mspace{-4.0mu}\left(\mspace{-8.0mu}
+\begin{smallmatrix} &\pmb{\kappa} &b \\ &\nu &\alpha\end{smallmatrix}
+\mspace{-2.0mu};t\right)}
+
+\newcommand{\kvbatp}{\mspace{-4.0mu}\left(\mspace{-8.0mu}
+\begin{smallmatrix} &\pmb{\kappa} &b' \\ &\nu &\alpha'\end{smallmatrix}
+\mspace{-2.0mu};t\right)}
+
+\newcommand{\kvbaw}{\mspace{-4.0mu}\left(\mspace{-8.0mu}
+\begin{smallmatrix} &\pmb{\kappa} &b \\ &\nu &\alpha\end{smallmatrix}
+\mspace{-2.0mu};\omega\right)}
+
+\newcommand{\kvbawp}{\mspace{-4.0mu}\left(\mspace{-8.0mu}
+\begin{smallmatrix} &\pmb{\kappa} &b' \\ &\nu &\alpha'\end{smallmatrix}
+\mspace{-2.0mu};\omega\right)}
+
+\newcommand{\kvba}{\mspace{-4.0mu}\left(\mspace{-8.0mu}
+\begin{smallmatrix} &\pmb{\kappa} &b \\ &\nu &\alpha\end{smallmatrix}
+\mspace{-3.0mu}\right)}
+
+\newcommand{\kvbap}{\mspace{-4.0mu}\left(\mspace{-8.0mu}
+\begin{smallmatrix} &\pmb{\kappa}' &b \\ &\nu' &\alpha\end{smallmatrix}
+\mspace{-3.0mu}\right)}
+
+\newcommand{\kpvba}{\mspace{-4.0mu}\left(\mspace{-8.0mu}
+\begin{smallmatrix} &\pmb{\kappa}^{'} &b \\ &\nu &\alpha\end{smallmatrix}
+\mspace{-3.0mu}\right)}
+
+\newcommand{\kva}{\mspace{-4.0mu}\left(\mspace{-8.0mu}
+\begin{smallmatrix} &\pmb{\kappa} \\ &\nu &\alpha\end{smallmatrix}
+\mspace{-3.0mu}\right)}
+
+\newcommand{\kvap}{\mspace{-4.0mu}\left(\mspace{-8.0mu}
+\begin{smallmatrix} &\pmb{\kappa} \\ &\nu &\alpha'\end{smallmatrix}
+\mspace{-3.0mu}\right)}
+
+\newcommand{\kvb}{\mspace{-4.0mu}\left(\mspace{-8.0mu}
+\begin{smallmatrix} &\pmb{\kappa} &b \\ &\nu \end{smallmatrix}
+\mspace{-3.0mu}\right)}
+
+\newcommand{\kvbp}{\mspace{-4.0mu}\left(\mspace{-8.0mu}
+\begin{smallmatrix} &\pmb{\kappa} &b' \\ &\nu \end{smallmatrix}
+\mspace{-3.0mu}\right)}
+
+\newcommand{\kvt}{\mspace{-4.0mu}\left(\mspace{-8.0mu}
+\begin{smallmatrix}&\pmb{\kappa} \\&\nu\end{smallmatrix}
+\mspace{-2.0mu},t\right)}
+
+\newcommand{\kvzero}{\mspace{-4.0mu}\left(\mspace{-8.0mu}
+\begin{smallmatrix}&\pmb{\kappa} \\&\nu\end{smallmatrix}
+\mspace{-2.0mu};0\right)}
+
+\newcommand{\kpvt}{\mspace{-4.0mu}\left(\mspace{-8.0mu}
+\begin{smallmatrix}&\pmb{\kappa}^{'} \\&\nu\end{smallmatrix}
+\mspace{-2.0mu};t\right)}
+
+\newcommand{\kvw}{\mspace{-4.0mu}\left(\mspace{-8.0mu}
+\begin{smallmatrix}&\pmb{\kappa} \\&\nu\end{smallmatrix}
+\mspace{-2.0mu},\omega\right)}
+
+\newcommand{\kv}{\mspace{-4.0mu}\left(\mspace{-8.0mu}
+\begin{smallmatrix}&\pmb{\kappa} \\&\nu\end{smallmatrix}
+\mspace{-3.0mu}\right)}
+
+\newcommand{\kvp}{\mspace{-4.0mu}\left(\mspace{-8.0mu}
+\begin{smallmatrix}&\pmb{\kappa'} \\&\nu'\end{smallmatrix}
+\mspace{-3.0mu}\right)}
+
+\newcommand{\kw}{\mspace{-4.0mu}\left(\mspace{-8.0mu}
+\begin{smallmatrix}&\pmb{\kappa} \\&\omega\end{smallmatrix}
+\mspace{-3.0mu}\right)}
+
+\newcommand{\kpvp}{\mspace{-4.0mu}\left(\mspace{-8.0mu}
+\begin{smallmatrix}&\pmb{\kappa'} \\&\nu'\end{smallmatrix}
+\mspace{-3.0mu}\right)}
+
+\newcommand{\lbt}{\mspace{-4.0mu}\left(\mspace{-8.0mu}
+\begin{smallmatrix}&l \\&b\end{smallmatrix}\mspace{-2.0mu};t\right)}
+
+\newcommand{\lbtp}{\mspace{-4.0mu}\left(\mspace{-8.0mu}
+\begin{smallmatrix}&l' \\&b'\end{smallmatrix}\mspace{-2.0mu};t\right)}
+
+\newcommand{\lt}{\mspace{-4.0mu}\left(\mspace{-8.0mu}
+\begin{smallmatrix}&l\end{smallmatrix}\mspace{-2.0mu};t\right)}
+
+\newcommand{\ltp}{\mspace{-4.0mu}\left(\mspace{-8.0mu}
+\begin{smallmatrix}&l'\end{smallmatrix}\mspace{-2.0mu};t\right)}
+
+\newcommand{\lb}{\mspace{-4.0mu}\left(\mspace{-8.0mu}
+\begin{smallmatrix}&l \\&b\end{smallmatrix}\mspace{-3.0mu}\right)}
+
+\newcommand{\lbp}{\mspace{-4.0mu}\left(\mspace{-8.0mu}
+\begin{smallmatrix}&l' \\&b'\end{smallmatrix}\mspace{-3.0mu}\right)}

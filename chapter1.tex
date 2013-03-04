@@ -1,40 +1,10 @@
-%
-%\documentclass[twocolumn,showpacs,preprintnumbers,amsmath,amssymb, floatfix]{revtex4}
-%\documentclass%[aps,prb,preprint,preprintnumbers,amsmath,amssymb,floatfix,superscriptaddress]{revtex4}
-%\documentclass[aps,prb,twocolumn,preprintnumbers,amsmath,amssymb,floatfix]{revtex4}
-
 \chapter{Literature Review}
-
-% Some other (several out of many) possibilities
-%\documentclass[preprint,aps]{revtex4}
-%\documentclass[preprint,aps,draft]{revtex4}
-%\documentclass[prb]{revtex4}% Physical Review B
-
-%\usepackage{graphicx}% Include figure files
-%\usepackage{dcolumn}% Align table columns on decimal point
-%\usepackage{bm}% bold math
-%\usepackage{verbatim}
-%\usepackage{array}
-%\usepackage{hyperref}
-%\usepackage{epstopdf,subfigure}
-
-%\usepackage{natbib}
-
-\newcolumntype{x}[1]{%
->{\centering\hspace{0pt}}p{#1}}%
-
-%Definition of new commands
-\newcommand{\be} {\begin{eqnarray}}
-\newcommand{\ee} {\end{eqnarray}}
-\newcommand{\f}[2]{\ensuremath{\frac{\displaystyle{#1}}{\displaystyle{#2}}}}
-\newcommand{\lr}[1]{\langle{#1}\rangle}
-
-
 
 The classical problem of predicting material properties remains to a challenge to the present day. However, the arsenal of tools has become increasingly powerful with the steady advance of computational perfomance in accordance with Moore's Law. Indeed, computational techniques like Density Functional Theory (DFT), Quantum Monte Carlo (QMC), and classical Molecular Dynamics (MD) have transitioned to the realm of the desktop PC (albeit for simple systems).
 
-By directly evaluating the equations of motions for the system's particles (Newton's 2nd law for atoms in classical MD, Schrodinger's equation for electrons in DFT or QMC), macroscopic properties like electrical or thermal conductivity can be abstracted through the statistical behaviour of the particles' phase coordinates (e.i.: position and momentum). Several of such abstractions are reviewed here.    
+By directly evaluating the equations of motions for the system's particles (Newton's 2nd law for atoms in classical MD, Schrodinger's equation for electrons in DFT or QMC), macroscopic properties like electrical or thermal conductivity can be abstracted through the statistical behaviour of the particles' phase coordinates (e.i.: position and momentum). Several of such abstractions are reviewed here.
 
+\section{Green-Kubo}
 \subsection{Fluctuation-Dissipation Theorem}
 
 The Fluctuation-Dissipation Theorem (FDT), first stated by Harry Nyquist, was later reformulated by Ryogo Kubo to relate transport coefficients to equilibrium time correlation functions \cite{JPSJ.12.570}. What follows is an outline of the logic of Kubo's generalization of the FDT using Helfand's approach as reviewd by McQuarrie\cite{mcquarrie}. Beginning with the diffusion equation
@@ -90,7 +60,48 @@ D=\frac{1}{3}\int_0^{\infty}<\bm{v}(\tau)\cdot\bm{v}(0)>d\tau.
 %
 and thus arriving at an expression for the diffusion coefficient in terms of the equilibrium time correlation function for velocity. Kubo generalized this result by expressing the linear response of a system from small perturbations in terms of its fluctuations about equilibrium.
 
-\subsection{Wiener-Khintchine Theorem}
+The GK relation for thermal conductivity falls out of the fluctuation-dissipation theorem and the assumptions made therein, namely that the perturbations to the system's Hamiltonian are small and that the stochastic processes are Markoffian \cite{green:398}. Thus the thermal conductivity can be related to the fluctuations of the heat current vector, $\bm{S}$, over long periods
+%
+\begin{equation}
+k=\frac{1}{k_B V T^2}\int_0^{\infty}\frac{<\bm{S}(t)\cdot\bm{S}(0)>}{3}dt.
+\end{equation}
+%
+The heat current vector is given by 
+%
+\begin{equation}
+\bm{S}=\frac{d}{dt}\sum_i\bm{r}_iE_i
+\end{equation}
+%
+where $E_i$ is the energy of particle $i$ at position $\bm{r}_i$. $<\bm{S}(t)\cdot\bm{S}(0)>$ is referred to as the heat current autocorrelation function (HCACF). For pairwise potentials, the heat current vector is
+%
+\begin{equation}
+\bm{S}=\sum_ie_i\bm{v}_i+\frac{1}{2}\sum_{i,j}(\bm{F}_{ij}\cdot\bm{v}_{i})\bm{r}_{ij}.
+\end{equation}
+%
+Equations 21 and 22 can be easily added to a MD code since the quantities with which $\bm{S}$ is calculated, typically, are tracked for every time step. McGaughey examined the time dependence of the HCACF and noted a two stage behaviour for crystals: a rapid initial decay corresponding to the damping of the fluctuations and a slow secondary oscillatory decay, which is believed to be associated with the periodic boundary conditions of the simulation. These oscillations decreased as the simulation size was increased \cite{mcgaugheythesis}.
+
+For cases where the HCACF converges well, the thermal conductivity can be found by numerically integrating over a suitable range. Li et al. \cite{Li1998139} use two methods to determine objectively determine the definition of suitable range. One method is simply to evaluate the integral to the point where the HCACF first becomes negative, known as the first dip method. For cases where the HCACF remains positive, an exponential fit is used to determine the contribution of the tail.
+
+In the case of amorphous materials, the HCACF does not converge prior to becoming negative, thus the first dip or exponential fit methods cannot be used and \textit{a priori} knowledge of the functional form of the HCACF is required in order to complete the integration and predict thermal conductivity.
+
+\section{The Direct Method}
+
+Unlike the GK method, the direct method uses a non-equilibrium steady-state approach to determine thermal conductivity. A one-dimension heat flux is generated through the simulation, typically by keeping the boundaries of the simulation at fixed, but different, temperatures, such that the boundaries behave like a hot and cold thermodynamic bath. From Fourier's law, the thermal conductivity can be predicted once the heat flux has converged
+%
+\begin{equation}
+k=-\frac{q_x}{dT/dx}.
+\end{equation}
+%
+Equivalently, a heat flux can be imposed and the corresponding temperature difference calculated. Generally, both set-ups are used, but the time to convergence of the heat flux vector is orders of magnitude greater than that of the temperature difference.
+
+The applicability of direct method is questionable in situations where the temperature profile is not linear. Such is the case for nanoscale systems with a temperature difference on the order of 10K \cite{mcgaugheythesis}.
+
+\section{Lattice Dynamics}
+\subsection{Harmonic Lattice Dynamics}
+
+\subsection{Anharmonic Lattice Dynamics}
+
+\section{Normal Mode Decomposition}
 
 As is happens, the usefulness of the (time) correlation functions extends well beyond the FDT. An simple example is the Wiener-Khintchine Theorem (WKT), which relates the correlation function of a continuous stationary random process to its' spectral density. The correlation function of a time-dependent quantity (i.e: position, velocity, etc.) is defined as the average behaviour in time of said quantity \cite{mcquarrie}
 %
@@ -149,45 +160,6 @@ The spectral density is then
 C(\omega)=\int_{-\infty}^{\infty}e^{\frac{-|t|}{\tau}}e^{-i\omega t}dt=\frac{2\tau}{1+(\omega \tau )^2}
 \end{equation}
 which is a Lorentzian centred about zero frequency and $\tau$ is the half width at half-maximum (HWHM).
-\section*{The Green-Kubo Method}
-
-The GK relation for thermal conductivity falls out of the fluctuation-dissipation theorem and the assumptions made therein, namely that the perturbations to the system's Hamiltonian are small and that the stochastic processes are Markoffian \cite{green:398}. Thus the thermal conductivity can be related to the fluctuations of the heat current vector, $\bm{S}$, over long periods
-%
-\begin{equation}
-k=\frac{1}{k_B V T^2}\int_0^{\infty}\frac{<\bm{S}(t)\cdot\bm{S}(0)>}{3}dt.
-\end{equation}
-%
-The heat current vector is given by 
-%
-\begin{equation}
-\bm{S}=\frac{d}{dt}\sum_i\bm{r}_iE_i
-\end{equation}
-%
-where $E_i$ is the energy of particle $i$ at position $\bm{r}_i$. $<\bm{S}(t)\cdot\bm{S}(0)>$ is referred to as the heat current autocorrelation function (HCACF). For pairwise potentials, the heat current vector is
-%
-\begin{equation}
-\bm{S}=\sum_ie_i\bm{v}_i+\frac{1}{2}\sum_{i,j}(\bm{F}_{ij}\cdot\bm{v}_{i})\bm{r}_{ij}.
-\end{equation}
-%
-Equations 21 and 22 can be easily added to a MD code since the quantities with which $\bm{S}$ is calculated, typically, are tracked for every time step. McGaughey examined the time dependence of the HCACF and noted a two stage behaviour for crystals: a rapid initial decay corresponding to the damping of the fluctuations and a slow secondary oscillatory decay, which is believed to be associated with the periodic boundary conditions of the simulation. These oscillations decreased as the simulation size was increased \cite{mcgaugheythesis}.
-
-For cases where the HCACF converges well, the thermal conductivity can be found by numerically integrating over a suitable range. Li et al. \cite{Li1998139} use two methods to determine objectively determine the definition of suitable range. One method is simply to evaluate the integral to the point where the HCACF first becomes negative, known as the first dip method. For cases where the HCACF remains positive, an exponential fit is used to determine the contribution of the tail.
-
-In the case of amorphous materials, the HCACF does not converge prior to becoming negative, thus the first dip or exponential fit methods cannot be used and \textit{a priori} knowledge of the functional form of the HCACF is required in order to complete the integration and predict thermal conductivity.
-
-\section{The Direct Method}
-
-Unlike the GK method, the direct method uses a non-equilibrium steady-state approach to determine thermal conductivity. A one-dimension heat flux is generated through the simulation, typically by keeping the boundaries of the simulation at fixed, but different, temperatures, such that the boundaries behave like a hot and cold thermodynamic bath. From Fourier's law, the thermal conductivity can be predicted once the heat flux has converged
-%
-\begin{equation}
-k=-\frac{q_x}{dT/dx}.
-\end{equation}
-%
-Equivalently, a heat flux can be imposed and the corresponding temperature difference calculated. Generally, both set-ups are used, but the time to convergence of the heat flux vector is orders of magnitude greater than that of the temperature difference.
-
-The applicability of direct method is questionable in situations where the temperature profile is not linear. Such is the case for nanoscale systems with a temperature difference on the order of 10K \cite{mcgaugheythesis}.
-
-\section{SED-NMD}
 
 In order to overcome the limitations of the DM and GK method, scientists have turned to the Boltzmann Transport Equation (BTE). Although analytically intractable, there exists a multitude of computational solutions for the BTE. Under the relaxation time approximation and from Fourier's law, the thermal conductivity can be expressed in terms of contributions over all possible phonon modes \cite{sellan_CP}
 %
@@ -255,9 +227,10 @@ as the amplitudes $A(t)$ and $B(t)$ vary time, so does the probability of findin
 \end{equation}
 The probability of a phonon scattering from $\bm{\kappa}$ to state $\bm{\kappa}'$ is governed by the relative magnitudes of the amplitudes $A(t)$ and $B(t)$ (in accordance with the selection rules of momentum and energy conservation). The broadening of these peaks corresponds to this scattering process, indicating a non-zero probability of a phonon transitioning from one state to another. The form of Equation 36 is a consequence of Fermi's Golden Rule from TDPT.
 
-The application of SED-NMD to compute phonon lifetimes and predict thermal conductivity assumes the validity of the phonon BTE. It remains to be determined if SED-NMD can be used to predict non-bulk phonon lifetimes (are the bulk eigenvectors accurate in non-bulk cases?) 
+The application of SED-NMD to compute phonon lifetimes and predict thermal conductivity assumes the validity of the phonon BTE. It remains to be determined if SED-NMD can be used to predict non-bulk phonon lifetimes (are the bulk eigenvectors accurate in non-bulk cases?)
 
-\section*{Thermal Boundary Resistance}
+
+\section{Thermal Boundary Resistance}
 The following section summarizes the seminal work of Swartz and Pohl on the challenges of measuring and modeling the thermal boundary resistance (TBR) \cite{RevModPhys.61.605}. TBR is defined as the ratio of the temperature discontinuity at the interface to the power per unit area flowing across that interface
 \begin{equation}
 TBR=\frac{T_l-T_r}{q_x}.
