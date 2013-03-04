@@ -1,11 +1,11 @@
-\contentsline {chapter}{\numberline {1}Literature Review}{1}
-\contentsline {section}{\numberline {1.1}Green-Kubo}{1}
-\contentsline {subsection}{\numberline {1.1.1}Fluctuation-Dissipation Theorem}{1}
-\contentsline {section}{\numberline {1.2}The Direct Method}{4}
+\contentsline {chapter}{\numberline {1}Review of Thermal Conductivity Prediction Methods}{1}
+\contentsline {section}{\numberline {1.1}Green-Kubo}{2}
+\contentsline {subsection}{\numberline {1.1.1}Fluctuation-Dissipation Theorem}{2}
+\contentsline {section}{\numberline {1.2}The Direct Method}{5}
 \contentsline {section}{\numberline {1.3}Lattice Dynamics}{5}
 \contentsline {subsection}{\numberline {1.3.1}Harmonic Lattice Dynamics}{5}
-\contentsline {subsection}{\numberline {1.3.2}Anharmonic Lattice Dynamics}{5}
-\contentsline {section}{\numberline {1.4}Normal Mode Decomposition}{5}
+\contentsline {subsection}{\numberline {1.3.2}Anharmonic Lattice Dynamics}{6}
+\contentsline {section}{\numberline {1.4}Normal Mode Decomposition}{6}
 \contentsline {section}{\numberline {1.5}Thermal Boundary Resistance}{11}
 \contentsline {chapter}{\numberline {2}Superlattice Study}{14}
 \contentsline {section}{\numberline {2.1}Introduction}{14}

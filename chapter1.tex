@@ -1,4 +1,4 @@
-\chapter{Literature Review}
+\chapter{Review of Thermal Conductivity Prediction Methods}
 
 The classical problem of predicting material properties remains to a challenge to the present day. However, the arsenal of tools has become increasingly powerful with the steady advance of computational perfomance in accordance with Moore's Law. Indeed, computational techniques like Density Functional Theory (DFT), Quantum Monte Carlo (QMC), and classical Molecular Dynamics (MD) have transitioned to the realm of the desktop PC (albeit for simple systems).
 
@@ -97,7 +97,16 @@ Equivalently, a heat flux can be imposed and the corresponding temperature diffe
 The applicability of direct method is questionable in situations where the temperature profile is not linear. Such is the case for nanoscale systems with a temperature difference on the order of 10K \cite{mcgaugheythesis}.
 
 \section{Lattice Dynamics}
+
 \subsection{Harmonic Lattice Dynamics}
+%
+\begin{equation}
+[D(\pmb{\kappa})-I\omega^2\kv]\pmb{e}\kv = 0
+\end{equation}
+%
+\begin{equation}
+D_{3(b-1)+\alpha,3(b'-1)+\alpha'(\pmb{\kappa})}=\frac{1}{\sqrt{m_bm_{b'}}}\sum_{l'}^N\frac{\partial^2}{\partial r_\alpha \Ob \partial r_\alpha \lbp} \EXP{i\pmb{\kappa}\cdot [\pmb{r}\lbp-\pmb{r}\Ob]}
+\end{equation}
 
 \subsection{Anharmonic Lattice Dynamics}
 
