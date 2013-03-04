@@ -1,0 +1,54 @@
+\chapter{The importance of eigenvectors}
+
+The difference between Thomas and Larkin's formulation of the SED can be understood through the properties of the eigenvectors. By expanding the kinetic term of the Hamiltonian
+\begin{equation}
+\begin{split}
+\dot{Q}(\bm{\kappa},\nu)\dot{Q}^*(\bm{\kappa},\nu)=\frac{1}{N}[\sqrt{m_1}exp(-i\bm{\kappa}\cdot\bm{r}(1))\bm{e}^*(1,\bm{\kappa},\nu)\cdot\dot{\bm{u}}(1,t)\\
++\sqrt{m_2}exp(-i\bm{\kappa}\cdot\bm{r}(2))\bm{e}^*(2,\bm{\kappa},\nu)\cdot\dot{\bm{u}}(2,t)\\
++...\sqrt{m_n}exp(-i\bm{\kappa}\cdot\bm{r}(n))\bm{e}^*(n,\bm{\kappa},\nu)\cdot\dot{\bm{u}}(n,t)\\
++...\sqrt{m_N}exp(-i\bm{\kappa}\cdot\bm{r}(N))\bm{e}^*(N,\bm{\kappa},\nu)\cdot\dot{\bm{u}}(N,t)]\\
+\times[\sqrt{m_1}exp(i\bm{\kappa}\cdot\bm{r}(1))\bm{e}(1,\bm{\kappa},\nu)\cdot\dot{\bm{u}}(1,t)\\
++\sqrt{m_2}exp(i\bm{\kappa}\cdot\bm{r}(2))\bm{e}(2,\bm{\kappa},\nu)\cdot\dot{\bm{u}}(2,t)\\
++...\sqrt{m_n}exp(i\bm{\kappa}\cdot\bm{r}(n))\bm{e}(n,\bm{\kappa},\nu)\cdot\dot{\bm{u}}(n,t)\\
++...\sqrt{m_N}exp(i\bm{\kappa}\cdot\bm{r}(N))\bm{e}(N,\bm{\kappa},\nu)\cdot\dot{\bm{u}}(N,t)]
+\end{split}
+\end{equation}
+From solving the eigenvalue problem of lattice dynamics, the eigenvectors take the form
+\[
+\bm{e}(\bm{\kappa},\nu)=
+\begin{pmatrix}
+\bm{e}(1,\bm{\kappa},\nu)\\
+\bm{e}(2,\bm{\kappa},\nu)\\
+...\\
+\bm{e}(n,\bm{\kappa},\nu)\\
+\end{pmatrix}
+\]
+where $n$ is the number of atoms in the unit cell and $N$ is the total number of atoms
+\begin{equation}
+\bm{e}(1,\bm{\kappa},\nu)=\bm{e}(n+1,\bm{\kappa},\nu)
+\end{equation}
+\begin{equation}
+\bm{e}(n,\bm{\kappa},\nu)=\bm{e}(N,\bm{\kappa},\nu)
+\end{equation}
+Recalling that the orthogonality of the eigenvectors ensures 
+\begin{equation}
+\sum_{j}\bm{e}(j,\bm{\kappa},\nu)\cdot\bm{e}^*(j,\bm{\kappa},\nu)= \delta_{\bm{\kappa},\nu:\bm{\kappa},\nu'}
+\end{equation}
+\begin{equation}
+\bm{e}(\bm{\kappa},\nu)\cdot\bm{e}^*(\bm{\kappa},\nu)= \delta_{\bm{\kappa},\nu:\bm{\kappa},\nu'}
+\end{equation}
+For the sake of argument, assume this implies
+\begin{equation}
+\sum_{n'}\bm{e}(n,\bm{\kappa},\nu)\cdot\bm{e}^*(n',\bm{\kappa},\nu)=\delta_{n:n'}
+\end{equation}
+If so
+\begin{equation}
+\dot{Q}(\bm{\kappa},\nu)\dot{Q}^*(\bm{\kappa},\nu)=|\frac{1}{\sqrt{N}}\sum_{jl}\sqrt{m_j}\dot{\bm{u}}(jl,t)|^2
+\end{equation}
+which is the average kinetic energy of an atom. In theory, the orthogonality applies to the entire eigenvector $\bm{e}(\bm{\kappa},\nu)$ but does not imply orthogonality between its components
+\begin{equation}
+\sum_{n'}\bm{e}(n,\bm{\kappa},\nu)\cdot\bm{e}^*(n',\bm{\kappa},\nu)\neq\delta_{n:n'}
+\end{equation}
+It is therefore necessary to project the velocities onto the eigenvectors before calculating the autocorrelation and the SED, since $\dot{Q}(\bm{\kappa},\nu)\dot{Q}^*(\bm{\kappa},\nu)$ will have some form resembling the initial expansion in Equation 40.
+
+

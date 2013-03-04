@@ -1,0 +1,35 @@
+\chapter{Interface Study}
+
+SED-NMD was used in an attempt to observe the effect of an interface upon phonon properties, namely phonon lifetimes. Here, an interface is defined by enforcing a mass difference in a Lennard-Jones Argon system as seen in Figure 1. In order to ensure the statistical significance of the results, an averaging scheme was needed. For each case, five independent MD simulations were conducted, each with a different initial velocity seed. In each MD simulation, 16 sets of atomic velocities were produced. Each set of velocities consisted of 2048 subsets of atomic velocities; the lag between subsets was 32 LJ time units (in other words, velocities were sampled every 32 LJ time units for a total of 2048 samples). The power of two formulation was chosen for the sake of the fast Fourier Transform. $\dot{Q}(\bm{\kappa},\nu,t)$ was calculated for each individual velocity subset (Equation 31) and then used as input for the correlation function (Equation 33) and SED (Equation 34) of the set. Finally the SED is averaged over the 16 sets and 5 seeds. This procedure was performed on three cases: (A) a 4 unit cell by 4 unit cell by 4 unit cell (hereby referred to as 4x4x4) domain of Lennard-Jones Argon in equilibrium at 20 K with periodic boundary conditions (B) a 32x4x4 domain of Lennard-Jones Argon at 20 K with periodic boundary conditions and (C) 32x4x4 domain of Lennard-Jones Argon at 20 K, where one half (16x4x4) is set to the unit mass of Argon and the other half is set to three times the unit mass of Argon, with periodic boundary conditions. Cases B and C are divided into 4x4x4 blocks for the post-processing steps (SED-NMD) to match the phonon modes present in Case A (see Figure 1), in an attempt to offer a mode by mode comparison. All MD simulations were performed at 20K with periodic boundary conditions in all directions.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[scale=0.25]{supcell}
+\caption{MD domain for interface study of 32x4x4 fcc Argon at 20K with 2048 atoms. Larger atomic radii represents the larger mass.}
+\label{fig:subfig1}
+\end{figure}
+As the plane of the interface has a normal in the $x$ direction, it is reasonable to expect wavevectors containing some $x$ component to be affected. For simplicity, the modes at $\bm{\kappa}=[1,0,0]$ in the BZ are examined. 
+\begin{figure}[h!]
+\centering
+\subfigure[\small{$\bm{\kappa}=[1,0,0]$,$\nu=$TA}]{
+\includegraphics[scale=0.4]{peak_100_TA}
+}
+\subfigure[\small{$\bm{\kappa}=[1,0,0]$,$\nu=$LA}]{
+\includegraphics[scale=0.4]{peak_100_LA}
+}
+\end{figure}
+At first glance, it is clear that the SED of Cases B and C differ from Case A. The essence of the difference between Cases B and C and Case A lies not in the physics of the phonons, but in the model of their description. Ultimately, the idea of dividing the 32x4x4 domains into 4x4x4 blocks and performing NMD on these blocks to observe the change in the phonon lifetimes as a function of spatial position relative to the interface proved to be an ineffective approach.
+
+The precise reason for these results is attributed to the mathematical nature of the problem. A sketch of the reason is offered here (a formal argument is presented in the appendix). First, the definition of $Q(\bm{\kappa},\nu)$ requires the summation over all possible $\bm{\kappa},\nu$ of the entire 32x4x4 domain. The division into blocks discounts the entire summation to only include available $\bm{\kappa},\nu$ of the 4x4x4 block:
+\begin{eqnarray}
+\begin{split}
+\dot{Q}(\bm{\kappa},\nu,t)-\frac{1}{\sqrt{N}}\sum_{28x4x4}\sqrt{m_j}exp(-i\bm{\kappa}\cdot\bm{r}(jl))\bm{e}^*(j,\bm{\kappa},\nu)\cdot\dot{\bm{u}}(jl,t)&=\\\frac{1}{\sqrt{N}}\sum_{4x4x4}\sqrt{m_j}exp(-i\bm{\kappa}\cdot\bm{r}(jl))\bm{e}^*(j,\bm{\kappa},\nu)\cdot\dot{\bm{u}}(jl,t).
+\end{split}
+\end{eqnarray}
+Neglecting the modes that are uniqe to the complete 32x4x4 domain, leads to an erroneous coordinate transformation from real space to k-space because of the incompleteness of the solution basis. In other words, without using all the possible modes of the system to describe the motion of an individual atom, the corresponding normal mode cannot be inferred. The reverse is equivalently true.
+
+Futhermore, the ensemble of each individual block is difficult to ascertain. The entire domain is fixed to be NVE, but the energy of a block may not be fixed with time (in other words, the Hamiltonian of a block is not time-independent). At any given instant the energy of one block may be more or less than one of its neighbours, but the energy of all the blocks together remains constant.
+
+This exercise revisits the struggle to handle any deviation from the perfectly periodic bulk crystal lattice. By relying on the eigenvectors and frequencies obtained from lattice dynamics, it is not obvious how to incorporate aperiodicities into this approach.
+
+

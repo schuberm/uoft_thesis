@@ -1,0 +1,219 @@
+\chapter{Appendix}
+\subsection*{Note on the LD eigenvectors}
+The difference between Thomas and Larkin's formulation of the SED can be understood through the properties of the eigenvectors. By expanding the kinetic term of the Hamiltonian
+\begin{equation}
+\begin{split}
+\dot{Q}(\bm{\kappa},\nu)\dot{Q}^*(\bm{\kappa},\nu)=\frac{1}{N}[\sqrt{m_1}exp(-i\bm{\kappa}\cdot\bm{r}(1))\bm{e}^*(1,\bm{\kappa},\nu)\cdot\dot{\bm{u}}(1,t)\\
++\sqrt{m_2}exp(-i\bm{\kappa}\cdot\bm{r}(2))\bm{e}^*(2,\bm{\kappa},\nu)\cdot\dot{\bm{u}}(2,t)\\
++...\sqrt{m_n}exp(-i\bm{\kappa}\cdot\bm{r}(n))\bm{e}^*(n,\bm{\kappa},\nu)\cdot\dot{\bm{u}}(n,t)\\
++...\sqrt{m_N}exp(-i\bm{\kappa}\cdot\bm{r}(N))\bm{e}^*(N,\bm{\kappa},\nu)\cdot\dot{\bm{u}}(N,t)]\\
+\times[\sqrt{m_1}exp(i\bm{\kappa}\cdot\bm{r}(1))\bm{e}(1,\bm{\kappa},\nu)\cdot\dot{\bm{u}}(1,t)\\
++\sqrt{m_2}exp(i\bm{\kappa}\cdot\bm{r}(2))\bm{e}(2,\bm{\kappa},\nu)\cdot\dot{\bm{u}}(2,t)\\
++...\sqrt{m_n}exp(i\bm{\kappa}\cdot\bm{r}(n))\bm{e}(n,\bm{\kappa},\nu)\cdot\dot{\bm{u}}(n,t)\\
++...\sqrt{m_N}exp(i\bm{\kappa}\cdot\bm{r}(N))\bm{e}(N,\bm{\kappa},\nu)\cdot\dot{\bm{u}}(N,t)]
+\end{split}
+\end{equation}
+From solving the eigenvalue problem of lattice dynamics, the eigenvectors take the form
+\[
+\bm{e}(\bm{\kappa},\nu)=
+\begin{pmatrix}
+\bm{e}(1,\bm{\kappa},\nu)\\
+\bm{e}(2,\bm{\kappa},\nu)\\
+...\\
+\bm{e}(n,\bm{\kappa},\nu)\\
+\end{pmatrix}
+\]
+where $n$ is the number of atoms in the unit cell and $N$ is the total number of atoms
+\begin{equation}
+\bm{e}(1,\bm{\kappa},\nu)=\bm{e}(n+1,\bm{\kappa},\nu)
+\end{equation}
+\begin{equation}
+\bm{e}(n,\bm{\kappa},\nu)=\bm{e}(N,\bm{\kappa},\nu)
+\end{equation}
+Recalling that the orthogonality of the eigenvectors ensures 
+\begin{equation}
+\sum_{j}\bm{e}(j,\bm{\kappa},\nu)\cdot\bm{e}^*(j,\bm{\kappa},\nu)= \delta_{\bm{\kappa},\nu:\bm{\kappa},\nu'}
+\end{equation}
+\begin{equation}
+\bm{e}(\bm{\kappa},\nu)\cdot\bm{e}^*(\bm{\kappa},\nu)= \delta_{\bm{\kappa},\nu:\bm{\kappa},\nu'}
+\end{equation}
+For the sake of argument, assume this implies
+\begin{equation}
+\sum_{n'}\bm{e}(n,\bm{\kappa},\nu)\cdot\bm{e}^*(n',\bm{\kappa},\nu)=\delta_{n:n'}
+\end{equation}
+If so
+\begin{equation}
+\dot{Q}(\bm{\kappa},\nu)\dot{Q}^*(\bm{\kappa},\nu)=|\frac{1}{\sqrt{N}}\sum_{jl}\sqrt{m_j}\dot{\bm{u}}(jl,t)|^2
+\end{equation}
+which is the average kinetic energy of an atom. In theory, the orthogonality applies to the entire eigenvector $\bm{e}(\bm{\kappa},\nu)$ but does not imply orthogonality between its components
+\begin{equation}
+\sum_{n'}\bm{e}(n,\bm{\kappa},\nu)\cdot\bm{e}^*(n',\bm{\kappa},\nu)\neq\delta_{n:n'}
+\end{equation}
+It is therefore necessary to project the velocities onto the eigenvectors before calculating the autocorrelation and the SED, since $\dot{Q}(\bm{\kappa},\nu)\dot{Q}^*(\bm{\kappa},\nu)$ will have some form resembling the initial expansion in Equation 40.
+
+\subsection*{Insight into the presence of additional peaks}
+Consider a linear, nearest neighbour, monotomic chain a with periodic boundary condition, the equations of motions are:
+\begin{equation}
+\begin{split}
+m\ddot{x}_1&=k(x_2-x_1)+k(x_n-x_1)\\
+m\ddot{x}_2&=k(x_3-x_2)+k(x_4-x_2)\\
+...\\
+m\ddot{x}_n&=k(x_{N-1}-x_N)+k(x_1-x_N)\\
+\end{split}
+\end{equation}
+which is a set of coupled linear differential equations. Removing a single equation and the system becomes underdetermined (infinite number of solutions). The matrix version of this system is:
+\begin{equation}
+\bm{M}\bm{\ddot{X}}-\bm{K}\bm{X}=0
+\end{equation}
+With the usual harmonic assumption $\bm{X}=\bm{E}e^{i\omega t}$, the problem is recast:
+\begin{equation}
+[\omega^2\bm{M}^{-1}\bm{M}-\bm{M}^{-1}\bm{K}]\bm{E}=0
+\end{equation}
+Let
+\[
+\bm{\psi}=
+\begin{bmatrix}
+   \bm{E}_1 & \bm{E}_2 & \dots &\bm{E}_n \\
+ \end{bmatrix}
+\]
+We can write $\bm{\psi}$ as a transformation matrix
+\begin{equation}
+\begin{split}
+\bm{X}&=\bm{\psi}\bm{Q}\\
+\bm{Q}&=\bm{\psi}^{-1}\bm{X}
+\end{split}
+\end{equation}
+In relation to the dividing the domain into subdomains, we want to determine $\bm{Q}$ using a reduced set of $\bm{X}$, given $\bm{\psi}$. Looking at a 4 MDOF case, the explicit matrix representation is:
+\[
+\begin{bmatrix}
+   Q_1\\
+   Q_2\\
+   Q_3\\
+   Q_4\\
+\end{bmatrix}=
+\begin{bmatrix}
+   E_{11} & E_{12} & E_{13} & E_{14} \\
+   E_{21} & E_{22} & E_{23} & E_{24} \\
+   E_{31} & E_{32} & E_{33} & E_{34} \\
+   E_{41} & E_{42} & E_{43} & E_{44} \\
+\end{bmatrix}^{-1}
+\begin{bmatrix}
+   x_1\\
+   x_2\\
+   x_3\\
+   x_4\\
+\end{bmatrix}
+\]
+Given a reduced set of $\bm{X}= [x_1,x_2]$, the equations are rearranged
+\begin{equation}
+\begin{split}
+Q_1-E_{13}'x_3-E_{14}'x_4&= E_{11}'x_1 + E_{12}'x_2\\
+Q_2-E_{23}'x_3-E_{24}'x_4&= E_{21}'x_1 + E_{12}'x_2\\
+Q_3-E_{33}'x_3-E_{34}'x_4&= E_{31}'x_1 + E_{32}'x_2\\
+Q_4-E_{43}'x_3-E_{44}'x_4&= E_{41}'x_1 + E_{42}'x_2.
+\end{split}
+\end{equation}
+This results shows that the transformation from $\bm{X}$ to $\bm{Q}$ is relies upon missing information contained with $x_3$ and $x_4$. The original coupled equations of motions are:
+\begin{align*}
+m\ddot{x}_1&=k(x_2-x_1)+k(x_4-x_1)\\
+m\ddot{x}_2&=k(x_3-x_2)+k(x_1-x_2)\\
+m\ddot{x}_3&=k(x_4-x_3)+k(x_2-x_3)\\
+m\ddot{x}_4&=k(x_1-x_4)+k(x_3-x_4)
+\end{align*}
+The eigenvalue problem takes the form:
+\[
+\begin{bmatrix}
+   m & 0 & 0 & 0 \\
+   0 & m & 0 & 0 \\
+   0 & 0 & m & 0 \\
+   0 & 0 & 0 & m \\
+\end{bmatrix}^{-1}
+\begin{bmatrix}
+   2k & -k & 0 & -k \\
+   -k & 2k & -k & 0 \\
+   0 & -k & 2k & -k \\
+   -k & 0 & -k & 2k \\
+\end{bmatrix}
+\begin{bmatrix}
+   E_{n,1} \\
+   E_{n,2} \\
+   E_{n,3} \\
+   E_{n,4} \\
+\end{bmatrix}
+=\omega^2_n
+\begin{bmatrix}
+   E_{n,1} \\
+   E_{n,2} \\
+   E_{n,3} \\
+   E_{n,4} \\
+\end{bmatrix}
+\]
+Letting $m=1$ and $k=1$, the relation between coupled coordinates and normal mode coordinates is, $\pmb{\dot{X}}=\pmb{\psi}\pmb{\dot{Q}}$:
+\[
+\begin{bmatrix}
+   \dot{x}_1\\
+   \dot{x}_2\\
+   \dot{x}_3\\
+   \dot{x}_4\\
+\end{bmatrix}=
+\begin{bmatrix}
+  0.50000 & -0.50000  & 0.70711 & 0.00000 \\
+  0.50000 &  0.50000 &  0.00000 & -0.70711 \\ 
+  0.50000 & -0.50000 & -0.70711 & 0.00000  \\
+  0.50000 &  0.50000 &  0.00000 & 0.70711  \\
+\end{bmatrix}
+\begin{bmatrix}
+   \dot{Q}_1\\
+   \dot{Q}_2\\
+   \dot{Q}_3\\
+   \dot{Q}_4\\
+\end{bmatrix}
+\]
+If we take the 2 atom case:
+\[
+\begin{bmatrix}
+   m & 0  \\
+   0 & m  \\
+\end{bmatrix}^{-1}
+\begin{bmatrix}
+    k & -k  \\
+   -k & k  \\
+\end{bmatrix}
+\begin{bmatrix}
+   E_{n,1} \\
+   E_{n,2} \\
+\end{bmatrix}
+=\omega^2_n
+\begin{bmatrix}
+   E_{n,1} \\
+   E_{n,2} \\
+\end{bmatrix}
+\]
+\[
+\begin{bmatrix}
+   \dot{P}_1\\
+   \dot{P}_2\\
+\end{bmatrix}=
+\begin{bmatrix}
+  0.70711 &  -0.70711 \\
+  0.70711 &  0.70711 \\
+\end{bmatrix}^{-1}
+\begin{bmatrix}
+   \dot{x}_1\\
+   \dot{x}_2\\
+\end{bmatrix}
+\]
+Expressing $P$ in terms of $Q$:
+\begin{align*}
+\dot{P}_1=\frac{\sqrt{2}\dot{Q}_1}{2}+\frac{\dot{Q}_3}{2}-\frac{\dot{Q}_4}{2}\\
+\dot{P}_2=\frac{\sqrt{2}\dot{Q}_2}{2}-\frac{\dot{Q}_3}{2}-\frac{\dot{Q}_4}{2}\\
+%P_1=\frac{\sqrt{2}Q_2}{2}+\frac{\sqrt{2}Q_4}{2}\\
+%P_2=-\frac{\sqrt{2}Q_1}{2}-\frac{\sqrt{2}Q_3}{2}
+\end{align*}
+Without taking $<\dot{Q}(\tau)\dot{Q}(0)>$, the Fourier transform of the set of $\dot{Q}$ using the output velocites from MD gives
+\begin{figure}[!h]
+\centering
+\includegraphics[trim = 40mm 0mm 10mm 0mm,scale=0.5,angle=0]{noxcorr.eps}
+\label{fig:awesome_image}
+\end{figure}
+

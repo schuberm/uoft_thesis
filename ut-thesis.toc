@@ -1,0 +1,14 @@
+\contentsline {chapter}{\numberline {1}Literature Review}{1}
+\contentsline {subsection}{\numberline {1.0.1}Fluctuation-Dissipation Theorem}{1}
+\contentsline {subsection}{\numberline {1.0.2}Wiener-Khintchine Theorem}{3}
+\contentsline {section}{\numberline {1.1}The Direct Method}{6}
+\contentsline {section}{\numberline {1.2}SED-NMD}{7}
+\contentsline {chapter}{\numberline {2}Interface Study}{13}
+\contentsline {chapter}{\numberline {3}Superlattice Study}{16}
+\contentsline {section}{\numberline {3.1}Superlattice phonons}{17}
+\contentsline {section}{\numberline {3.2}Normal Mode Decomposition}{18}
+\contentsline {section}{\numberline {3.3}Setup and Validation}{22}
+\contentsline {section}{\numberline {3.4}Results and Discussion}{25}
+\contentsline {chapter}{Bibliography}{29}
+\contentsline {chapter}{\numberline {A}The importance of eigenvectors}{30}
+\contentsline {chapter}{\numberline {B}Insight into the presence of additional peaks}{33}
