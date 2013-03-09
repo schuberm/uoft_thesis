@@ -41,14 +41,16 @@
 \newcommand{\tpp}[2]{\left(\mspace{-2.0mu}\xkv{\omega}{}{}{}#1\xkv{\omega}
 {}{'}{'}#2\xkv{\omega}{}{\pp}{\pp}\mspace{-2.0mu}\right)}
 
-\newcommand{\SUM}[2]{\ifthenelse{\equal{#1}{0}}{\sum_{
-\alpha_{#2},b_{#2},l_{#2}}^{3,n,N}} {\ifthenelse{\equal{#1}{1}}{\sum_{
-\alpha_{#2},b_{#2}}^{3,n}}{\sum_{\pmb{\kappa}#2,\nu#2}^{N,3n}}}}
+%\newcommand{\SUM}[2]{\ifthenelse{\equal{#1}{0}}{\sum_{
+%\alpha_{#2},b_{#2},l_{#2}}^{3,n,N}} {\ifthenelse{\equal{#1}{1}}{\sum_{
+%\alpha_{#2},b_{#2}}^{3,n}}{\sum_{\pmb{\kappa}^{#2},\nu^{#2}}^{N,3n}}}}
+
+\newcommand{\SUM[1]}{\sum_{\pmb{\kappa}^{#1},\nu^{#1}}^{N,3n}}
 
 \newcommand{\SUMprime}[2]{\ifthenelse{\equal{#1}{0}}
 {\sum_{\alpha_{#2},b_{#2},l_{#2}}^{3,n,N}} 
 {\ifthenelse{\equal{#1}{1}}{\sum_{\alpha_{#2},b_{#2}}^{3,n}}
-{\sum_{\pmb{\kappa}^{'}#2,\nu#2}^{N,3n}}}}
+{\sum_{\pmb{\kappa}^{'}^{#2},\nu^{'}^{#2}}^{N,3n}}}}
 
 \newcommand{\SUMalpha}[2]{\ifthenelse{\equal{#1}{0}}
 {\sum_{\alpha_{#2}}^{3}} {\ifthenelse{\equal{#1}{1}}
@@ -114,6 +116,9 @@
 \begin{smallmatrix} &\pmb{\kappa} &b \\ &\nu &\alpha\end{smallmatrix}
 \mspace{-3.0mu}\right)}
 
+\newcommand{\kvbain}[1]{\mspace{-4.0mu}\left(\mspace{-8.0mu}
+\begin{smallmatrix} &\pmb{\kappa}^{#1}  &b^{#1} \\ &\nu^{#1}  &\alpha^{#1} \end{smallmatrix} \mspace{-3.0mu}\right)}
+
 \newcommand{\kvbap}{\mspace{-4.0mu}\left(\mspace{-8.0mu}
 \begin{smallmatrix} &\pmb{\kappa}' &b \\ &\nu' &\alpha\end{smallmatrix}
 \mspace{-3.0mu}\right)}
@@ -162,6 +167,10 @@
 \begin{smallmatrix}&\pmb{\kappa'} \\&\nu'\end{smallmatrix}
 \mspace{-3.0mu}\right)}
 
+\newcommand{\kvpp}{\mspace{-4.0mu}\left(\mspace{-8.0mu}
+\begin{smallmatrix}&\pmb{\kappa''} \\&\nu''\end{smallmatrix}
+\mspace{-3.0mu}\right)}
+
 \newcommand{\kw}{\mspace{-4.0mu}\left(\mspace{-8.0mu}
 \begin{smallmatrix}&\pmb{\kappa} \\&\omega\end{smallmatrix}
 \mspace{-3.0mu}\right)}
@@ -169,6 +178,21 @@
 \newcommand{\kpvp}{\mspace{-4.0mu}\left(\mspace{-8.0mu}
 \begin{smallmatrix}&\pmb{\kappa'} \\&\nu'\end{smallmatrix}
 \mspace{-3.0mu}\right)}
+
+\newcommand{\kvkvpkvpp}{\mspace{-4.0mu}\left(\mspace{-8.0mu}
+\begin{smallmatrix}&\pmb{\kappa}&\pmb{\kappa'}&\pmb{\kappa''} \\&\nu&\nu'&\nu''\end{smallmatrix}
+\mspace{-3.0mu}\right)}
+
+\newcommand{\kvOv}{\mspace{-4.0mu}\left(\mspace{-8.0mu}
+\begin{smallmatrix}&\pmb{\kappa}&\pmb{-\kappa}&0 \\&\nu&\nu&\nu''\end{smallmatrix}
+\mspace{-3.0mu}\right)}
+
+\newcommand{\kvpOv}{\mspace{-4.0mu}\left(\mspace{-8.0mu}
+\begin{smallmatrix}&\pmb{\kappa'}&\pmb{-\kappa'}&0 \\&\nu'&\nu'&\nu''\end{smallmatrix}
+\mspace{-3.0mu}\right)}
+
+\newcommand{\Ovpp}{\mspace{-4.0mu}\left(\mspace{-8.0mu}
+\begin{smallmatrix}&\pmb{0} \\&\nu''\end{smallmatrix}\mspace{-3.0mu}\right)}
 
 \newcommand{\lbt}{\mspace{-4.0mu}\left(\mspace{-8.0mu}
 \begin{smallmatrix}&l \\&b\end{smallmatrix}\mspace{-2.0mu};t\right)}
@@ -188,5 +212,14 @@
 \newcommand{\Ob}{\mspace{-4.0mu}\left(\mspace{-8.0mu}
 \begin{smallmatrix}&0 \\&b\end{smallmatrix}\mspace{-3.0mu}\right)}
 
+\newcommand{\lO}{\mspace{-4.0mu}\left(\mspace{-8.0mu}
+\begin{smallmatrix}&l \\&0\end{smallmatrix}\mspace{-3.0mu}\right)}
+
+\newcommand{\lOin}[1]{\mspace{-4.0mu}\left(\mspace{-8.0mu}
+\begin{smallmatrix}&l^{#1} \\&0\end{smallmatrix}\mspace{-3.0mu}\right)}
+
 \newcommand{\lbp}{\mspace{-4.0mu}\left(\mspace{-8.0mu}
 \begin{smallmatrix}&l' \\&b'\end{smallmatrix}\mspace{-3.0mu}\right)}
+
+\newcommand{\lbpp}{\mspace{-4.0mu}\left(\mspace{-8.0mu}
+\begin{smallmatrix}&l'' \\&b''\end{smallmatrix}\mspace{-3.0mu}\right)}

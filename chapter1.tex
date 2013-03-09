@@ -2,7 +2,9 @@
 
 The classical problem of predicting material properties remains to a challenge to the present day. However, the arsenal of tools has become increasingly powerful with the steady advance of computational perfomance in accordance with Moore's Law. Indeed, computational techniques like Density Functional Theory (DFT), Quantum Monte Carlo (QMC), and classical Molecular Dynamics (MD) have transitioned to the realm of the desktop PC (albeit for simple systems).
 
-By directly evaluating the equations of motions for the system's particles (Newton's 2nd law for atoms in classical MD, Schrodinger's equation for electrons in DFT or QMC), macroscopic properties like electrical or thermal conductivity can be abstracted through the statistical behaviour of the particles' phase coordinates (e.i.: position and momentum). Several of such abstractions are reviewed here.
+By directly evaluating the equations of motions for the system's particles (Newton's 2nd law for atoms in classical MD, Schrodinger's equation for electrons in DFT or QMC), macroscopic properties like electrical or thermal conductivity can be abstracted through the statistical behaviour of the particles' phase coordinates (e.i.: position and momentum).
+
+Four methods to predict thermal conductivity are presented and a comparison of bulk LJ is offered.
 
 \section{Green-Kubo}
 \subsection{Fluctuation-Dissipation Theorem}
@@ -80,6 +82,15 @@ where $E_i$ is the energy of particle $i$ at position $\bm{r}_i$. $<\bm{S}(t)\cd
 %
 Equations 21 and 22 can be easily added to a MD code since the quantities with which $\bm{S}$ is calculated, typically, are tracked for every time step. McGaughey examined the time dependence of the HCACF and noted a two stage behaviour for crystals: a rapid initial decay corresponding to the damping of the fluctuations and a slow secondary oscillatory decay, which is believed to be associated with the periodic boundary conditions of the simulation. These oscillations decreased as the simulation size was increased \cite{mcgaugheythesis}.
 
+\begin{figure}
+\begin{center}
+\scalebox{1}{ \includegraphics{GK_bulk.eps}}
+\renewcommand{\figure}{Fig.}
+\caption{Integral of HCACF (right axis) and relative error function (left axis).}
+\label{FIG:GK_bulk}
+\end{center}
+\end{figure}
+
 For cases where the HCACF converges well, the thermal conductivity can be found by numerically integrating over a suitable range. Li et al. \cite{Li1998139} use two methods to determine objectively determine the definition of suitable range. One method is simply to evaluate the integral to the point where the HCACF first becomes negative, known as the first dip method. For cases where the HCACF remains positive, an exponential fit is used to determine the contribution of the tail.
 
 In the case of amorphous materials, the HCACF does not converge prior to becoming negative, thus the first dip or exponential fit methods cannot be used and \textit{a priori} knowledge of the functional form of the HCACF is required in order to complete the integration and predict thermal conductivity.
@@ -96,19 +107,123 @@ Equivalently, a heat flux can be imposed and the corresponding temperature diffe
 
 The applicability of direct method is questionable in situations where the temperature profile is not linear. Such is the case for nanoscale systems with a temperature difference on the order of 10K \cite{mcgaugheythesis}.
 
+\begin{figure}
+\begin{center}
+\scalebox{1}{ \includegraphics{DM_bulk.eps}}
+\renewcommand{\figure}{Fig.}
+\caption{Temperature profile from the Direct Method simulation of bulk LJ argon at 20 K.}
+\label{FIG:GK_bulk}
+\end{center}
+\end{figure}
+
 \section{Lattice Dynamics}
 
-\subsection{Harmonic Lattice Dynamics}
+%\begin{figure}[ht]
+%\centering
+%\includegraphics[scale=0.5]{diatomic.png}
+%\caption{Diagram of a linear diatomic chain of atoms}
+%\end{figure}
+Recalling the equations of motion of a linear diatomic chain considering only nearest neighbour interaction ($K_1$ and $K_2$ are the respective spring constants in accordance with Hooke's Law) [8]:
+\begin{align}
+%\begin{split}
+	M\frac{\partial ^2 u_n}{\partial t^2}&=-K_1(U_n-u_n)-K_2(U_n-u_{n-1})\\
+	m\frac{\partial ^2 u_n}{\partial t^2}&=-K_1(u_n-U_n)-K_2(u_n-U_{n+1})
+%\end{split}
+\end{align}
+Recognizing that the solutions to the equations will have the periodic form:
+\begin{align*}
+	U_n&=\sum_\kappa \tilde{U_\kappa}e^{i(\kappa na-\omega t)}\\
+	u_n&=\sum_\kappa \tilde{u_\kappa}e^{i(\kappa na-\omega t)}
+\end{align*}
+Upon the application of the proper boundary conditions (the Born-von Karman periodic boundary, where the last atom in the chain is equivalent to the first in the chain), a discrete set of allowed values of $\kappa$ emerges (this condition is not affected by the fact that the masses of the chain alternate):
+\begin{align*}
+	\pmb{\kappa}=\frac{2\pi m}{Na}
+\end{align*}
+Each $\kappa$ in this set corresponds to a different phonon mode. The two coupled ordinary differential equations can be represented in terms of an eigenvalue problem:
+\[
+\begin{bmatrix}
+  -M\omega_\kappa^2 & 0\\
+  0 & -m\omega_\kappa^2\\ 
+ \end{bmatrix}
+\begin{bmatrix}
+\tilde{U_\kappa} \\ 
+\tilde{u_\kappa}
+\end{bmatrix}
+=
+\begin{bmatrix}
+  -(K_1+K_2) & K_1+K_2e^{-i\kappa a}\\
+  -(K_1+K_2) & K_1+K_2e^{-i\kappa a}\\ 
+ \end{bmatrix}
+\begin{bmatrix}
+\tilde{U_\kappa} \\ \tilde{U_\kappa}
+\end{bmatrix}
+\]
+The eigenvalues are the allowed frequencies and the eigenvectors are the allowed amplitudes for a given value of $\pmb{\kappa}$. The range of wavevectors, which operate in reciprocal space,  $\frac{-\pi}{a}\leq \pmb{\kappa}\leq\frac{\pi}{a}$ gives the first Brillouin zone. Because of the periodic nature of the lattice and hence $\pmb{\kappa}$, values outside this region may be folded back over so as to be included in the first Brillouin zone.
+
+Applying this approach to a genuine lattice structure requires information about the interatomic potentials. For silicon, the empirical Stilinger-Weber potential is typically used in molecular dynamic simulations [7]. For rare gas solids like argon, the Lennard-Jones potential describes the interatomic energy [8]:
+\begin{align*}
+	\phi(r)=-4\epsilon[(\frac{\sigma}{r})^6-(\frac{\sigma}{r})^{12}]	
+\end{align*}
+The spring constants in the equations of motions of the atoms of the lattice can then be calculated by expanding the energy of the lattice in Taylor series:
+\begin{align*}
+	E&=N\phi(a)\\
+	E&=N\phi+\sum_{s\geq1}\frac{1}{s!}\frac{\partial^s\phi}{\partial u^s}\sum_n(u_n-u_{n+1})^s
+\end{align*}
+The harmonic approximation is the truncation of this expansion, neglecting orders greater than two. From this expansion, we find that the force constants must be:
+\begin{align*}
+%	m\frac{\partial ^2 u_n}{\partial t^2}&=\frac{-\partial E_{harmonic}}{\partial u_n}=-\frac{\partial^2 E}{\partial u_n\partial u_{n+1}}(2u_n-u_{n+1}-u_{n-1})\\
+	K_1&=\frac{\partial^2 E}{\partial u_n\partial U_{n}}\\
+	K_2&=\frac{\partial^2 E}{\partial u_n\partial U_{n+1}}
+\end{align*}
+Under this approximation, the force acting on atom $a$ as a result of displacement of atom $b$ in the unit cell is the second derivative of the potential with respect to the displacement of both atoms. This definition extends to three dimensional structures by including the direction of the displacement and the force.
+\[ 
+\Phi_{ab}=
+\begin{bmatrix}
+  \frac{\partial^2 \phi}{\partial u^a_i\partial u^b_i} & \frac{\partial^2 \phi}{\partial u^a_i\partial u^b_j} &\frac{\partial^2 \phi}{\partial u^a_i\partial u^b_k}\\
+  \frac{\partial^2 \phi}{\partial u^a_j\partial u^b_i} & \frac{\partial^2 \phi}{\partial u^a_j\partial u^b_j} &\frac{\partial^2 \phi}{\partial u^a_j\partial u^b_k}\\
+\frac{\partial^2 \phi}{\partial u^a_k\partial u^b_i} & \frac{\partial^2 \phi}{\partial u^a_k\partial u^b_j} &\frac{\partial^2 \phi}{\partial u^a_k\partial u^b_k}
+ \end{bmatrix}
+\]
+Provided with the knowledge of these harmonic force constants, the general form of the eigenvalue problem is then constructed [8]:
+\begin{align*}
+	\omega^2(\pmb{\kappa},\nu) e(\pmb{\kappa},\nu)=D(\pmb{\kappa})e(\pmb{\kappa},\nu) 
+\end{align*}
+The dynamical matrix, $D(\pmb{\kappa})$ contains the chunks of 3 by 3 force constants from $\Phi_{ab}$ as well as the time independent portion of the general solution form and as such depends upon the wavevector. Solving this matrix equation over a grid of wavevectors in the first Brillouin zone, provides a set of data where frequency is a function of wavector known formerly as dispersion relations (unlike the diatomic case, there more than two possible branches, $\nu$, as a result of the greater number of degrees of freedom of the atoms in the unit cell). From which, we can find two phonon properties, the group velocity of each phonon mode [7]:
+\begin{align*}
+v_g(\pmb{\kappa}, \nu)=\frac{\partial \omega(\pmb{\kappa},\nu)}{\partial \pmb{\kappa}}
+\end{align*}
+And the specific heat of each phonon from the classical thermodynamic definition [7]:  
+\begin{align*}
+c_{ph}(\pmb{\kappa},\nu)=\frac{\partial E}{V\partial T}=\frac{\hbar\omega(\pmb{\kappa},\nu)}{V}\frac{\partial f^{BE}(\pmb{\kappa}, \nu)}{\partial T}	
+\end{align*}
 %
 \begin{equation}
 [D(\pmb{\kappa})-I\omega^2\kv]\pmb{e}\kv = 0
 \end{equation}
 %
 \begin{equation}
-D_{3(b-1)+\alpha,3(b'-1)+\alpha'(\pmb{\kappa})}=\frac{1}{\sqrt{m_bm_{b'}}}\sum_{l'}^N\frac{\partial^2}{\partial r_\alpha \Ob \partial r_\alpha \lbp} \EXP{i\pmb{\kappa}\cdot [\pmb{r}\lbp-\pmb{r}\Ob]}
+D_{3(b-1)+\alpha,3(b'-1)+\alpha'}(\pmb{\kappa})=\frac{1}{\sqrt{m_bm_{b'}}}\sum_{l'}^N\frac{\partial^2}{\partial r_\alpha \Ob \partial r_{\alpha'} \lbp} \EXP{i\pmb{\kappa}\cdot [\pmb{r}\lbp-\pmb{r}\Ob]}
 \end{equation}
 
 \subsection{Anharmonic Lattice Dynamics}
+
+\begin{equation}
+\begin{split}
+\Gamma \kv &= \\
+&\frac{\pi\hbar}{16N}\SUM[']\SUM['']|\Phi\kvkvpkvpp|^2[[f_0\kvp+f_0\kvpp+1][\delta\left(\omega\kv-\omega\kvp-\omega\kvpp\right)-\delta\left(\omega\kv+\omega\kvp+\omega\kvpp\right)]\\
+&+[f_0\kvp-f_0\kvpp+1][\delta\left(\omega\kv+\omega\kvp+\omega\kvpp\right)-\delta\left(\omega\kv-\omega\kvp-\omega\kvpp\right)]]\\
+&+\frac{\pi\hbar}{8N}\SUM[']\sum_{\nu''}^{3n}\Phi\kvOv\Phi(\kvpOv[2f_0\kvp+1]\delta(\omega\Ovpp)
+\end{split}
+\end{equation}
+
+\begin{equation}
+\begin{split}
+\Phi\kvkvpkvpp&=\sum_{\alpha,b}^{3,n}\sum_{\alpha',b',l'}^{3,n,N}\sum_{\alpha'',b'',l''}^{3,n,N}\delta(\pmb{\kappa}+\pmb{\kappa'}+\pmb{\kappa''}-\pmb{G})\frac{\partial^3\Phi}{\partial r_\alpha \Ob \partial r_\alpha \lbp \partial r_\alpha \lbpp}\\
+&\times \frac{e \kvba e \kvbain{'}e \kvbain{''}}{\sqrt{m_{b}\omega\kv
+m_{b'}\omega\kvp m_{b''}\omega\kvpp}}\EXP{i\pmb{\kappa}\cdot \pmb{r}\lO+i\pmb{\kappa'}\cdot \pmb{r}\lOin{'}+i\pmb{\kappa''}\cdot \pmb{r}\lOin{''}]}
+\end{split}
+\end{equation}
+
 
 \section{Normal Mode Decomposition}
 
@@ -239,6 +354,28 @@ The probability of a phonon scattering from $\bm{\kappa}$ to state $\bm{\kappa}'
 The application of SED-NMD to compute phonon lifetimes and predict thermal conductivity assumes the validity of the phonon BTE. It remains to be determined if SED-NMD can be used to predict non-bulk phonon lifetimes (are the bulk eigenvectors accurate in non-bulk cases?)
 
 
+\section {Bulk Comparison}
+
+\begin{table}
+\begin{center}
+\begin{tabular*}{\textwidth}{c@{\extracolsep{\fill}}cc}
+\hline\hline\noalign{\smallskip}
+
+Method & Thermal Conductivity  \\
+\noalign{\smallskip}\hline\noalign{\smallskip}
+Green-Kubo & 1.2 $\pm$ 0.01\\
+Direct Method & 1.7 \\
+NMD & 1.1\\
+ALD & 1.3\\
+\hline\hline
+\end{tabular*}
+\end{center}
+\renewcommand{\table}{Table.}
+\caption{A comparison of the thermal conductivity prediction methods [$Wm^{-1}K^{-1}$].}
+\label{TB:K_compare}
+\end{table}
+
+\begin{comment}
 \section{Thermal Boundary Resistance}
 The following section summarizes the seminal work of Swartz and Pohl on the challenges of measuring and modeling the thermal boundary resistance (TBR) \cite{RevModPhys.61.605}. TBR is defined as the ratio of the temperature discontinuity at the interface to the power per unit area flowing across that interface
 \begin{equation}
@@ -251,6 +388,6 @@ To model the transmission of phonons across a solid-solid interface, Khalatnikov
 Given the assumptions used in the AMM, it is not surprising that the results differ from experiments. The TBR between $^4$He and copper predicted by AMM was two orders of magnitude larger than experiment, a result which is not atypical for the standard AMM. In an attempt to resolve this discrepancy, Swartz proposed the Diffuse Mismatch Model (DMM) where, unlike the AMM in which phonons are specularly transmitted or reflected, all phonons are diffusely scattered, forward or backward, at the interface. Scattering is assumed to destroy any information about the phonon prior to scattering, where the possible modes available following scattering are determined by an energy balance and the phonon density of states. DMM tends to overestimate the amount of scattering at an interface. With such idealizations, AMM and DMM calculations of TBR are generally an order of magnitude different from experiment at temperatures above 30 K \cite{landrythesis}, but are useful to estimate an upper and lower limit (not necessarily in the respective order) to the TBR of a given interface system.
 
 The incorporation of the inelastic scattering of phonons near and at the interface  into thermal transport models is required in order to improve predictions of TBR. Landry used anharmonic LD and the phonon BTE to determine the TBR across Si/Ge and Si/heavy-Si interfaces in non-equilibrium high-temperature conditions \cite{landrythesis}. The predicted TBRs were found to be 40-60\% less than the TBR predictions from MD with the direct method, where phonon scattering is inherently included This was one of the first results to conclusively demonstrate the importance of phonon scattering upon TBR. However, the effect upon phonon properties near an interface could not be elucidated from such an approach (Landry attributed the discrepancy in TBR predictions to deviations from the bulk phonon density of states, but did not examine anharmonic changes). The following section discusses the challenges of studying spatially-dependent phonon properties.
-
+\end{comment}
 
 
