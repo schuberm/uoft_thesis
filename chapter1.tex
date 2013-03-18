@@ -1,15 +1,16 @@
 \chapter{Review of Thermal Conductivity Prediction Methods}
 
-The classical problem of predicting material properties remains to a challenge to the present day. However, the arsenal of tools has become increasingly powerful with the steady advance of computational perfomance in accordance with Moore's Law. Indeed, computational techniques like Density Functional Theory (DFT), Quantum Monte Carlo (QMC), and classical Molecular Dynamics (MD) have transitioned to the realm of the desktop PC (albeit for simple systems).
+The problem of predicting material properties remains to a challenge to the present day. However, the arsenal of tools has become increasingly powerful with the steady advance of computational perfomance in accordance with Moore's Law. Indeed, computational techniques like Density Functional Theory (DFT), Quantum Monte Carlo (QMC), and classical Molecular Dynamics (MD) have transitioned to the realm of the desktop PC (albeit for simple systems).
 
 By directly evaluating the equations of motions for the system's particles (Newton's 2nd law for atoms in classical MD, Schrodinger's equation for electrons in DFT or QMC), macroscopic properties like electrical or thermal conductivity can be abstracted through the statistical behaviour of the particles' phase coordinates (e.i.: position and momentum).
 
-Four methods to predict thermal conductivity are presented and a comparison of bulk LJ is offered.
+Four methods to predict thermal conductivity are presented and a comparison of bulk LJ is offered. The methods are divided into two categories: macroscopic oriented (Green-Kubo and Direct Method) and mode oriented methods (Anharmonic Lattice Dynamics and Normal Mode Decomposition).
 
-\section{Green-Kubo}
-\subsection{Fluctuation-Dissipation Theorem}
+\section{Macroscopic Methods}
+\subsection{Green-Kubo}
+\subsubsection{Fluctuation-Dissipation Theorem}
 
-The Fluctuation-Dissipation Theorem (FDT), first stated by Harry Nyquist, was later reformulated by Ryogo Kubo to relate transport coefficients to equilibrium time correlation functions \cite{JPSJ.12.570}. What follows is an outline of the logic of Kubo's generalization of the FDT using Helfand's approach as reviewd by McQuarrie\cite{mcquarrie}. Beginning with the diffusion equation
+The Fluctuation-Dissipation Theorem (FDT), first stated by Harry Nyquist, was later reformulated by Ryogo Kubo to relate transport coefficients to equilibrium time correlation functions \cite{JPSJ.12.570}. What follows is an outline of the logic of Kubo's generalization of the FDT using Helfand's approach as reviewed by McQuarrie\cite{mcquarrie}. Beginning with the diffusion equation
 %
 \begin{equation}
 \frac{\partial G(\bm{r},t)}{\partial t}= D \nabla ^2G(\bm{r},t).
@@ -36,7 +37,7 @@ Recalling the basic kinematic relations in the most general forms
 [\bm{r}(t)-\bm{r}(0)]^2=\int_0^t \int_0^t \bm{v}(t')\cdot\bm{v}(t'')dt'dt''.
 \end{equation}
 %
-The usefulness of Equation 5 becomes clear upon taking the ensemble average thus giving the average behaviour of all possible functions of the phase coordinates $\bm{r},\bm{v}$
+The usefulness of Eq. \ref {} becomes clear upon taking the ensemble average thus giving the average behaviour of all possible functions of the phase coordinates $\bm{r},\bm{v}$
 %
 \begin{equation}
 <[\bm{r}(t)-\bm{r}(0)]^2>=\int_0^t \int_0^t <\bm{v}(t')\cdot\bm{v}(t'')>dt'dt''.
@@ -62,26 +63,28 @@ D=\frac{1}{3}\int_0^{\infty}<\bm{v}(\tau)\cdot\bm{v}(0)>d\tau.
 %
 and thus arriving at an expression for the diffusion coefficient in terms of the equilibrium time correlation function for velocity. Kubo generalized this result by expressing the linear response of a system from small perturbations in terms of its fluctuations about equilibrium.
 
+\subsubsection {Molecular Dynamics and Green-Kubo}
+
 The GK relation for thermal conductivity falls out of the fluctuation-dissipation theorem and the assumptions made therein, namely that the perturbations to the system's Hamiltonian are small and that the stochastic processes are Markoffian \cite{green:398}. Thus the thermal conductivity can be related to the fluctuations of the heat current vector, $\bm{S}$, over long periods
 %
-\begin{equation}
+\begin{equation}\label{EQ:intHCACF}
 k=\frac{1}{k_B V T^2}\int_0^{\infty}\frac{<\bm{S}(t)\cdot\bm{S}(0)>}{3}dt.
 \end{equation}
 %
 The heat current vector is given by 
 %
-\begin{equation}
+\begin{equation}\label{EQ:HCvec}
 \bm{S}=\frac{d}{dt}\sum_i\bm{r}_iE_i
 \end{equation}
 %
 where $E_i$ is the energy of particle $i$ at position $\bm{r}_i$. $<\bm{S}(t)\cdot\bm{S}(0)>$ is referred to as the heat current autocorrelation function (HCACF). For pairwise potentials, the heat current vector is
 %
-\begin{equation}
+\begin{equation}\label{EQ:HCvec_pair}
 \bm{S}=\sum_ie_i\bm{v}_i+\frac{1}{2}\sum_{i,j}(\bm{F}_{ij}\cdot\bm{v}_{i})\bm{r}_{ij}.
 \end{equation}
 %
-Equations 21 and 22 can be easily added to a MD code since the quantities with which $\bm{S}$ is calculated, typically, are tracked for every time step. McGaughey examined the time dependence of the HCACF and noted a two stage behaviour for crystals: a rapid initial decay corresponding to the damping of the fluctuations and a slow secondary oscillatory decay, which is believed to be associated with the periodic boundary conditions of the simulation. These oscillations decreased as the simulation size was increased \cite{mcgaugheythesis}.
-
+Eq.~\ref{EQ:HCvec} and~\ref{EQ:HCvec_pair} can be easily added to a MD code since the quantities with which $\bm{S}$ is calculated, typically, are tracked for every time step. McGaughey examined the time dependence of the HCACF and noted a two stage behaviour for crystals: a rapid initial decay corresponding to the damping of the fluctuations and a slow secondary oscillatory decay, which is believed to be associated with the periodic boundary conditions of the simulation. These oscillations decreased as the simulation size was increased \cite{mcgaugheythesis}.
+%
 \begin{figure}
 \begin{center}
 \scalebox{1}{ \includegraphics{GK_bulk.eps}}
@@ -90,23 +93,23 @@ Equations 21 and 22 can be easily added to a MD code since the quantities with w
 \label{FIG:GK_bulk}
 \end{center}
 \end{figure}
-
+%
 For cases where the HCACF converges well, the thermal conductivity can be found by numerically integrating over a suitable range. Li et al. \cite{Li1998139} use two methods to determine objectively determine the definition of suitable range. One method is simply to evaluate the integral to the point where the HCACF first becomes negative, known as the first dip method. For cases where the HCACF remains positive, an exponential fit is used to determine the contribution of the tail.
 
 In the case of amorphous materials, the HCACF does not converge prior to becoming negative, thus the first dip or exponential fit methods cannot be used and \textit{a priori} knowledge of the functional form of the HCACF is required in order to complete the integration and predict thermal conductivity.
 
-\section{The Direct Method}
+\subsection{The Direct Method}
 
 Unlike the GK method, the direct method uses a non-equilibrium steady-state approach to determine thermal conductivity. A one-dimension heat flux is generated through the simulation, typically by keeping the boundaries of the simulation at fixed, but different, temperatures, such that the boundaries behave like a hot and cold thermodynamic bath. From Fourier's law, the thermal conductivity can be predicted once the heat flux has converged
 %
-\begin{equation}
+\begin{equation}\label{EQ:DM_k}
 k=-\frac{q_x}{dT/dx}.
 \end{equation}
 %
 Equivalently, a heat flux can be imposed and the corresponding temperature difference calculated. Generally, both set-ups are used, but the time to convergence of the heat flux vector is orders of magnitude greater than that of the temperature difference.
 
 The applicability of direct method is questionable in situations where the temperature profile is not linear. Such is the case for nanoscale systems with a temperature difference on the order of 10K \cite{mcgaugheythesis}.
-
+%
 \begin{figure}
 \begin{center}
 \scalebox{1}{ \includegraphics{DM_bulk.eps}}
@@ -115,32 +118,73 @@ The applicability of direct method is questionable in situations where the tempe
 \label{FIG:GK_bulk}
 \end{center}
 \end{figure}
+%
+%
+\section{Mode by Mode Methods}
+\subsection{SMRT-BTE}
+%
+In order to overcome the limitations of the DM and GK method, scientists have turned to the Boltzmann Transport Equation (BTE).\cite{srivastava1990physics} 
+%
+\begin{equation}\label{EQ:BTE}
+-c(\pmb{\kappa})\cdot \nabla T\frac{\partial f\kv}{\partial T}=\frac{\partial f\kv}{\partial t}
+\end{equation}
+%
+Although analytically intractable, there exists a multitude of computational solutions for the BTE. Under the relaxation time approximation
+%
+\begin{equation}\label{EQ:BTE_lin}
+-c(\pmb{\kappa})\cdot \nabla T\frac{\partial f\kv}{\partial T}=\frac{f\kv-f_{eq}\kv}{\tau \kv}
+\end{equation}
+%
+The thermal conductivity, under the RTA, can thus be expressed in terms of contributions over all possible phonon modes \cite{srivastava1990physics}
+%
+\begin{equation}\label{EQ:k_RTA}
+	k_{z}= \sum_\nu\sum_\kappa c_{ph}\kv v^2_{g,z}\kv\tau_{p-p}\kv.
+\end{equation}
+%
+Here $c_{ph}\kv$ is the volumetric specific heat from the classical thermodynamic definition
+%
+\begin{equation}\label{EQ:Cph}
+c_{ph}\kv=\frac{\partial E}{V\partial T}=\frac{\hbar\omega\kv}{V}\frac{\partial f^{BE}\kv}{\partial T}	
+\end{equation}
+%
+and
+\begin{equation}\label{EQ:Vg}
+v_{g,z}\kv=\frac{\partial \omega\kv}{\partial \bm{\kappa}}
+\end{equation}
+is the group velocity in the $z$ direction which can readily obtained from harmonic lattice dynamics. 
 
-\section{Lattice Dynamics}
-
+\subsection{Lattice Dynamics}
+\subsubsection{Harmonic Lattice Dynamics}
 %\begin{figure}[ht]
 %\centering
 %\includegraphics[scale=0.5]{diatomic.png}
 %\caption{Diagram of a linear diatomic chain of atoms}
 %\end{figure}
-Recalling the equations of motion of a linear diatomic chain considering only nearest neighbour interaction ($K_1$ and $K_2$ are the respective spring constants in accordance with Hooke's Law) [8]:
+To illustrate the fundamental concepts applied in lattice dynamics calculations, the following 1D case is considered. Recalling the equations of motion of a linear diatomic chain considering only nearest neighbour interaction ($K_1$ and $K_2$ are the respective spring constants in accordance with Hooke's Law) \cite{dove_introduction_1993-3}:
+%
 \begin{align}
 %\begin{split}
 	M\frac{\partial ^2 u_n}{\partial t^2}&=-K_1(U_n-u_n)-K_2(U_n-u_{n-1})\\
 	m\frac{\partial ^2 u_n}{\partial t^2}&=-K_1(u_n-U_n)-K_2(u_n-U_{n+1})
 %\end{split}
 \end{align}
+%
 Recognizing that the solutions to the equations will have the periodic form:
-\begin{align*}
+%
+\begin{align}
 	U_n&=\sum_\kappa \tilde{U_\kappa}e^{i(\kappa na-\omega t)}\\
 	u_n&=\sum_\kappa \tilde{u_\kappa}e^{i(\kappa na-\omega t)}
-\end{align*}
+\end{align}
+%
 Upon the application of the proper boundary conditions (the Born-von Karman periodic boundary, where the last atom in the chain is equivalent to the first in the chain), a discrete set of allowed values of $\kappa$ emerges (this condition is not affected by the fact that the masses of the chain alternate):
-\begin{align*}
+%
+\begin{align}
 	\pmb{\kappa}=\frac{2\pi m}{Na}
-\end{align*}
+\end{align}
+%
 Each $\kappa$ in this set corresponds to a different phonon mode. The two coupled ordinary differential equations can be represented in terms of an eigenvalue problem:
-\[
+%
+\begin{equation}
 \begin{bmatrix}
   -M\omega_\kappa^2 & 0\\
   0 & -m\omega_\kappa^2\\ 
@@ -157,57 +201,53 @@ Each $\kappa$ in this set corresponds to a different phonon mode. The two couple
 \begin{bmatrix}
 \tilde{U_\kappa} \\ \tilde{U_\kappa}
 \end{bmatrix}
-\]
+\end{equation}
+%
 The eigenvalues are the allowed frequencies and the eigenvectors are the allowed amplitudes for a given value of $\pmb{\kappa}$. The range of wavevectors, which operate in reciprocal space,  $\frac{-\pi}{a}\leq \pmb{\kappa}\leq\frac{\pi}{a}$ gives the first Brillouin zone. Because of the periodic nature of the lattice and hence $\pmb{\kappa}$, values outside this region may be folded back over so as to be included in the first Brillouin zone.
-
-Applying this approach to a genuine lattice structure requires information about the interatomic potentials. For silicon, the empirical Stilinger-Weber potential is typically used in molecular dynamic simulations [7]. For rare gas solids like argon, the Lennard-Jones potential describes the interatomic energy [8]:
-\begin{align*}
+Applying this approach to a genuine lattice structure requires information about the interatomic potentials. For silicon, the empirical Stilinger-Weber potential is typically used in molecular dynamic simulations. For rare gas solids like argon, the Lennard-Jones potential describes the interatomic energy
+\begin{align}
 	\phi(r)=-4\epsilon[(\frac{\sigma}{r})^6-(\frac{\sigma}{r})^{12}]	
-\end{align*}
+\end{align}
 The spring constants in the equations of motions of the atoms of the lattice can then be calculated by expanding the energy of the lattice in Taylor series:
-\begin{align*}
+%
+\begin{align}
 	E&=N\phi(a)\\
 	E&=N\phi+\sum_{s\geq1}\frac{1}{s!}\frac{\partial^s\phi}{\partial u^s}\sum_n(u_n-u_{n+1})^s
-\end{align*}
+\end{align}
+%
 The harmonic approximation is the truncation of this expansion, neglecting orders greater than two. From this expansion, we find that the force constants must be:
-\begin{align*}
-%	m\frac{\partial ^2 u_n}{\partial t^2}&=\frac{-\partial E_{harmonic}}{\partial u_n}=-\frac{\partial^2 E}{\partial u_n\partial u_{n+1}}(2u_n-u_{n+1}-u_{n-1})\\
+%
+\begin{align}
 	K_1&=\frac{\partial^2 E}{\partial u_n\partial U_{n}}\\
 	K_2&=\frac{\partial^2 E}{\partial u_n\partial U_{n+1}}
-\end{align*}
+\end{align}
+%
 Under this approximation, the force acting on atom $a$ as a result of displacement of atom $b$ in the unit cell is the second derivative of the potential with respect to the displacement of both atoms. This definition extends to three dimensional structures by including the direction of the displacement and the force.
-\[ 
+%
+\begin{equation}
 \Phi_{ab}=
 \begin{bmatrix}
   \frac{\partial^2 \phi}{\partial u^a_i\partial u^b_i} & \frac{\partial^2 \phi}{\partial u^a_i\partial u^b_j} &\frac{\partial^2 \phi}{\partial u^a_i\partial u^b_k}\\
   \frac{\partial^2 \phi}{\partial u^a_j\partial u^b_i} & \frac{\partial^2 \phi}{\partial u^a_j\partial u^b_j} &\frac{\partial^2 \phi}{\partial u^a_j\partial u^b_k}\\
 \frac{\partial^2 \phi}{\partial u^a_k\partial u^b_i} & \frac{\partial^2 \phi}{\partial u^a_k\partial u^b_j} &\frac{\partial^2 \phi}{\partial u^a_k\partial u^b_k}
  \end{bmatrix}
-\]
-Provided with the knowledge of these harmonic force constants, the general form of the eigenvalue problem is then constructed [8]:
-\begin{align*}
-	\omega^2(\pmb{\kappa},\nu) e(\pmb{\kappa},\nu)=D(\pmb{\kappa})e(\pmb{\kappa},\nu) 
-\end{align*}
-The dynamical matrix, $D(\pmb{\kappa})$ contains the chunks of 3 by 3 force constants from $\Phi_{ab}$ as well as the time independent portion of the general solution form and as such depends upon the wavevector. Solving this matrix equation over a grid of wavevectors in the first Brillouin zone, provides a set of data where frequency is a function of wavector known formerly as dispersion relations (unlike the diatomic case, there more than two possible branches, $\nu$, as a result of the greater number of degrees of freedom of the atoms in the unit cell). From which, we can find two phonon properties, the group velocity of each phonon mode [7]:
-\begin{align*}
-v_g(\pmb{\kappa}, \nu)=\frac{\partial \omega(\pmb{\kappa},\nu)}{\partial \pmb{\kappa}}
-\end{align*}
-And the specific heat of each phonon from the classical thermodynamic definition [7]:  
-\begin{align*}
-c_{ph}(\pmb{\kappa},\nu)=\frac{\partial E}{V\partial T}=\frac{\hbar\omega(\pmb{\kappa},\nu)}{V}\frac{\partial f^{BE}(\pmb{\kappa}, \nu)}{\partial T}	
-\end{align*}
-%
+\end{equation}
+Provided with the knowledge of these harmonic force constants, the general form of the eigenvalue problem is then constructed \cite{dove_introduction_1993-3}
 \begin{equation}
 [D(\pmb{\kappa})-I\omega^2\kv]\pmb{e}\kv = 0
 \end{equation}
 %
+The dynamical matrix, $D(\pmb{\kappa})$ contains the chunks of three by three force constants from $\Phi_{ab}$ as well as the time independent portion of the general solution form and as such depends upon the wavevector
 \begin{equation}
-D_{3(b-1)+\alpha,3(b'-1)+\alpha'}(\pmb{\kappa})=\frac{1}{\sqrt{m_bm_{b'}}}\sum_{l'}^N\frac{\partial^2}{\partial r_\alpha \Ob \partial r_{\alpha'} \lbp} \EXP{i\pmb{\kappa}\cdot [\pmb{r}\lbp-\pmb{r}\Ob]}
+D_{3(b-1)+\alpha,3(b'-1)+\alpha'}(\pmb{\kappa})=\frac{1}{\sqrt{m_bm_{b'}}}\sum_{l'}^N\frac{\partial^2}{\partial r_\alpha \Ob \partial r_{\alpha'} \lbp} \EXP{i\pmb{\kappa}\cdot [\pmb{r}\lbp-\pmb{r}\Ob]}.
 \end{equation}
+Solving this matrix equation over a grid of wavevectors in the first Brillouin zone, provides a set of data where frequency is a function of wavector known formerly as dispersion relations (unlike the diatomic case, there more than two possible branches, $\nu$, as a result of the greater number of degrees of freedom of the atoms in the unit cell). 
 
-\subsection{Anharmonic Lattice Dynamics}
+\subsubsection{Anharmonic Lattice Dynamics}
 
-\begin{equation}
+The natural extension is to apply perturbation theory \cite{turneythesis}.
+%
+\begin{equation}\label{EQ:Gamma_anh}
 \begin{split}
 \Gamma \kv &= \\
 &\frac{\pi\hbar}{16N}\SUM[']\SUM['']|\Phi\kvkvpkvpp|^2[[f_0\kvp+f_0\kvpp+1][\delta\left(\omega\kv-\omega\kvp-\omega\kvpp\right)-\delta\left(\omega\kv+\omega\kvp+\omega\kvpp\right)]\\
@@ -215,22 +255,23 @@ D_{3(b-1)+\alpha,3(b'-1)+\alpha'}(\pmb{\kappa})=\frac{1}{\sqrt{m_bm_{b'}}}\sum_{
 &+\frac{\pi\hbar}{8N}\SUM[']\sum_{\nu''}^{3n}\Phi\kvOv\Phi(\kvpOv[2f_0\kvp+1]\delta(\omega\Ovpp)
 \end{split}
 \end{equation}
-
-\begin{equation}
+%
+where
+%
+\begin{equation}\label{EQ:Phi_anh}
 \begin{split}
 \Phi\kvkvpkvpp&=\sum_{\alpha,b}^{3,n}\sum_{\alpha',b',l'}^{3,n,N}\sum_{\alpha'',b'',l''}^{3,n,N}\delta(\pmb{\kappa}+\pmb{\kappa'}+\pmb{\kappa''}-\pmb{G})\frac{\partial^3\Phi}{\partial r_\alpha \Ob \partial r_\alpha \lbp \partial r_\alpha \lbpp}\\
 &\times \frac{e \kvba e \kvbain{'}e \kvbain{''}}{\sqrt{m_{b}\omega\kv
 m_{b'}\omega\kvp m_{b''}\omega\kvpp}}\EXP{i\pmb{\kappa}\cdot \pmb{r}\lO+i\pmb{\kappa'}\cdot \pmb{r}\lOin{'}+i\pmb{\kappa''}\cdot \pmb{r}\lOin{''}]}
 \end{split}
 \end{equation}
-
-
-\section{Normal Mode Decomposition}
+%
+\subsection{Normal Mode Decomposition}
 
 As is happens, the usefulness of the (time) correlation functions extends well beyond the FDT. An simple example is the Wiener-Khintchine Theorem (WKT), which relates the correlation function of a continuous stationary random process to its' spectral density. The correlation function of a time-dependent quantity (i.e: position, velocity, etc.) is defined as the average behaviour in time of said quantity \cite{mcquarrie}
 %
 \begin{equation}
-C(t)=\lim_{T->\infty}\frac{1}{2T}\int_{-T}^{T}x(t+t')x(t')dt'.
+C(t)=\lim_{T->\infty}\frac{1}{2T}\int_{-T}^{T}x(t+t')x(t')dt'
 \end{equation}
 %
 From the ergodic hypothesis, which states that the statistical properties of a large number of observations at $N$ arbitrary times from a single system are equivalent to the statistical properties of $N$ obervations made from $N$ equivalent systems made at the same time, the correlation function can be rewritten as an ensemble average
@@ -273,7 +314,7 @@ C(t)=\frac{1}{2\pi}\int_{-\infty}^{\infty}C(\omega)e^{i\omega t}d\omega
 C(\omega)=\int_{-\infty}^{\infty}C(t)e^{-i\omega t}dt.
 \end{equation}
 %
-Taking an example from Dove \cite{dove}, let $x$ have only two equally probably values of $\pm 1$ with the probability of $x$ changing it's value during $dt$ of $dt/\tau$, where $\tau$ represents the average time between value changes. The correlation function is
+Taking an example from Dove \cite{dove_introduction_1993-3}, let $x$ have only two equally probably values of $\pm 1$ with the probability of $x$ changing it's value during $dt$ of $dt/\tau$, where $\tau$ represents the average time between value changes. The correlation function is
 %
 \begin{equation}
 C(t)=e^{\frac{-|t|}{\tau}}.
@@ -285,74 +326,81 @@ C(\omega)=\int_{-\infty}^{\infty}e^{\frac{-|t|}{\tau}}e^{-i\omega t}dt=\frac{2\t
 \end{equation}
 which is a Lorentzian centred about zero frequency and $\tau$ is the half width at half-maximum (HWHM).
 
-In order to overcome the limitations of the DM and GK method, scientists have turned to the Boltzmann Transport Equation (BTE). Although analytically intractable, there exists a multitude of computational solutions for the BTE. Under the relaxation time approximation and from Fourier's law, the thermal conductivity can be expressed in terms of contributions over all possible phonon modes \cite{sellan_CP}
+Recalling Eq. ~\ref{EQ:SMRTK}, the final and missing piece is the lifetime of a given mode $\tau_{p-p}\kv$ which arises as a result of the intrinsic anharmonicity of the interatomic potential and is responsible for finite thermal conductivity and thermal expansion. In the past decade, significant progress has been to computationally predict this property. Broido et al. used Density Functional Perturbation Theory (DFPT) \cite{Broido1} while Esfarjani et al. used a DFT-MD approach \cite{PhysRevB.84.085204}. The method proposed by Larkin \cite{jason_inpress} involves the calculation of the spectral energy density of the normal modes (SED-NMD). Although this approach relies on the empirical potentials of classical MD, the complete anharmonicity is considered, an advantage it posesses over other methods, like DFPT which truncate terms beyond the third order derivatives. SED-NMD is an algorithm that combines time-dependent information from molecular dynamics and the harmonic solutions from lattice dynamics to infer the phonon lifetimes From harmonic lattice dynamics, the displacement of atom $b$ in unit cell $l$ at time $t$ is represented as a superposition of waves of wavevector $\bm{\kappa}$ with amplitude $\bm{U}\kvb$
 %
 \begin{equation}
-	k_{z}= \sum_\nu\sum_\kappa c_{ph}(\bm{\kappa},\nu)v^2_{g,z}(\bm{\kappa}, \nu)\tau_{p-p}(\bm{\kappa}, \nu).
+\bm{u}\lbt=\sum_{\bm{\kappa},\nu}\bm{U}\kvb exp(i[\bm{\kappa}\cdot\bm{r}\lb-\omega\kv t])=\frac{1}{\sqrt{Nm_j}}\sum_{\bm{\kappa},\nu}\bm{e}\kvb exp(i\bm{\kappa}\cdot\bm{r}\lb)Q\kv
 \end{equation}
 %
-Here $c_{ph}(\bm{\kappa},\nu)$ is the volumetric specific heat from the classical thermodynamic definition
+with $Q\kv$ being the normal code coordinate and $\bm{e}\kvb$ being the eigenvector determined from the eigenvalue problem $\omega^2\kv e\kv=D(\bm{\kappa})e\kv$. To rearrange for the normal mode, mulitply Equation 27 with $\bm{e}^*\kvb$ to take advantage of the orthogonality of the eigenvectors
 %
 \begin{equation}
-c_{ph}(\bm{\kappa},\nu)=\frac{\partial E}{V\partial T}=\frac{\hbar\omega(\bm{\kappa},\nu)}{V}\frac{\partial f^{BE}(\bm{\kappa}, \nu)}{\partial T}	
+\bm{e}^*\kvb\bm{u}\lbt=\frac{1}{\sqrt{Nm_j}}exp(i\bm{\kappa}\cdot\bm{r}\lb)Q\kv.
 \end{equation}
 %
-and
-\begin{equation}
-v_{g,z}(\bm{\kappa}, \nu)=\frac{\partial \omega(\bm{\kappa},\nu)}{\partial \bm{\kappa}}
-\end{equation}
-is the group velocity in the $z$ direction which can readily obtained from harmonic lattice dynamics. The final and missing piece is the lifetime of a given mode $\tau_{p-p}(\bm{\kappa}, \nu)$ which arises as a result of the intrinsic anharmonicity of the interatomic potential and is responsible for finite thermal conductivity and thermal expansion. In the past decade, significant progress has been to computationally predict this property. Broido et al. used Density Functional Perturbation Theory (DFPT) \cite{Broido1} while Esfarjani et al. used a DFT-MD approach \cite{PhysRevB.84.085204}. The method proposed by Larkin \cite{larkin} involves the calculation of the spectral energy density of the normal modes (SED-NMD). Although this approach relies on the empirical potentials of classical MD, the complete anharmonicity is considered, an advantage it posesses over other methods, like DFPT which truncate terms beyond the third order derivatives. SED-NMD is an algorithm that combines time-dependent information from molecular dynamics and the harmonic solutions from lattice dynamics to infer the phonon lifetimes From harmonic lattice dynamics, the displacement of atom $j$ in unit cell $l$ at time $t$ is represented as a superposition of waves of wavevector $\bm{\kappa}$ with amplitude $\bm{U}(j,\bm{\kappa},\nu)$
-\begin{equation}
-\bm{u}(jl,t)=\sum_{\bm{\kappa},\nu}\bm{U}(j,\bm{\kappa},\nu)exp(i[\bm{\kappa}\cdot\bm{r}(jl)-\omega(\bm{\kappa},\nu)t])=\frac{1}{\sqrt{Nm_j}}\sum_{\bm{\kappa},\nu}\bm{e}(j,\bm{\kappa},\nu)exp(i\bm{\kappa}\cdot\bm{r}(jl))Q(\bm{\kappa},\nu)
-\end{equation}
-with $Q(\bm{\kappa},\nu)$ being the normal code coordinate and $\bm{e}(j,\bm{\kappa},\nu)$ being the eigenvector determined from the eigenvalue problem $\omega^2(\bm{\kappa},\nu) e(\bm{\kappa},\nu)=D(\bm{\kappa})e(\bm{\kappa},\nu)$. To rearrange for the normal mode, mulitply Equation 27 with $\bm{e}^*(j,\bm{\kappa},\nu)$ to take advantage of the orthogonality of the eigenvectors
-\begin{equation}
-\bm{e}^*(j,\bm{\kappa},\nu)\bm{u}(jl,t)=\frac{1}{\sqrt{Nm_j}}exp(i\bm{\kappa}\cdot\bm{r}(jl))Q(\bm{\kappa},\nu).
-\end{equation}
 Taking the Fourier Transform
+%
 \begin{equation}
-\int_{-\infty}^{\infty}\bm{e}^*(j,\bm{\kappa},\nu)\bm{u}(jl,t)exp(-i\bm{\kappa}\cdot\bm{r}(jl))d\bm{r}=\frac{1}{\sqrt{Nm_j}}\int_{-\infty}^{\infty}Q(\bm{\kappa},\nu)d\bm{r}
+\int_{-\infty}^{\infty}\bm{e}^*\kvb\bm{u}\lbt exp(-i\bm{\kappa}\cdot\bm{r}\lb)d\bm{r}=\frac{1}{\sqrt{Nm_j}}\int_{-\infty}^{\infty}Q\kv d\bm{r}
 \end{equation}
+%
 and noting that $\int_{-\infty}^{\infty}d\bm{r}=N$, gives the expression for the normal coordinate
+%
 \begin{equation}
-Q(\bm{\kappa},\nu,t)=\frac{1}{\sqrt{N}}\sum_{jl}\sqrt{m_j}exp(-i\bm{\kappa}\cdot\bm{r}(jl))\bm{e}^*(j,\bm{\kappa},\nu)\cdot\bm{u}(jl,t).
+Q\lbt=\frac{1}{\sqrt{N}}\sum_{b,l}\sqrt{m_j}exp(-i\bm{\kappa}\cdot\bm{r}\lb)\bm{e}^*\kvb\cdot\bm{u}\lbt.
 \end{equation}
+%
 The time derivative of the normal mode is
+%
 \begin{equation}
-\dot{Q}(\bm{\kappa},\nu,t)=\frac{1}{\sqrt{N}}\sum_{jl}\sqrt{m_j}exp(-i\bm{\kappa}\cdot\bm{r}(jl))\bm{e}^*(j,\bm{\kappa},\nu)\cdot\dot{\bm{u}}(jl,t).
+\dot{Q}\lbt=\frac{1}{\sqrt{N}}\sum_{b,l}\sqrt{m_j}exp(-i\bm{\kappa}\cdot\bm{r}\lb)\bm{e}^*\kvb\cdot\dot{\bm{u}}\lbt.
 \end{equation}
+%
 The harmonic Hamiltonian of the lattice can thus be represented in terms of normal modes
+%
 \begin{equation}
-H=\frac{1}{2}\sum_{\bm{\kappa},\nu}\dot{Q}(\bm{\kappa},\nu)\dot{Q}^*(\bm{\kappa},\nu)+\frac{1}{2}\sum_{\bm{\kappa},\nu}\omega^2(\bm{\kappa},\nu)Q(\bm{\kappa},\nu)Q^*(\bm{\kappa},\nu).
+H=\frac{1}{2}\sum_{\bm{\kappa},\nu}\dot{Q}\kv\dot{Q}^*\kv+\frac{1}{2}\sum_{\bm{\kappa},\nu}\omega^2\kv Q\kv Q^*\kv.
 \end{equation}
-The first term on the right hand side corresponds to the kinetic energy while second term corresponds to the potential energy. By taking a series of velocity samples from an equilibrium MD simulation of time interval (in signal processing terminology, this is known as lag which is symbolically represented here by $t$) an order of magnitude shorter than inverse of the highest frequency present in the system (known from solutions to the aforementioned eigenvalue problem) and using Equation 31 to project the sampled velocities onto the eigenvectors, the autocorrelation of the normal modes can calculated by
+%
+The first term on the right hand side corresponds to the kinetic energy while second term corresponds to the potential energy. By taking a series of velocity samples from an equilibrium MD simulation of time interval (in signal processing terminology, this is known as lag which is symbolically represented here by $t$) an order of magnitude shorter than inverse of the highest frequency present in the system (known from solutions to the aforementioned eigenvalue problem) and using Eq. ~\ref{} to project the sampled velocities onto the eigenvectors, the autocorrelation of the normal modes can calculated by
+%
 \begin{equation}
-C(\bm{\kappa},\nu,t)=\lim_{T->\infty}\frac{1}{T}\int_{0}^{T}Q(\bm{\kappa},\nu,t+t')Q(\bm{\kappa},\nu,t')dt'.
+C\kvt=\lim_{T->\infty}\frac{1}{T}\int_{0}^{T}Q(\bm{\kappa},\nu,t+t')Q(\bm{\kappa},\nu,t')dt'.
 \end{equation}
+%
 The spectral energy density, from the WKT, is thus
+%
 \begin{equation}
-C(\bm{\kappa},\nu,\omega)=\int_{-\infty}^{\infty}C(\bm{\kappa},\nu,t)e^{-i\omega t}dt
+C\kvw=\int_{-\infty}^{\infty}C(\bm{\kappa},\nu,t)e^{-i\omega t}dt
 \end{equation}
-which, like Equation 19, is a Lorentzian centered at $\omega_0(\bm{\kappa},\nu)$
+%
+which, like Equation 19, is a Lorentzian centered at $\omega_0\kv$
+%
 \begin{equation}
-C(\bm{\kappa},\nu,\omega)=\frac{C_0(\bm{\kappa},\nu)}{2}\frac{\Gamma(\bm{\kappa},\nu)/\pi}{(\omega_0(\bm{\kappa},\nu)-\omega)^2+\Gamma(\bm{\kappa},\nu)}.
+C\kvw=\frac{C_0\kv}{2}\frac{\Gamma\kv/\pi}{(\omega_0\kv-\omega)^2+\Gamma\kv}.
 \end{equation}
+%
 The HWHM is related by anharmonic lattice dynamic theory \cite{PhysRev.128.2589} to phonon lifetime by
+%
 \begin{equation}
-\tau_{p-p}(\bm{\kappa}, \nu)=\frac{1}{2\Gamma(\bm{\kappa},\nu)}
+\tau_{p-p}\kv=\frac{1}{2\Gamma\kv}
 \end{equation}
+%
 The interpretation of this relation can be understood through a qualitative argument from time-dependent perturbation theory (TDPT). Using TDPT, the anharmonic terms in the complete Hamiltonian are assumed to be small and can thus be considered to be to perturbation upon the harmonic state. The probablity amplitude carries the time-dependence in this picture. In a two-state system
+%
 \begin{equation}
 |\Psi>=A(t)|\psi_A>+B(t)|\psi_B>
 \end{equation}
+%
 as the amplitudes $A(t)$ and $B(t)$ vary time, so does the probability of finding the particle in state $|\psi_A>$ or $|\psi_B>$. Expressing the equivalent relation for three-phonon processes
+%
 \begin{equation}
 |\bm{\kappa},\bm{\kappa}',\bm{\kappa}''>=A(t)|\bm{\kappa}>+B(t)|\bm{\kappa}'>+C(t)|\bm{\kappa}''>.
 \end{equation}
-The probability of a phonon scattering from $\bm{\kappa}$ to state $\bm{\kappa}'$ is governed by the relative magnitudes of the amplitudes $A(t)$ and $B(t)$ (in accordance with the selection rules of momentum and energy conservation). The broadening of these peaks corresponds to this scattering process, indicating a non-zero probability of a phonon transitioning from one state to another. The form of Equation 36 is a consequence of Fermi's Golden Rule from TDPT.
+%
+The probability of a phonon scattering from $\bm{\kappa}$ to state $\bm{\kappa}'$ is governed by the relative magnitudes of the amplitudes $A(t)$ and $B(t)$ (in accordance with the selection rules of momentum and energy conservation). The broadening of these peaks corresponds to this scattering process, indicating a non-zero probability of a phonon transitioning from one state to another. The form of Eq. ~\ref{} is a consequence of Fermi's Golden Rule from TDPT.
 
 The application of SED-NMD to compute phonon lifetimes and predict thermal conductivity assumes the validity of the phonon BTE. It remains to be determined if SED-NMD can be used to predict non-bulk phonon lifetimes (are the bulk eigenvectors accurate in non-bulk cases?)
-
 
 \section {Bulk Comparison}
 
