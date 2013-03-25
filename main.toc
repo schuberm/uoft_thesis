@@ -1,29 +1,32 @@
-\contentsline {chapter}{\numberline {1}Review of Thermal Conductivity Prediction Methods}{1}
-\contentsline {section}{\numberline {1.1}Macroscopic Methods}{2}
-\contentsline {subsection}{\numberline {1.1.1}Green-Kubo}{2}
+\contentsline {chapter}{\numberline {1}Introduction}{1}
+\contentsline {chapter}{\numberline {2}Review of Thermal Conductivity Prediction Methods}{2}
+\contentsline {section}{\numberline {2.1}Macroscopic Methods}{2}
+\contentsline {subsection}{\numberline {2.1.1}Green-Kubo}{2}
 \contentsline {subsubsection}{Fluctuation-Dissipation Theorem}{2}
-\contentsline {subsubsection}{Molecular Dynamics and Green-Kubo}{3}
-\contentsline {subsection}{\numberline {1.1.2}The Direct Method}{6}
-\contentsline {section}{\numberline {1.2}Mode by Mode Methods}{6}
-\contentsline {subsection}{\numberline {1.2.1}SMRT-BTE}{6}
-\contentsline {subsection}{\numberline {1.2.2}Lattice Dynamics}{8}
-\contentsline {subsubsection}{Harmonic Lattice Dynamics}{8}
-\contentsline {subsubsection}{Anharmonic Lattice Dynamics}{10}
-\contentsline {subsection}{\numberline {1.2.3}Normal Mode Decomposition}{11}
-\contentsline {section}{\numberline {1.3}Bulk Comparison}{16}
-\contentsline {chapter}{\numberline {2}Superlattice Study}{17}
-\contentsline {section}{\numberline {2.1}Introduction}{17}
-\contentsline {section}{\numberline {2.2}Modeling Framework}{18}
-\contentsline {subsection}{\numberline {2.2.1}Superlattice structure and interactions}{18}
-\contentsline {subsection}{\numberline {2.2.2}Thermal conductivity predictions}{19}
-\contentsline {subsubsection}{Normal Mode Decomposition}{19}
-\contentsline {subsubsection}{Green-Kubo and Anharmonic Lattice Dynamics}{22}
-\contentsline {section}{\numberline {2.3}Results}{22}
-\contentsline {subsection}{\numberline {2.3.1}Dispersion and Power Spectra}{22}
-\contentsline {subsection}{\numberline {2.3.2}Lifetimes}{24}
-\contentsline {subsection}{\numberline {2.3.3}Thermal Conductivity}{28}
-\contentsline {section}{\numberline {2.4}Superlattice phonons}{32}
-\contentsline {section}{\numberline {2.5}Summary}{34}
-\contentsline {chapter}{Bibliography}{34}
-\contentsline {chapter}{\numberline {A}The importance of eigenvectors}{41}
-\contentsline {chapter}{\numberline {B}Insight into the presence of additional peaks}{44}
+\contentsline {subsubsection}{Molecular Dynamics and Green-Kubo}{4}
+\contentsline {subsection}{\numberline {2.1.2}The Direct Method}{7}
+\contentsline {section}{\numberline {2.2}Mode by Mode Methods}{7}
+\contentsline {subsection}{\numberline {2.2.1}SMRT-BTE}{7}
+\contentsline {subsection}{\numberline {2.2.2}Lattice Dynamics}{9}
+\contentsline {subsubsection}{Harmonic Lattice Dynamics}{9}
+\contentsline {subsubsection}{Anharmonic Lattice Dynamics}{12}
+\contentsline {subsection}{\numberline {2.2.3}Normal Mode Decomposition}{12}
+\contentsline {section}{\numberline {2.3}Bulk Comparison}{17}
+\contentsline {chapter}{\numberline {3}Interface Study}{18}
+\contentsline {chapter}{\numberline {4}Superlattice Study}{22}
+\contentsline {section}{\numberline {4.1}Introduction}{22}
+\contentsline {section}{\numberline {4.2}Modeling Framework}{23}
+\contentsline {subsection}{\numberline {4.2.1}Superlattice structure and interactions}{23}
+\contentsline {subsection}{\numberline {4.2.2}Thermal conductivity predictions}{24}
+\contentsline {subsubsection}{Normal Mode Decomposition}{24}
+\contentsline {subsubsection}{Green-Kubo and Anharmonic Lattice Dynamics}{27}
+\contentsline {section}{\numberline {4.3}Results}{27}
+\contentsline {subsection}{\numberline {4.3.1}Dispersion and Power Spectra}{27}
+\contentsline {subsection}{\numberline {4.3.2}Lifetimes}{29}
+\contentsline {subsection}{\numberline {4.3.3}Thermal Conductivity}{33}
+\contentsline {section}{\numberline {4.4}Superlattice phonons}{37}
+\contentsline {section}{\numberline {4.5}Summary}{39}
+\contentsline {chapter}{\numberline {5}Conclusion}{40}
+\contentsline {chapter}{Bibliography}{40}
+\contentsline {chapter}{\numberline {A}The importance of eigenvectors}{47}
+\contentsline {chapter}{\numberline {B}Insight into the presence of additional peaks}{50}

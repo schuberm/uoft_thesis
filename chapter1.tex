@@ -1,19 +1,18 @@
 \chapter{Review of Thermal Conductivity Prediction Methods}
 
-The problem of predicting material properties remains to a challenge to the present day. However, the arsenal of tools has become increasingly powerful with the steady advance of computational perfomance in accordance with Moore's Law. Indeed, computational techniques like Density Functional Theory (DFT), Quantum Monte Carlo (QMC), and classical Molecular Dynamics (MD) have transitioned to the realm of the desktop PC (albeit for simple systems).
-
-By directly evaluating the equations of motions for the system's particles (Newton's 2nd law for atoms in classical MD, Schrodinger's equation for electrons in DFT or QMC), macroscopic properties like electrical or thermal conductivity can be abstracted through the statistical behaviour of the particles' phase coordinates (e.i.: position and momentum).
-
 Four methods to predict thermal conductivity are presented and a comparison of bulk LJ is offered. The methods are divided into two categories: macroscopic oriented (Green-Kubo and Direct Method) and mode oriented methods (Anharmonic Lattice Dynamics and Normal Mode Decomposition).
 
 \section{Macroscopic Methods}
 \subsection{Green-Kubo}
 \subsubsection{Fluctuation-Dissipation Theorem}
 
-The Fluctuation-Dissipation Theorem (FDT), first stated by Harry Nyquist, was later reformulated by Ryogo Kubo to relate transport coefficients to equilibrium time correlation functions \cite{JPSJ.12.570}. What follows is an outline of the logic of Kubo's generalization of the FDT using Helfand's approach as reviewed by McQuarrie\cite{mcquarrie}. Beginning with the diffusion equation
+The Fluctuation-Dissipation Theorem (FDT), first stated by Harry Nyquist (in relation to the Nyquist noise), was later reformulated by Ryogo Kubo to relate transport coefficients to time correlation functions \cite{JPSJ.12.570} under an external force (it is worthwhile to distinguish between external and internal forces, electrical conductivity under and applied electric field versus the viscosity of a fluid). \cite{} What follows is an outline of the logic of Kubo's generalization of the FDT using Helfand's approach as reviewed by McQuarrie\cite{mcquarrie}. The statistical version of the diffusion equation
 %
 \begin{equation}
-\frac{\partial G(\bm{r},t)}{\partial t}= D \nabla ^2G(\bm{r},t).
+\begin{split}
+	\frac{\partial G(\bm{r},t)}{\partial t}&= D \nabla ^2G(\bm{r},t)\\
+G(\bm{r},0)&=\delta(\pm{r})
+\end{split}
 \end{equation}
 %
 Here, $G(\bm{r},t)$ is the fraction of particles in phase coordinates about $d\bm{r}$ at $\bm{r}$ at time $t$ given that they were located at $\bm{r}(0)$ at $t=0$
@@ -22,13 +21,37 @@ Here, $G(\bm{r},t)$ is the fraction of particles in phase coordinates about $d\b
 G(\bm{r},t)= \frac{1}{N}\left<\sum_{j=1}^N\delta(\bm{r}-[\bm{r}_j(t)-\bm{r}_j(0)])\right>.
 \end{equation}
 %
-At this point, it is insightful to take the Fourier transform of $G(\bm{r},t)$ as it provides the form of the time correlation function, $<A^*(t)A(0)>$
+Einstein was the first to show that the solution to this diffusion equation is
 %
 \begin{equation}
-F(\bm{\kappa},t)=\int_{-\infty}^{\infty}G(\bm{r},t)e^{-i\bm{\kappa}\cdot\bm{r}}d\bm{r}=\frac{1}{N}\left<\sum_{j=1}^Ne^{i\bm{\kappa}\cdot\bm{r}_j(t)}e^{-i\bm{\kappa}\cdot\bm{r}_j(0)}\right>.
+\left<[\bm{r}(t)-\bm{r}(0)]^2\right>=6Dt
 \end{equation}
 %
-Recalling the basic kinematic relations in the most general forms
+%At this point, it is insightful to take the Fourier transform of $G(\bm{r},t)$ as it provides the form of the time correlation function, $<A^*(t)A(0)>$
+%
+%\begin{equation}
+%F(\bm{\kappa},t)=\int_{-\infty}^{\infty}G(\bm{r},t)e^{-i\bm{\kappa}\cdot\bm{r}}d\bm{r}=\frac{1}{N}\left<\sum_{j=1}^Ne^{i\bm{\kappa}\cdot\bm{r}_j(t)}e^{-i\bm{\kappa}\cdot\bm{r}_j(0)}\right>.
+%\end{equation}
+%\begin{equation}
+%\begin{split}
+%	F_s(\pm{k},t)&=\int e^{i \pm{k} \cdot \pm{r}}G(\bm{r},t) d\pm{r}\\
+%		     &=e^{-k^2Dt}
+%\end{split}
+%\end{equation}
+%
+where $<A>$ refers to the ensemble average of observable A
+\begin{equation}
+\int \int A(p,q) f(p,q) dpdq=\left<A\right>
+\end{equation}
+where $<A(t)A(0)>$ refers to the equilibrium time correlation of observable A
+\begin{equation}
+\left<A(\delta t)A(0)\right>=\frac{1}{N}\sum_{i=1}^NA(t_i)A(t_i+\delta t) 
+\end{equation}
+From the ergodic hypothesis
+\begin{equation}
+\left<A( t)A(0)\right>=\int \int A(t,p,q)A(0,p,q) f(p,q) dpdq 
+\end{equation}
+Only classical systems are considered here, but these analogies are easily extended to quantum mechanics (the ensemble average is the trace of the operator).To show how these correlation functions manifest themselves, recall the basic kinematic relations in the most general forms
 %
 \begin{equation}
 \bm{r}(t)-\bm{r}(0)=\int_0^t \bm{v}(t')dt'
@@ -49,7 +72,7 @@ Since the ensemble is a stationary process (e.i.: independent of the definition 
 <\bm{v}(t')\cdot\bm{v}(t'')>=<\bm{v}(t'-t'')\cdot\bm{v}(0)>=<\bm{v}(t''-t')\cdot\bm{v}(0)>.
 \end{equation}
 %
-From the initial solution to the diffusion equation $<[\bm{r}(t)-\bm{r}(0)]^2>=6Dt$, substituting $\tau=t''-t'$ and performing the first integration
+From the initial solution to the diffusion equation, substituting $\tau=t''-t'$ and performing the first integration
 %
 \begin{equation}
 6Dt=2t\int_0^t\left(1-\frac{\tau}{t}\right)<\bm{v}(\tau)\cdot\bm{v}(0)>d\tau.
@@ -61,7 +84,7 @@ Assuming that the time correlation function decays to zero long before $t$, the 
 D=\frac{1}{3}\int_0^{\infty}<\bm{v}(\tau)\cdot\bm{v}(0)>d\tau.
 \end{equation}
 %
-and thus arriving at an expression for the diffusion coefficient in terms of the equilibrium time correlation function for velocity. Kubo generalized this result by expressing the linear response of a system from small perturbations in terms of its fluctuations about equilibrium.
+and thus arriving at an expression for the diffusion coefficient in terms of the equilibrium time correlation function for velocity (time dependence of an ensemble average). Kubo generalized this result by expressing the linear response of a system from small perturbations in terms of its fluctuations about equilibrium. It can be applied to predict thermal conductivity (as will be seen)\cite{} and electrical conductivity, \cite{} viscosity \cite{}
 
 \subsubsection {Molecular Dynamics and Green-Kubo}
 
@@ -413,7 +436,7 @@ Method & Thermal Conductivity  \\
 \noalign{\smallskip}\hline\noalign{\smallskip}
 Green-Kubo & 1.2 $\pm$ 0.01\\
 Direct Method & 1.7 \\
-NMD & 1.1\\
+NMD & 1.2\\
 ALD & 1.3\\
 \hline\hline
 \end{tabular*}
