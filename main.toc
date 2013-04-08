@@ -1,32 +1,34 @@
 \contentsline {chapter}{\numberline {1}Introduction}{1}
-\contentsline {chapter}{\numberline {2}Review of Thermal Conductivity Prediction Methods}{2}
-\contentsline {section}{\numberline {2.1}Macroscopic Methods}{2}
-\contentsline {subsection}{\numberline {2.1.1}Green-Kubo}{2}
-\contentsline {subsubsection}{Fluctuation-Dissipation Theorem}{2}
-\contentsline {subsubsection}{Molecular Dynamics and Green-Kubo}{4}
-\contentsline {subsection}{\numberline {2.1.2}The Direct Method}{7}
-\contentsline {section}{\numberline {2.2}Mode by Mode Methods}{7}
-\contentsline {subsection}{\numberline {2.2.1}SMRT-BTE}{7}
-\contentsline {subsection}{\numberline {2.2.2}Lattice Dynamics}{9}
-\contentsline {subsubsection}{Harmonic Lattice Dynamics}{9}
-\contentsline {subsubsection}{Anharmonic Lattice Dynamics}{12}
-\contentsline {subsection}{\numberline {2.2.3}Normal Mode Decomposition}{12}
-\contentsline {section}{\numberline {2.3}Bulk Comparison}{17}
-\contentsline {chapter}{\numberline {3}Interface Study}{18}
-\contentsline {chapter}{\numberline {4}Superlattice Study}{22}
-\contentsline {section}{\numberline {4.1}Introduction}{22}
-\contentsline {section}{\numberline {4.2}Modeling Framework}{23}
-\contentsline {subsection}{\numberline {4.2.1}Superlattice structure and interactions}{23}
-\contentsline {subsection}{\numberline {4.2.2}Thermal conductivity predictions}{24}
-\contentsline {subsubsection}{Normal Mode Decomposition}{24}
-\contentsline {subsubsection}{Green-Kubo and Anharmonic Lattice Dynamics}{27}
-\contentsline {section}{\numberline {4.3}Results}{27}
-\contentsline {subsection}{\numberline {4.3.1}Dispersion and Power Spectra}{27}
-\contentsline {subsection}{\numberline {4.3.2}Lifetimes}{29}
-\contentsline {subsection}{\numberline {4.3.3}Thermal Conductivity}{33}
-\contentsline {section}{\numberline {4.4}Superlattice phonons}{37}
-\contentsline {section}{\numberline {4.5}Summary}{39}
-\contentsline {chapter}{\numberline {5}Conclusion}{40}
-\contentsline {chapter}{Bibliography}{40}
-\contentsline {chapter}{\numberline {A}The importance of eigenvectors}{47}
-\contentsline {chapter}{\numberline {B}Insight into the presence of additional peaks}{50}
+\contentsline {chapter}{\numberline {2}Review of Thermal Conductivity Prediction Methods}{3}
+\contentsline {section}{\numberline {2.1}Macroscopic Methods}{3}
+\contentsline {subsection}{\numberline {2.1.1}Green-Kubo}{3}
+\contentsline {subsubsection}{Fluctuation-Dissipation Theorem}{3}
+\contentsline {subsubsection}{Molecular Dynamics and Green-Kubo}{6}
+\contentsline {subsection}{\numberline {2.1.2}The Direct Method}{9}
+\contentsline {section}{\numberline {2.2}Mode by Mode Methods}{10}
+\contentsline {subsection}{\numberline {2.2.1}SMRT-BTE}{10}
+\contentsline {subsection}{\numberline {2.2.2}Lattice Dynamics}{11}
+\contentsline {subsubsection}{Harmonic Lattice Dynamics}{11}
+\contentsline {subsubsection}{Anharmonic Lattice Dynamics}{14}
+\contentsline {subsection}{\numberline {2.2.3}Normal Mode Decomposition}{16}
+\contentsline {section}{\numberline {2.3}Bulk Comparison}{21}
+\contentsline {chapter}{\numberline {3}Interface Study}{23}
+\contentsline {section}{\numberline {3.1}Thermal Boundary Resistance}{23}
+\contentsline {chapter}{\numberline {4}Superlattice Study}{29}
+\contentsline {section}{\numberline {4.1}Introduction}{29}
+\contentsline {section}{\numberline {4.2}Modeling Framework}{30}
+\contentsline {subsection}{\numberline {4.2.1}Superlattice structure and interactions}{30}
+\contentsline {subsection}{\numberline {4.2.2}Thermal conductivity predictions}{31}
+\contentsline {subsubsection}{Normal Mode Decomposition}{31}
+\contentsline {subsubsection}{Green-Kubo and Anharmonic Lattice Dynamics}{34}
+\contentsline {section}{\numberline {4.3}Results}{34}
+\contentsline {subsection}{\numberline {4.3.1}Dispersion and Power Spectra}{34}
+\contentsline {subsection}{\numberline {4.3.2}Lifetimes}{36}
+\contentsline {subsection}{\numberline {4.3.3}Thermal Conductivity}{40}
+\contentsline {section}{\numberline {4.4}Superlattice phonons}{44}
+\contentsline {section}{\numberline {4.5}Summary}{46}
+\contentsline {chapter}{\numberline {5}Conclusion and Future Work}{47}
+\contentsline {chapter}{Bibliography}{47}
+\contentsline {chapter}{\numberline {A}The importance of eigenvectors}{57}
+\contentsline {chapter}{\numberline {B}Insight into the presence of additional peaks}{60}
+\contentsline {chapter}{\numberline {C}Size effects in superlattices}{64}
