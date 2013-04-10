@@ -191,11 +191,11 @@ is the group velocity in the $z$ direction which can readily obtained from harmo
 
 \subsection{Lattice Dynamics}
 \subsubsection{Harmonic Lattice Dynamics}
-%\begin{figure}[ht]
-%\centering
-%\includegraphics[scale=0.5]{diatomic.png}
-%\caption{Diagram of a linear diatomic chain of atoms}
-%\end{figure}
+\begin{figure}[ht]
+\centering
+\includegraphics[scale=0.5]{diatomic.png}
+\caption{Diagram of a linear diatomic chain of atoms}
+\end{figure}
 To illustrate the fundamental concepts applied in lattice dynamics calculations, the following 1D case is considered. Recalling the equations of motion of a linear diatomic chain considering only nearest neighbour interaction ($K_1$ and $K_2$ are the respective spring constants in accordance with Hooke's Law) \cite{dove_introduction_1993-3}:
 %
 \begin{align}
@@ -281,7 +281,18 @@ The dynamical matrix, $D(\pmb{\kappa})$ contains the chunks of three by three fo
 \begin{equation}
 D_{3(b-1)+\alpha,3(b'-1)+\alpha'}(\pmb{\kappa})=\frac{1}{\sqrt{m_bm_{b'}}}\sum_{l'}^N\frac{\partial^2}{\partial r_\alpha \Ob \partial r_{\alpha'} \lbp} \EXP{i\pmb{\kappa}\cdot [\pmb{r}\lbp-\pmb{r}\Ob]}.
 \end{equation}
-Solving this matrix equation over a grid of wavevectors in the first Brillouin zone, provides a set of data where frequency is a function of wavector known formerly as dispersion relations (unlike the diatomic case, there more than two possible branches, $\nu$, as a result of the greater number of degrees of freedom of the atoms in the unit cell). 
+Solving this matrix equation over a grid of wavevectors in the first Brillouin zone, provides a set of data where frequency is a function of wavector known formerly as dispersion relations (unlike the diatomic case, there more than two possible branches, $\nu$, as a result of the greater number of degrees of freedom of the atoms in the unit cell).
+
+%%%
+\begin{figure*}%[t]
+\begin{center}
+\scalebox{1}{ \includegraphics{bulk_dis_dos.eps}}
+\renewcommand{\figure}{Fig.}
+\caption{Bulk LJ argon at 20 K dispersion and DOS.}
+\label{fig:sed}
+\end{center}
+\end{figure*}
+%%% 
 
 HLD provides mode frequency $\omega \kv$, group velocity $v_g\kv$, and polarization vectors, $e\kv$. The missing piece in a thermal conductivity prediction is the mode lifetime $\tau \kv$. In a perfectly harmonic crystal the lifetime is infinite, as the modes are completely uncoupled (the Hamiltonian does not have any off-diagonal elements) and thus there is no interaction between modes. The higher order terms in the Taylor expansion Eq.~\ref{EQ:eng_exp} of interatomic potential introduces small but non-zero off-diagonal elements in the Hamiltonian. This coupling between modes is described in the following section.
 

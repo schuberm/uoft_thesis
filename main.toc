@@ -9,8 +9,8 @@
 \contentsline {subsection}{\numberline {2.2.1}SMRT-BTE}{10}
 \contentsline {subsection}{\numberline {2.2.2}Lattice Dynamics}{11}
 \contentsline {subsubsection}{Harmonic Lattice Dynamics}{11}
-\contentsline {subsubsection}{Anharmonic Lattice Dynamics}{14}
-\contentsline {subsection}{\numberline {2.2.3}Normal Mode Decomposition}{16}
+\contentsline {subsubsection}{Anharmonic Lattice Dynamics}{15}
+\contentsline {subsection}{\numberline {2.2.3}Normal Mode Decomposition}{17}
 \contentsline {section}{\numberline {2.3}Bulk Comparison}{21}
 \contentsline {chapter}{\numberline {3}Interface Study}{23}
 \contentsline {section}{\numberline {3.1}Thermal Boundary Resistance}{23}
@@ -32,3 +32,6 @@
 \contentsline {chapter}{\numberline {A}The importance of eigenvectors}{57}
 \contentsline {chapter}{\numberline {B}Insight into the presence of additional peaks}{60}
 \contentsline {chapter}{\numberline {C}Size effects in superlattices}{64}
+\contentsline {chapter}{\numberline {D}LAMMPS input script}{67}
+\contentsline {chapter}{\numberline {E}GULP input script}{70}
+\contentsline {chapter}{\numberline {F}Matlab NMD script}{72}
