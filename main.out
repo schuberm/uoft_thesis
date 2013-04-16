@@ -1,0 +1,32 @@
+\BOOKMARK [0][-]{chapter.1}{Introduction}{}
+\BOOKMARK [0][-]{chapter.2}{Review of Thermal Conductivity Prediction Methods}{}
+\BOOKMARK [1][-]{section.2.1}{Macroscopic Methods}{chapter.2}
+\BOOKMARK [2][-]{subsection.2.1.1}{Green-Kubo Relation}{section.2.1}
+\BOOKMARK [2][-]{subsection.2.1.2}{The Direct Method}{section.2.1}
+\BOOKMARK [1][-]{section.2.2}{Mode by Mode Methods}{chapter.2}
+\BOOKMARK [2][-]{subsection.2.2.1}{SMRT-BTE}{section.2.2}
+\BOOKMARK [2][-]{subsection.2.2.2}{Lattice Dynamics}{section.2.2}
+\BOOKMARK [2][-]{subsection.2.2.3}{Normal Mode Decomposition}{section.2.2}
+\BOOKMARK [1][-]{section.2.3}{Bulk Comparison}{chapter.2}
+\BOOKMARK [0][-]{chapter.3}{Interface Study}{}
+\BOOKMARK [1][-]{section.3.1}{Thermal Boundary Resistance}{chapter.3}
+\BOOKMARK [1][-]{section.3.2}{NMD near an interface}{chapter.3}
+\BOOKMARK [0][-]{chapter.4}{Superlattice Study}{}
+\BOOKMARK [1][-]{section.4.1}{Introduction}{chapter.4}
+\BOOKMARK [1][-]{section.4.2}{Modeling Framework}{chapter.4}
+\BOOKMARK [2][-]{subsection.4.2.1}{Superlattice structure and interactions}{section.4.2}
+\BOOKMARK [2][-]{subsection.4.2.2}{Thermal conductivity predictions}{section.4.2}
+\BOOKMARK [1][-]{section.4.3}{Results}{chapter.4}
+\BOOKMARK [2][-]{subsection.4.3.1}{Dispersion and Power Spectra}{section.4.3}
+\BOOKMARK [2][-]{subsection.4.3.2}{Lifetimes}{section.4.3}
+\BOOKMARK [2][-]{subsection.4.3.3}{Thermal Conductivity}{section.4.3}
+\BOOKMARK [1][-]{section.4.4}{Superlattice phonons}{chapter.4}
+\BOOKMARK [1][-]{section.4.5}{Summary}{chapter.4}
+\BOOKMARK [0][-]{chapter.5}{Conclusion and Future Work}{}
+\BOOKMARK [0][-]{chapter.5}{Bibliography}{}
+\BOOKMARK [0][-]{appendix.A}{The importance of eigenvectors}{}
+\BOOKMARK [0][-]{appendix.B}{Insight into the presence of additional peaks}{}
+\BOOKMARK [0][-]{appendix.C}{Size effects in superlattices}{}
+\BOOKMARK [0][-]{appendix.D}{LAMMPS input script}{}
+\BOOKMARK [0][-]{appendix.E}{GULP input script}{}
+\BOOKMARK [0][-]{appendix.F}{Matlab NMD script}{}

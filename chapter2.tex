@@ -13,16 +13,16 @@ Given the assumptions used in the AMM, it is not surprising that the results dif
 
 The incorporation of the inelastic scattering of phonons near and at the interface  into thermal transport models is required in order to improve predictions of TBR. Landry used anharmonic LD and the phonon BTE to determine the TBR across Si/Ge and Si/heavy-Si interfaces in non-equilibrium high-temperature conditions \cite{landrythesis}. The predicted TBRs were found to be 40-60\% less than the TBR predictions from MD with the direct method, where phonon scattering is inherently included This was one of the first results to conclusively demonstrate the importance of phonon scattering upon TBR. However, the effect upon phonon properties near an interface could not be elucidated from such an approach (Landry attributed the discrepancy in TBR predictions to deviations from the bulk phonon density of states, but did not examine anharmonic changes). The following section discusses the challenges of studying spatially-dependent phonon properties.
 
-SED-NMD was used in an attempt to observe the effect of an interface upon phonon properties, namely phonon lifetimes. Here, an interface is defined by enforcing a mass difference in a Lennard-Jones Argon system as seen in Figure 1. In order to ensure the statistical significance of the results, an averaging scheme was needed. For each case, five independent MD simulations were conducted, each with a different initial velocity seed. In each MD simulation, 16 sets of atomic velocities were produced. Each set of velocities consisted of 2048 subsets of atomic velocities; the lag between subsets was 32 LJ time units (in other words, velocities were sampled every 32 LJ time units for a total of 2048 samples). The power of two formulation was chosen for the sake of the fast Fourier Transform. $\dot{Q}(\bm{\kappa},\nu,t)$ was calculated for each individual velocity subset (Equation 31) and then used as input for the correlation function (Equation \ref{}) and SED (Equation \ref{}) of the set. Finally the SED is averaged over the 16 sets and 5 seeds. This procedure was performed on three cases: (A) a 4 unit cell by 4 unit cell by 4 unit cell (hereby referred to as $4\times4\times4$) domain of Lennard-Jones Argon in equilibrium at 20 K with periodic boundary conditions (B) a 32x4x4 domain of Lennard-Jones Argon at 20 K with periodic boundary conditions and (C) $32\times4\times4$ domain of Lennard-Jones argon at 20 K, where one half ($16\times4\times4$) is set to the unit mass of Argon and the other half is set to three times the unit mass of Argon, with periodic boundary conditions. Cases B and C are divided into $4\times4\times4$ blocks for the post-processing steps (SED-NMD) to match the phonon modes present in Case A (see Figure 1), in an attempt to offer a mode by mode comparison. All MD simulations were performed at 20K with periodic boundary conditions in all directions.
+\section{NMD near an interface}
 
-
+NMD was used in an attempt to observe the effect of an interface upon phonon properties, namely phonon lifetimes. Here, an interface is defined by enforcing a mass difference in a LJ argon system as seen in Fig. ~\ref{interface_domain}. In order to ensure the statistical significance of the results, an averaging scheme was needed. For each case, five independent MD simulations were conducted, each with a different initial velocity seed. In each MD simulation, 16 sets of atomic velocities were produced. Each set of velocities consisted of 2048 subsets of atomic velocities; the lag between subsets was 32 LJ time units (in other words, velocities were sampled every 32 LJ time units for a total of 2048 samples). The power of two formulation was chosen for the sake of the fast Fourier Transform. $\dot{Q}(\bm{\kappa},\nu,t)$ was calculated for each individual velocity subset (Eq.~\ref{}) and then used as input for the correlation function (Eq.~\ref{}) and SED (Equation \ref{}) of the set. Finally the SED is averaged over the 16 sets and 5 seeds. This procedure was performed on three cases: (A) a 4 unit cell by 4 unit cell by 4 unit cell (hereby referred to as $4\times4\times4$) domain of LJ argon in equilibrium at 20 K with periodic boundary conditions (B) a $32\times4\times4$ domain of LJ argon at 20 K with periodic boundary conditions and (C) $32\times4\times4$ domain of Lennard-Jones argon at 20 K, where one half ($16\times4\times4$) is set to the unit mass of argon and the other half is set to three times the unit mass of argon, with periodic boundary conditions. Cases B and C are divided into $4\times4\times4$ blocks for the post-processing steps to match the phonon modes present in Case A (see Fig. ~\ref{}), in an attempt to offer a mode by mode comparison. All MD simulations were performed at 20 K with periodic boundary conditions in all directions.
 %%%
-\begin{figure}[ht!]
+\begin{figure}%[ht!]
 \begin{center}
 \scalebox{0.75}{ \includegraphics{supcell_ai.eps}}
 \renewcommand{\figure}{Fig.}
 \caption{MD domain for interface study of $32\times4\times4$ FCC argon at 20K with 2048 atoms. Larger atomic radii represents the heavier mass.}
-\label{fig:md_domain}
+\label{fig:interface_domain}
 \end{center}
 \end{figure}
 %%%
@@ -33,22 +33,22 @@ As the plane of the interface has a normal in the $x$ direction, it is reasonabl
 \begin{center}
 \scalebox{1}{ \includegraphics{sed_int.eps}}
 \renewcommand{\figure}{Fig.}
-\caption{Plots of the power spectrums.}
+\caption{Plots of example power spectrums.}
 \label{fig:sed}
 \end{center}
 \end{figure*}
 %%%
 At first glance, it is clear that the SED of Cases B and C differ from Case A. The essence of the difference between Cases B and C and Case A lies not in the physics of the phonons, but in the model of their description. Ultimately, the idea of dividing the $32\times4\times4$ domains into $4\times4\times4$ blocks and performing NMD on these blocks to observe the change in the phonon lifetimes as a function of spatial position relative to the interface proved to be an ineffective approach.
 
-The precise reason for these results is attributed to the mathematical nature of the problem. A sketch of the reason is offered here (a formal argument is presented in the appendix). First, the definition of $Q(\bm{\kappa},\nu)$ requires the summation over all possible $\bm{\kappa},\nu$ of the entire $32\times4\times4$ domain. The division into blocks discounts the entire summation to only include available $\bm{\kappa},\nu$ of the $4\times4\times4$ block:
+The precise reason for these results is attributed to the mathematical nature of the problem. A sketch of the reason is offered here (a formal argument is presented in Appendix~\ref{appendix:b}). First, the definition of $Q(\bm{\kappa},\nu)$ requires the summation over all possible $\bm{\kappa},\nu$ of the entire $32\times4\times4$ domain. The division into blocks discounts the entire summation to only include available $\bm{\kappa},\nu$ of the $4\times4\times4$ block:
 \begin{eqnarray}
 \begin{split}
 \dot{Q}(\bm{\kappa},\nu,t)-\frac{1}{\sqrt{N}}\sum_{28x4x4}\sqrt{m_j}exp(-i\bm{\kappa}\cdot\bm{r}(jl))\bm{e}^*(j,\bm{\kappa},\nu)\cdot\dot{\bm{u}}(jl,t)&=\\\frac{1}{\sqrt{N}}\sum_{4x4x4}\sqrt{m_j}exp(-i\bm{\kappa}\cdot\bm{r}(jl))\bm{e}^*(j,\bm{\kappa},\nu)\cdot\dot{\bm{u}}(jl,t).
 \end{split}
 \end{eqnarray}
-Neglecting the modes that are uniqe to the complete $32\times4\times4$ domain, leads to an erroneous coordinate transformation from real space to k-space because of the incompleteness of the solution basis. In other words, without using all the possible modes of the system to describe the motion of an individual atom, the corresponding normal mode cannot be inferred. The reverse is equally true.
+Neglecting the modes that are uniqe to the complete $32\times4\times4$ domain, leads to an erroneous coordinate transformation from real space to $\pmb{\kappa}$-space because of the incompleteness of the solution basis. In other words, without using all the possible modes of the system to describe the motion of an individual atom, the corresponding normal mode cannot be inferred. The reverse is equally true.
 
-Futhermore, the ensemble of each individual block is difficult to ascertain. The entire domain is fixed to be NVE, but the energy of a block may not be fixed with time (in other words, the Hamiltonian of a block is not time-independent). At any given instant the energy of one block may be more or less than one of its neighbours, but the energy of all the blocks together remains constant.
+Futhermore, the type of statistical ensemble of each individual block is difficult to ascertain. The entire domain is fixed to be NVE, but the energy of a block may not be fixed with time (in other words, the Hamiltonian of a block is not time-independent). At any given instant the energy of one block may be more or less than one of its neighbours, but the energy of all the blocks together remains constant.
 
 This exercise revisits the struggle to handle any deviation from the perfectly periodic bulk crystal lattice. By relying on the eigenvectors and frequencies obtained from lattice dynamics, it is not obvious how to incorporate aperiodicities into this approach.
 
