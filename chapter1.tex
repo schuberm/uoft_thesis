@@ -8,9 +8,9 @@
 
 The question of predicting transport coefficients was a popular topic in the 1950 and 1960s. Green was one of the first to use relate time correlation functions to transport coefficients \cite{green1954markoff}. Correlation functions were previously used to predict the absorption of electromagnetic radiation \cite{gordon1968correlation} and Raman light scattering \cite{gordon1965molecular}. These systems were manageable since the external field acted as a perturbation to the systems Hamiltonian.
 
-For transport coefficients like the diffusion coeffcient which relates a concentration gradient to the mass flux or thermal conductivity which relatices a temperature gradient to the heat flux, there is no clear method to recast these gradients as perturbations into the systems Hamiltonian\cite {mcquarrie}. Green was able to apply time correlation functions to this problem by assuming that the transport process are Markovian and the deviations from equilibrium are small \cite{green1954markoff} and obtain expressions for shear and bulk viscosity, diffusion, thermal conductivity and thermal diffusion.
+For transport coefficients like the diffusion coeffcient which relates a concentration gradient to the mass flux or thermal conductivity which relatices a temperature gradient to the heat flux, there is no clear method to recast these gradients as perturbations into the systems Hamiltonian\cite {mcquarrie2000statistical}. Green was able to apply time correlation functions to this problem by assuming that the transport process are Markovian and the deviations from equilibrium are small \cite{green1954markoff} and obtain expressions for shear and bulk viscosity, diffusion, thermal conductivity and thermal diffusion.
 
-The logic behind these relations is independent of the physical process and is formally referred to as the Fluctuation-Dissipation Theorem (FDT). The FDT first stated by Harry Nyquist (in relation to the Nyquist noise), was later reformulated by Ryogo Kubo to relate transport coefficients to time correlation functions \cite{JPSJ.12.570} under an external force (it is worthwhile to distinguish between external and internal forces, electrical conductivity under and applied electric field versus the internal viscosity of a fluid)\cite{zwanzig1965time}. What follows is an outline of the logic of Kubo's generalization of the FDT using Helfand's approach as reviewed by McQuarrie\cite{mcquarrie} through the statistical version of the diffusion equation
+The logic behind these relations is independent of the physical process and is formally referred to as the Fluctuation-Dissipation Theorem (FDT). The FDT first stated by Harry Nyquist (in relation to the Nyquist noise), was later reformulated by Ryogo Kubo to relate transport coefficients to time correlation functions \cite{JPSJ.12.570} under an external force (it is worthwhile to distinguish between external and internal forces, electrical conductivity under and applied electric field versus the internal viscosity of a fluid)\cite{zwanzig1965time}. What follows is an outline of the logic of Kubo's generalization of the FDT using Helfand's approach as reviewed by McQuarrie\cite{mcquarrie2000statistical} through the statistical version of the diffusion equation
 %
 \begin{equation}
 \begin{split}
@@ -45,18 +45,18 @@ Einstein was the first to show that the solution to this diffusion equation is \
 %
 where $<A>$ refers to the ensemble average of observable A
 \begin{equation}
-\int \int A(p,q) f(p,q) dpdq=\left<A\right>
+\int \int A(p,q) f(p,q) dpdq=<A>
 \end{equation}
 where $<A(t)A(0)>$ refers to the equilibrium time correlation of observable A
 \begin{equation}
 \begin{split}
-\left<A(\delta t)A(0)\right>&=\frac{1}{T}\int_0^TA(t)A(t+\delta t)dt\\
+<A(t)A(0)>&=\frac{1}{T}\int_0^TA(t)A(t+\delta t)dt\\
 &=\frac{1}{N}\sum_{i=1}^NA(t_i)A(t_i+\delta t)
 \end{split}
 \end{equation}
-From the ergodic hypothesis, which states that the statistical properties of a large number of observations at $N$ arbitrary times from a single system are equivalent to the statistical properties of $N$ obervations made from $N$ equivalent systems made at the same time, the correlation function can be rewritten as an ensemble average \cite{mcquarrie}
+From the ergodic hypothesis, which states that the statistical properties of a large number of observations at $N$ arbitrary times from a single system are equivalent to the statistical properties of $N$ obervations made from $N$ equivalent systems made at the same time, the correlation function can be rewritten as an ensemble average \cite{mcquarrie2000statistical}
 \begin{equation}
-\left<A( t)A(0)\right>=\int \int A(t,p,q)A(0,p,q) f(p,q) dpdq 
+<A( t)A(0)>=\int \int A(t,p,q)A(0,p,q) f(p,q) dpdq 
 \end{equation}
 Only classical systems are considered in this work, but these relations are easily extended to quantum mechanics (the ensemble average is the trace of the operator). To show how these correlation functions manifest themselves, recall the basic kinematic relations in integral form
 %
@@ -93,7 +93,7 @@ D=\frac{1}{3}\int_0^{\infty}<\bm{v}(\tau)\cdot\bm{v}(0)>d\tau.
 %
 and thus arriving at an expression for the diffusion coefficient in terms of the equilibrium time correlation function for velocity. Kubo generalized this result by expressing the linear response of a system from small perturbations in terms of its fluctuations about equilibrium. It can be applied to predict thermal conductivity (as will be seen)\cite{PhysRevB.61.2651} and electrical conductivity, \cite{zwanzig1965time} bulk and shear viscosity \cite{hoover1980lennard}.
 
-\subsubsection {Molecular Dynamics and Green-Kubo}
+\subsubsection {Green-Kubo in Molecular Dynamics}
 
 The GK relation for thermal conductivity falls out of the fluctuation-dissipation theorem and the assumptions made therein, namely that the perturbations to the system's Hamiltonian are small and that the stochastic processes are Markoffian (independent of the previous state or equivalently, memoryless) \cite{green:398}. Thus the thermal conductivity can be related to the fluctuations of the heat current vector, $\bm{S}$, over long periods
 %
@@ -278,14 +278,14 @@ Under this approximation, the force acting on atom $a$ as a result of displaceme
 \end{equation}
 Provided with the knowledge of these harmonic force constants, the general form of the eigenvalue problem is then constructed \cite{dove_introduction_1993-3}
 \begin{equation}
-[D(\pmb{\kappa})-I\omega^2\kv]\pmb{e}\kv = 0
+[D(\pmb{\kappa})-I\omega^2\kv]\pmb{\mathrm{e}}\kv = 0
 \end{equation}
 %
 The dynamical matrix, $D(\pmb{\kappa})$ contains the chunks of three by three force constants from $\Phi_{ab}$ as well as the time independent portion of the general solution form and as such depends upon the wavevector
 \begin{equation}
 D_{3(b-1)+\alpha,3(b'-1)+\alpha'}(\pmb{\kappa})=\frac{1}{\sqrt{m_bm_{b'}}}\sum_{l'}^N\frac{\partial^2\phi}{\partial r_\alpha \Ob \partial r_{\alpha'} \lbp} \EXP{i\pmb{\kappa}\cdot [\pmb{r}\lbp-\pmb{r}\Ob]}.
 \end{equation}
-Solving this matrix equation over a grid of wavevectors in the first Brillouin zone, provides a set of data where frequency is a function of wavector known formerly as dispersion relations (unlike the diatomic case, there more than two possible branches, $\nu$, as a result of the greater number of degrees of freedom of the atoms in the unit cell).
+Solving this matrix equation over a grid of wavevectors in the first BZ, provides a set of data where frequency is a function of wavector known formerly as dispersion relations (unlike the diatomic case, there more than two possible branches, $\nu$, as a result of the greater number of degrees of freedom of the atoms in the unit cell).
 
 %%%
 \begin{figure*}%[t]
@@ -302,17 +302,17 @@ HLD provides mode frequency $\omega \kv$ (as seen in Fig. ~\ref{FIG:bulk_dispers
 
 \subsubsection{Anharmonic Lattice Dynamics}
 
-The natural extension HLD is to incorporate the anharmonicity of the interatomic potential through perturbation theory \cite{turneythesis}. The rigorous derivation of the phonon linewidth and frequency shift can be found elsewhere,\cite{PhysRev.128.2589}, the major expression is presented here. The Hamiltonian of an anharmonic crystal can be devided into two terms, the harmonic component $H_0$ and the anharmonic component $H_1$
+The natural extension HLD is to incorporate the anharmonicity of the interatomic potential through perturbation theory \cite{turneythesis}. The rigorous derivation of the phonon linewidth and frequency shift can be found elsewhere \cite{PhysRev.128.2589}, the major relations are presented here. The Hamiltonian of an anharmonic crystal can be devided into two terms, the harmonic component $H_0$ and the anharmonic component $H_1$
 %
 \begin{equation}\label{EQ:H_anh}
 \begin{split}
 H&=H_0+H_1\\
-&=\frac{1}{2}\sum_{b,l}^{n,N}m_b\dot{u}_\alpha^2 \lb + \frac{1}{2!}\sum_{\alpha_1,b_1,l_1}^{3,n,N}\sum_{\alpha_2,b_2,l_2}^{3,n,N}\Phi_{\alpha_1,\alpha_2} \lblb\\
+&=\frac{1}{2!}\sum_{b,l}^{n,N}m_b\dot{u}_\alpha^2 \lb + \frac{1}{2!}\sum_{\alpha_1,b_1,l_1}^{3,n,N}\sum_{\alpha_2,b_2,l_2}^{3,n,N}\Phi_{\alpha_1,\alpha_2} \lblb\\
 &+\frac{1}{3!}\sum_{\alpha_1,b_1,l_1}^{3,n,N}\sum_{\alpha_2,b_2,l_2}^{3,n,N}\sum_{\alpha_3,b_3,l_3}^{3,n,N}\Phi_{\alpha_1,\alpha_2,\alpha_3} \lblblb\\
 \end{split}
 \end{equation}
 %
-The anharmonic component is responsible for the scattering between phonon modes and leads to finite thermal conductivity. In many cases, the anharmonic terms are small and can be treated as a perturbation upon the harmonic system. In the bra-ket notation from quantum mechanics, the expectation value of the commutation relation between $H_1$ and the creation operator of mode $\kv$, $A^*\kv$ (the creation operator is analogous the creation operators of the quantum mechanical oscillator with the notable difference being the operator's mode dependence as described by quantum field theory) is proportional to the linewidth
+The anharmonic component is responsible for the scattering between phonon modes and leads to finite thermal conductivity and thermal expansion \cite{srivastava1990physics}. In many cases, the anharmonic terms are small and can be treated as a perturbation upon the harmonic system. In the bra-ket notation from quantum mechanics, the expectation value of the commutation relation between $H_1$ and the creation operator of mode $\kv$, $A^*\kv$ (the creation operator is analogous the creation operators of the quantum mechanical oscillator with the notable difference being the operator's mode dependence as described by quantum field theory) is proportional to the linewidth
 %
 \begin{equation}\label{EQ:pert_anh}
 \begin{split}
@@ -320,7 +320,7 @@ The anharmonic component is responsible for the scattering between phonon modes 
 \end{split}
 \end{equation}
 %
-where $\psi \kv$ is the occupation number of mode $\kv$ and $\psi \kv+1$ is the addition of a phonon to $\kv$ as a consequence of an interaction with modes that satisfy energy and momentum conservation \cite{srivastava1990physics}. Thus, the anharmonicity allows for the energy to transfer between distinct modes. The linewidth quantifies the probability of interaction of state $\kv$ with all other states in the system. After some tedious algebra to evaluate Eq.~\ref{EQ:pert_anh}, the expression for the linewidth is
+where $\psi \kv$ is the occupation number of mode $\kv$ and $\psi \kv+1$ is the addition of a phonon to $\kv$ as a consequence of an interaction. Thus, the anharmonicity allows for the energy to transfer between distinct modes. The linewidth quantifies the probability of interaction of state $\kv$ with all other states in the system. After some tedious algebra to evaluate Eq.~\ref{EQ:pert_anh}, the expression for the linewidth is
 \begin{equation}\label{EQ:Gamma_anh}
 \begin{split}
 \Gamma \kv &= \\
@@ -341,7 +341,16 @@ m_{b'}\omega\kvp m_{b''}\omega\kvpp}}\EXP{i\pmb{\kappa}\cdot \pmb{r}\lO+i\pmb{\k
 \end{split}
 \end{equation}
 %
-The ALD results in this work were obtained using the validated code created by Turney.\cite{turneythesis} The interpretation of this relation can be understood through a qualitative argument from time-dependent perturbation theory (TDPT). Using TDPT, the anharmonic terms in the complete Hamiltonian are assumed to be small and can thus be considered to be to perturbation upon the harmonic state. The probability amplitude carries the time-dependence in this picture. In a two-state system
+These relations explicitly ensure modes that satisfy energy [$\delta\left(\omega\kv-\omega\kvp-\omega\kvpp\right)$] and momentum [$\delta(\pmb{\kappa}+\pmb{\kappa'}+\pmb{\kappa''}-\pmb{G})$] conservation are allowed to interact \cite{srivastava1990physics}. The lifetime is related to the linewidth by
+%
+\begin{equation}\label{EQ:lifetime}
+\tau \kv=\frac{1}{2\Gamma\kv}.
+\end{equation}
+%
+%The ALD results in this work were obtained using the validated code created by Turney \cite{turneythesis}. 
+
+\begin{comment}
+The interpretation of this relation can be understood through a qualitative argument from time-dependent perturbation theory (TDPT). Using TDPT, the anharmonic terms in the complete Hamiltonian are assumed to be small and can thus be considered to be to perturbation upon the harmonic state. The probability amplitude carries the time-dependence in this picture. In a two-state system
 %
 \begin{equation}
 |\Psi\rangle=A(t)|\psi_A\rangle+B(t)|\psi_B\rangle
@@ -354,12 +363,12 @@ as the amplitudes $A(t)$ and $B(t)$ vary time, so does the probability of findin
 \end{equation}
 %
 The probability of a phonon scattering from $\bm{\kappa}$ to state $\bm{\kappa}'$ is governed by the relative magnitudes of the amplitudes $A(t)$ and $B(t)$ (in accordance with the selection rules of momentum and energy conservation). The broadening of these peaks corresponds to this scattering process, indicating a non-zero probability of a phonon transitioning from one state to another. The form of Eq.~\ref{EQ:threephonon} is a consequence of Fermi's Golden Rule from TDPT.
+\end{comment}
 
 \subsection{Normal Mode Decomposition}
-As is happens, the usefulness of the time correlation functions extends well beyond the FDT. An simple example is the Wiener-Khintchine Theorem (WKT), which relates the correlation function of a continuous stationary random process to its' spectral density. 
-
+As is happens, the usefulness of the time correlation functions extends well beyond the FDT. An simple example is the Wiener-Khintchine Theorem (WKT), which relates the correlation function of a continuous stationary random process to its' spectral density \cite{mcquarrie2000statistical}.
 \begin{comment}
-The correlation function of a time-dependent quantity (i.e: position, velocity, etc.) is defined as the average behaviour in time of said quantity \cite{mcquarrie}
+The correlation function of a time-dependent quantity (i.e: position, velocity, etc.) is defined as the average behaviour in time of said quantity \cite{mcquarrie2000statistical}
 %
 \begin{equation}
 C(t)=\lim_{T->\infty}\frac{1}{2T}\int_{-T}^{T}x(t+t')x(t')dt'
@@ -373,11 +382,10 @@ C(t)=<x(t+t')x(t')>.
 Let's define $X(\omega)$ as the Fourier Transform of $x(t)$
 %
 \begin{equation}
-X(\omega)=\int_{-\infty}^{\infty}x(t)e^{-i\omega t}dt.
+X(\omega)=\int_{-\infty}^{\infty}x(t)\exp{-i\omega t}dt.
 \end{equation}
 %
 \end{comment}
-
 Recalling Parseval's theorem, which states that the integral of the square of a function is equal to the integral of the square of it's transform
 %
 \begin{equation}
@@ -399,92 +407,88 @@ From the Parseval's theorem equality
 To offer an intuitive interpretation of this result, take $x(t)$ to be an electric current and $<x^2>$ to be the average power dissipated as the current passes through a circuit. In this case, $X(\omega)d\omega$ will be the average power dissipated with frequencies between $\omega$ and $\omega+d\omega$. The WKT extends this result to the correlation function
 %
 \begin{equation}
-C(t)=\frac{1}{2\pi}\int_{-\infty}^{\infty}C(\omega)e^{i\omega t}d\omega
+C(t)=\frac{1}{2\pi}\int_{-\infty}^{\infty}C(\omega)\exp(i\omega t)d\omega
 \end{equation}
 %
 \begin{equation}
-C(\omega)=\int_{-\infty}^{\infty}C(t)e^{-i\omega t}dt.
+C(\omega)=\int_{-\infty}^{\infty}C(t) \exp(-i\omega t) dt.
 \end{equation}
 %
 Taking an example from Dove \cite{dove_introduction_1993-3}, let $x$ have only two equally probably values of $\pm 1$ with the probability of $x$ changing it's value during $dt$ of $dt/\tau$, where $\tau$ represents the average time between value changes. The correlation function is
 %
 \begin{equation}
-C(t)=e^{\frac{-|t|}{\tau}}.
+C(t)=\exp\left (-|t|\Gamma \right ).
 \end{equation}
 %
 The spectral density is then
 \begin{equation}\label{EQ:lorentzian_1}
-C(\omega)=\int_{-\infty}^{\infty}e^{\frac{-|t|}{\tau}}e^{-i\omega t}dt=\frac{2\tau}{1+(\omega \tau )^2}
+C(\omega)=\int_{-\infty}^{\infty}\exp\left (-|t|\Gamma \right ) \exp(-i\omega t)dt=\frac{2\Gamma}{\omega^2 +\Gamma^2}
 \end{equation}
-which is a Lorentzian centred about zero frequency and $\tau$ is the half width at half-maximum (HWHM).
-
-Recalling Eq.~\ref{EQ:SMRTK}, the final and missing piece is the lifetime of a given mode $\tau\kv$ which arises as a result of the intrinsic anharmonicity of the interatomic potential and is responsible for finite thermal conductivity and thermal expansion. In the past decade, significant progress has been to computationally predict this property. Broido et al. used Density Functional Perturbation Theory (DFPT) \cite{Broido1} while Esfarjani et al. used a DFT-MD approach \cite{PhysRevB.84.085204}. The method proposed by Larkin \cite{jason_inpress} involves the calculation of the spectral energy density of the normal modes (NMD). Although this approach relies on the empirical potentials of classical MD, the complete anharmonicity is considered, an advantage it possesses over other methods, like DFPT which truncate terms beyond the third order derivatives. NMD is an algorithm that combines time-dependent information from molecular dynamics and the harmonic solutions from lattice dynamics to infer the phonon lifetimes From harmonic lattice dynamics, the displacement of atom $b$ in unit cell $l$ at time $t$ is represented as a superposition of waves of wavevector $\bm{\kappa}$ with amplitude $\bm{U}\kvb$
+which is a Lorentzian centred about zero frequency and $\Gamma$ is the half width at half-maximum (HWHM).
+%In the past decade, significant progress has been to computationally predict this property. Broido et al. used Density Functional Perturbation Theory (DFPT) \cite{Broido1} while Esfarjani et al. used a DFT-MD approach \cite{PhysRevB.84.085204}. 
+%If one use HLD to obtain the group velocities, we have the same inputs for Eq.~\ref{EQ:k_RTA}, the final and missing piece is the lifetime of a given mode $\tau\kv$. 
+Normal Mode Decomposition, outlined by McGaughey and Kaviany\cite{PhysRevB.71.184305}, Turney et al.\cite {PhysRevB.81.081411} and Larkin et al.,\cite{jason_inpress} is an alternative to ALD to obtaining the inputs for Eq.~\ref{EQ:k_RTA}. Although this approach relies on the empirical potentials of classical MD, the complete anharmonicity is considered, an advantage it possesses over other methods, like DFPT and ALD which truncate terms beyond the third order. NMD is an algorithm that combines time-dependent information from molecular dynamics and the harmonic solutions from lattice dynamics to infer the phonon lifetimes. From HLD, the displacement of atom $b$ in unit cell $l$ at time $t$ is represented as a superposition of waves of wavevector $\bm{\kappa}$ with amplitude $\bm{U}\kvb$
+%
+\begin{equation}\label{EQ:superposition}
+\bm{u}\lbt=\sum_{\bm{\kappa},\nu}\bm{U}\kvb \exp(i[\bm{\kappa}\cdot\bm{r}\lb-\omega\kv t])=\frac{1}{\sqrt{Nm_b}}\sum_{\bm{\kappa},\nu}\bm{e}\kvb exp(i\bm{\kappa}\cdot\bm{r}\lb)Q\kv
+\end{equation}
+%
+with $Q\kv$ being the normal code coordinate and $\bm{e}\kvb$ being the eigenvector determined from the eigenvalue problem presented in Section~\ref{SEC:HLD}. To rearrange for the normal mode, multiply Eq.~\ref{EQ:superposition} with $\bm{e}^*\kvb$ to take advantage of the orthogonality of the eigenvectors
 %
 \begin{equation}
-\bm{u}\lbt=\sum_{\bm{\kappa},\nu}\bm{U}\kvb \exp(i[\bm{\kappa}\cdot\bm{r}\lb-\omega\kv t])=\frac{1}{\sqrt{Nm_j}}\sum_{\bm{\kappa},\nu}\bm{e}\kvb exp(i\bm{\kappa}\cdot\bm{r}\lb)Q\kv
-\end{equation}
-%
-with $Q\kv$ being the normal code coordinate and $\bm{e}\kvb$ being the eigenvector determined from the eigenvalue problem presented in Section~\ref{SEC:HLD}. To rearrange for the normal mode, multiply Equation 27 with $\bm{e}^*\kvb$ to take advantage of the orthogonality of the eigenvectors
-%
-\begin{equation}
-\bm{e}^*\kvb\bm{u}\lbt=\frac{1}{\sqrt{Nm_j}}\exp(i\bm{\kappa}\cdot\bm{r}\lb)Q\kv.
+\bm{e}^*\kvb\bm{u}\lbt=\frac{1}{\sqrt{Nm_b}}\exp(i\bm{\kappa}\cdot\bm{r}\lb)Q\kv.
 \end{equation}
 %
 Taking the Fourier Transform
 %
 \begin{equation}
-\int_{-\infty}^{\infty}\bm{e}^*\kvb\bm{u}\lbt \exp(-i\bm{\kappa}\cdot\bm{r}\lb)d\bm{r}=\frac{1}{\sqrt{Nm_j}}\int_{-\infty}^{\infty}Q\kv d\bm{r}
+\int_{-\infty}^{\infty}\bm{e}^*\kvb\bm{u}\lbt \exp(-i\bm{\kappa}\cdot\bm{r}\lb)d\bm{r}=\frac{1}{\sqrt{Nm_b}}\int_{-\infty}^{\infty}Q\kv d\bm{r}
 \end{equation}
 %
 and noting that $\int_{-\infty}^{\infty}d\bm{r}=N$, gives the expression for the normal coordinate
 %
 \begin{equation}
-Q\kvt=\frac{1}{\sqrt{N}}\sum_{b,l}\sqrt{m_j}\exp(-i\bm{\kappa}\cdot\bm{r}\lb)\bm{e}^*\kvb\cdot\bm{u}\lbt.
+Q\kvt=\frac{1}{\sqrt{N}}\sum_{b,l}\sqrt{m_b}\exp(-i\bm{\kappa}\cdot\bm{r}\lb)\bm{e}^*\kvb\cdot\bm{u}\lbt.
 \end{equation}
 %
 The time derivative of the normal mode is
 %
-\begin{equation}
-\dot{Q}\kvt=\frac{1}{\sqrt{N}}\sum_{b,l}\sqrt{m_j}\exp(-i\bm{\kappa}\cdot\bm{r}\lb)\bm{e}^*\kvb\cdot\dot{\bm{u}}\lbt.
+\begin{equation}\label{EQ:qdot}
+\dot{Q}\kvt=\frac{1}{\sqrt{N}}\sum_{b,l}\sqrt{m_b}\exp(-i\bm{\kappa}\cdot\bm{r}\lb)\bm{e}^*\kvb\cdot\dot{\bm{u}}\lbt.
 \end{equation}
 %
 The harmonic Hamiltonian of the lattice can thus be represented in terms of normal modes
 %
 \begin{equation}
-H=\frac{1}{2}\sum_{\bm{\kappa},\nu}\dot{Q}\kv\dot{Q}^*\kv+\frac{1}{2}\sum_{\bm{\kappa},\nu}\omega^2\kv Q\kv Q^*\kv.
+H_0=\frac{1}{2}\sum_{\bm{\kappa},\nu}\dot{Q}\kv\dot{Q}^*\kv+\frac{1}{2}\sum_{\bm{\kappa},\nu}\omega^2\kv Q\kv Q^*\kv.
 \end{equation}
 %
-The first term on the right hand side corresponds to the kinetic energy while second term corresponds to the potential energy. By taking a series of velocity samples from an equilibrium MD simulation of time interval (in signal processing terminology, this is known as lag which is symbolically represented here by $t$) an order of magnitude shorter than inverse of the highest frequency present in the system (known from solutions to the aforementioned eigenvalue problem) and using Eq.~\ref{} to project the sampled velocities onto the eigenvectors, the autocorrelation of the normal modes can calculated by
+The first term on the right hand side corresponds to the kinetic energy while second term corresponds to the potential energy. By taking a series of velocity samples from an equilibrium MD simulation of time interval (in signal processing terminology, this is known as lag which is symbolically represented here by $\delta t$) an order of magnitude shorter than inverse of the highest frequency present in the system (known from solutions to the aforementioned eigenvalue problem) and using Eq.~\ref{EQ:qdot} to project the sampled velocities onto the eigenvectors, the autocorrelation of the normal modes can calculated by
 %
-\begin{equation}
-C\kvt=\lim_{T->\infty}\frac{1}{T}\int_{0}^{T}Q(\bm{\kappa},\nu,t+t')Q(\bm{\kappa},\nu,t')dt'.
+\begin{equation}\label{EQ:corrqdot}
+C\kvt=\lim_{T->\infty}\frac{1}{T}\int_{0}^{T}Q\kvtt Q\kvt dt.
 \end{equation}
 %
 The spectral energy density, from the WKT, is thus
 %
 \begin{equation}
-C\kvw=\int_{-\infty}^{\infty}C(\bm{\kappa},\nu,t)e^{-i\omega t}dt
+C\kvw=\int_{-\infty}^{\infty}C\kvt \exp(-i\omega t)dt
 \end{equation}
 %
 which, like Eq.~\ref{EQ:lorentzian_1}, is a Lorentzian centered at $\omega_0\kv$
 %
-\begin{equation}
-C\kvw=\frac{C_0\kv}{2}\frac{\Gamma\kv/\pi}{(\omega_0\kv-\omega)^2+\Gamma\kv}.
+\begin{equation}\label{EQ:corromega}
+C\kvw=\frac{C_0\kv}{2}\frac{\Gamma\kv/\pi}{(\omega_0\kv-\omega)^2+\Gamma^2\kv}.
 \end{equation}
 %
-The HWHM is related by anharmonic lattice dynamic theory \cite{PhysRev.128.2589} to phonon lifetime by Eq.~\ref{}
-%
-\begin{equation}
-\tau \kv=\frac{1}{2\Gamma\kv}
-\end{equation}
-%
-The NMD algorithm was implemented in MATLAB. A sample script is provided in the Appendix~\ref{appendixf}.
+The HWHM is related by anharmonic lattice dynamic theory \cite{PhysRev.128.2589} to phonon lifetime by Eq.~\ref{EQ:lifetime} and thus can be interpreted in a similar manner. If interatomic potential is harmonic (i.e.: the springs are linear), the SED will be a Dirac function at $\omega\kv$. In the anharmonic case (i.e.: LJ potential), these Dirac functions broaden into Lorentzians, which corresponds to scattering processes, indicating a non-zero probability of a phonon transitioning from one state to another.
+The NMD algorithm was implemented in MATLAB because of the simplicity to harness the embarrassingly parallel problem of looping over all wavevectors and polarization branches. A sample script is provided in Appendix~\ref{appendixf}.
 
 %The application of NMD to compute phonon lifetimes and predict thermal conductivity assumes the validity of the phonon BTE. It remains to be determined if NMD can be used to predict non-bulk phonon lifetimes (are the bulk eigenvectors accurate in non-bulk cases?)
 
 \section {Bulk Comparison}
 
-The four methods discussed in the previous sections are applied to predict the bulk thermal conductivity of LJ argon at 20K. For GK, NMD and ALD $N_{x,y,z}=8$ was used. The DM method used $N_{x}=144$ and $N_{y,z}=4$. 
+The four methods discussed in the previous sections are applied to predict the bulk thermal conductivity of LJ argon at 20 K. For GK, NMD and ALD $N_{x,y,z}=8$ was used. The DM method used $N_{x}=144$ and $N_{y,z}=4$. 
 
 \begin{table}
 \begin{center}

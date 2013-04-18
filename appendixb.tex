@@ -61,12 +61,12 @@ Q_4-E_{43}'x_3-E_{44}'x_4&= E_{41}'x_1 + E_{42}'x_2.
 \end{split}
 \end{equation}
 This results shows that the transformation from $\bm{X}$ to $\bm{Q}$ is relies upon missing information contained with $x_3$ and $x_4$. The original coupled equations of motions are:
-\begin{align*}
+\begin{align}
 m\ddot{x}_1&=k(x_2-x_1)+k(x_4-x_1)\\
 m\ddot{x}_2&=k(x_3-x_2)+k(x_1-x_2)\\
 m\ddot{x}_3&=k(x_4-x_3)+k(x_2-x_3)\\
 m\ddot{x}_4&=k(x_1-x_4)+k(x_3-x_4)
-\end{align*}
+\end{align}
 The eigenvalue problem takes the form:
 \[
 \begin{bmatrix}
@@ -151,16 +151,17 @@ If we take the 2 atom case:
 \end{bmatrix}
 \]
 Expressing $P$ in terms of $Q$:
-\begin{align*}
+\begin{align}
 \dot{P}_1=\frac{\sqrt{2}\dot{Q}_1}{2}+\frac{\dot{Q}_3}{2}-\frac{\dot{Q}_4}{2}\\
 \dot{P}_2=\frac{\sqrt{2}\dot{Q}_2}{2}-\frac{\dot{Q}_3}{2}-\frac{\dot{Q}_4}{2}\\
 %P_1=\frac{\sqrt{2}Q_2}{2}+\frac{\sqrt{2}Q_4}{2}\\
 %P_2=-\frac{\sqrt{2}Q_1}{2}-\frac{\sqrt{2}Q_3}{2}
-\end{align*}
+\end{align}
 Without taking $<\dot{Q}(\tau)\dot{Q}(0)>$, the Fourier transform of the set of $\dot{Q}$ using the output velocites from MD gives
 \begin{figure}[!h]
 \centering
 \includegraphics[trim = 40mm 0mm 10mm 0mm,scale=0.5,angle=0]{noxcorr.eps}
+\caption{Plots of power spectrums.}
 \label{fig:awesome_image}
 \end{figure}
 

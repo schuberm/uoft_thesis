@@ -3,36 +3,37 @@
 \contentsline {section}{\numberline {2.1}Macroscopic Methods}{3}{section.2.1}
 \contentsline {subsection}{\numberline {2.1.1}Green-Kubo Relation}{3}{subsection.2.1.1}
 \contentsline {subsubsection}{Fluctuation-Dissipation Theorem}{3}{section*.5}
-\contentsline {subsubsection}{Molecular Dynamics and Green-Kubo}{6}{section*.6}
+\contentsline {subsubsection}{Green-Kubo in Molecular Dynamics}{6}{section*.6}
 \contentsline {subsection}{\numberline {2.1.2}The Direct Method}{9}{subsection.2.1.2}
 \contentsline {section}{\numberline {2.2}Mode by Mode Methods}{10}{section.2.2}
 \contentsline {subsection}{\numberline {2.2.1}SMRT-BTE}{10}{subsection.2.2.1}
 \contentsline {subsection}{\numberline {2.2.2}Lattice Dynamics}{11}{subsection.2.2.2}
 \contentsline {subsubsection}{Harmonic Lattice Dynamics}{11}{section*.7}
 \contentsline {subsubsection}{Anharmonic Lattice Dynamics}{15}{section*.8}
-\contentsline {subsection}{\numberline {2.2.3}Normal Mode Decomposition}{18}{subsection.2.2.3}
-\contentsline {section}{\numberline {2.3}Bulk Comparison}{21}{section.2.3}
-\contentsline {chapter}{\numberline {3}Interface Study}{23}{chapter.3}
-\contentsline {section}{\numberline {3.1}Thermal Boundary Resistance}{23}{section.3.1}
-\contentsline {section}{\numberline {3.2}NMD near an interface}{25}{section.3.2}
-\contentsline {chapter}{\numberline {4}Superlattice Study}{29}{chapter.4}
-\contentsline {section}{\numberline {4.1}Introduction}{29}{section.4.1}
-\contentsline {section}{\numberline {4.2}Modeling Framework}{30}{section.4.2}
-\contentsline {subsection}{\numberline {4.2.1}Superlattice structure and interactions}{30}{subsection.4.2.1}
-\contentsline {subsection}{\numberline {4.2.2}Thermal conductivity predictions}{31}{subsection.4.2.2}
-\contentsline {subsubsection}{Normal Mode Decomposition}{31}{section*.9}
-\contentsline {subsubsection}{Green-Kubo and Anharmonic Lattice Dynamics}{34}{section*.10}
-\contentsline {section}{\numberline {4.3}Results}{34}{section.4.3}
-\contentsline {subsection}{\numberline {4.3.1}Dispersion and Power Spectra}{34}{subsection.4.3.1}
-\contentsline {subsection}{\numberline {4.3.2}Lifetimes}{36}{subsection.4.3.2}
-\contentsline {subsection}{\numberline {4.3.3}Thermal Conductivity}{40}{subsection.4.3.3}
+\contentsline {subsection}{\numberline {2.2.3}Normal Mode Decomposition}{17}{subsection.2.2.3}
+\contentsline {section}{\numberline {2.3}Bulk Comparison}{20}{section.2.3}
+\contentsline {chapter}{\numberline {3}Interface Study}{22}{chapter.3}
+\contentsline {section}{\numberline {3.1}Thermal Boundary Resistance}{22}{section.3.1}
+\contentsline {section}{\numberline {3.2}NMD near an interface}{24}{section.3.2}
+\contentsline {chapter}{\numberline {4}Superlattice Study}{28}{chapter.4}
+\contentsline {section}{\numberline {4.1}Background}{28}{section.4.1}
+\contentsline {section}{\numberline {4.2}Modeling Framework}{29}{section.4.2}
+\contentsline {subsection}{\numberline {4.2.1}Superlattice structure and interactions}{29}{subsection.4.2.1}
+\contentsline {subsection}{\numberline {4.2.2}Thermal conductivity prediction}{30}{subsection.4.2.2}
+\contentsline {section}{\numberline {4.3}Results}{33}{section.4.3}
+\contentsline {subsection}{\numberline {4.3.1}Dispersion and Power Spectra}{33}{subsection.4.3.1}
+\contentsline {subsection}{\numberline {4.3.2}Lifetimes}{35}{subsection.4.3.2}
+\contentsline {subsection}{\numberline {4.3.3}Thermal Conductivity}{37}{subsection.4.3.3}
+\contentsline {subsubsection}{Perfect superlattices}{39}{section*.9}
+\contentsline {subsubsection}{Mixed superlattices}{40}{section*.10}
+\contentsline {subsubsection}{MFP spectrum}{42}{section*.11}
 \contentsline {section}{\numberline {4.4}Superlattice phonons}{44}{section.4.4}
-\contentsline {section}{\numberline {4.5}Summary}{46}{section.4.5}
+\contentsline {section}{\numberline {4.5}Summary}{45}{section.4.5}
 \contentsline {chapter}{\numberline {5}Conclusion and Future Work}{47}{chapter.5}
 \contentsline {chapter}{Bibliography}{47}{chapter.5}
-\contentsline {chapter}{\numberline {A}The importance of eigenvectors}{58}{appendix.A}
-\contentsline {chapter}{\numberline {B}Insight into the presence of additional peaks}{61}{appendix.B}
-\contentsline {chapter}{\numberline {C}Size effects in superlattices}{65}{appendix.C}
+\contentsline {chapter}{\numberline {A}The importance of eigenvectors}{59}{appendix.A}
+\contentsline {chapter}{\numberline {B}Insight into the presence of additional peaks}{62}{appendix.B}
+\contentsline {chapter}{\numberline {C}Size effects in superlattices}{66}{appendix.C}
 \contentsline {chapter}{\numberline {D}LAMMPS input script}{68}{appendix.D}
 \contentsline {chapter}{\numberline {E}GULP input script}{71}{appendix.E}
 \contentsline {chapter}{\numberline {F}Matlab NMD script}{73}{appendix.F}
