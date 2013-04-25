@@ -124,7 +124,7 @@ Eq.~\ref{EQ:HCvec} and~\ref{EQ:HCvec_pair} can be easily implemented into a MD c
 \end{center}
 \end{figure}
 %
-For cases where the HCACF converges well, the thermal conductivity can be found by numerically integrating over a suitable range. Li et al. \cite{Li1998139} use two methods to determine objectively determine the definition of suitable range. One method is simply to evaluate the integral to the point where the HCACF first becomes negative, known as the first dip method. For cases where the HCACF remains positive, an exponential fit is used to determine the contribution of the tail.
+For cases where the HCACF converges well, the thermal conductivity can be found by numerically integrating over a suitable range. Li et al. \cite{Li1998139} use two methods to objectively determine the definition of suitable range. One method is simply to evaluate the integral to the point where the HCACF first becomes negative, known as the first dip method. For cases where the HCACF remains positive, an exponential fit is used to determine the contribution of the tail.
 
 In the case of amorphous materials, the HCACF does not converge prior to becoming negative, thus the first dip or exponential fit methods cannot be used and \textit{a priori} knowledge of the functional form of the HCACF is required in order to complete the integration and predict thermal conductivity.
 
@@ -471,18 +471,29 @@ C\kvt=\lim_{T->\infty}\frac{1}{T}\int_{0}^{T}Q\kvtt Q\kvt dt.
 %
 The spectral energy density, from the WKT, is thus
 %
-\begin{equation}
+\begin{equation}\label{EQ:NMD:SED}
 C\kvw=\int_{-\infty}^{\infty}C\kvt \exp(-i\omega t)dt
 \end{equation}
 %
 which, like Eq.~\ref{EQ:lorentzian_1}, is a Lorentzian centered at $\omega_0\kv$
 %
-\begin{equation}\label{EQ:corromega}
+\begin{equation}\label{EQ:NMD:LOR}
 C\kvw=\frac{C_0\kv}{2}\frac{\Gamma\kv/\pi}{(\omega_0\kv-\omega)^2+\Gamma^2\kv}.
 \end{equation}
 %
 The HWHM is related by anharmonic lattice dynamic theory \cite{PhysRev.128.2589} to phonon lifetime by Eq.~\ref{EQ:lifetime} and thus can be interpreted in a similar manner. If interatomic potential is harmonic (i.e.: the springs are linear), the SED will be a Dirac function at $\omega\kv$. In the anharmonic case (i.e.: LJ potential), these Dirac functions broaden into Lorentzians, which corresponds to scattering processes, indicating a non-zero probability of a phonon transitioning from one state to another.
 The NMD algorithm was implemented in MATLAB because of the simplicity to harness the embarrassingly parallel problem of looping over all wavevectors and polarization branches. A sample script is provided in Appendix~\ref{appendixf}.
+
+%%%
+\begin{figure*}%[t]
+\begin{center}
+\scalebox{1}{ \includegraphics{NMD_v_ALD_bulk.eps}}
+\renewcommand{\figure}{Fig.}
+\caption{Comparison of lifetimes from NMD and ALD of bulk LJ argon at 20 K.}
+\label{FIG:bulk_dispersion}
+\end{center}
+\end{figure*}
+%%% 
 
 %The application of NMD to compute phonon lifetimes and predict thermal conductivity assumes the validity of the phonon BTE. It remains to be determined if NMD can be used to predict non-bulk phonon lifetimes (are the bulk eigenvectors accurate in non-bulk cases?)
 
