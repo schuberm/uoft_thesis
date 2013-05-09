@@ -17,12 +17,12 @@ With the usual harmonic assumption $\bm{X}=\bm{E}e^{i\omega t}$, the problem is 
 [\omega^2\bm{M}^{-1}\bm{M}-\bm{M}^{-1}\bm{K}]\bm{E}=0
 \end{equation}
 Let
-\[
+\begin{equation}
 \bm{\psi}=
 \begin{bmatrix}
    \bm{E}_1 & \bm{E}_2 & \dots &\bm{E}_n \\
  \end{bmatrix}
-\]
+\end{equation}
 We can write $\bm{\psi}$ as a transformation matrix
 \begin{equation}
 \begin{split}
@@ -31,7 +31,7 @@ We can write $\bm{\psi}$ as a transformation matrix
 \end{split}
 \end{equation}
 In relation to the dividing the domain into subdomains, we want to determine $\bm{Q}$ using a reduced set of $\bm{X}$, given $\bm{\psi}$. Looking at a 4 MDOF case, the explicit matrix representation is:
-\[
+\begin{equation}
 \begin{bmatrix}
    Q_1\\
    Q_2\\
@@ -50,7 +50,7 @@ In relation to the dividing the domain into subdomains, we want to determine $\b
    x_3\\
    x_4\\
 \end{bmatrix}
-\]
+\end{equation}
 Given a reduced set of $\bm{X}= [x_1,x_2]$, the equations are rearranged
 \begin{equation}
 \begin{split}
@@ -68,7 +68,7 @@ m\ddot{x}_3&=k(x_4-x_3)+k(x_2-x_3)\\
 m\ddot{x}_4&=k(x_1-x_4)+k(x_3-x_4)
 \end{align}
 The eigenvalue problem takes the form:
-\[
+\begin{equation}
 \begin{bmatrix}
    m & 0 & 0 & 0 \\
    0 & m & 0 & 0 \\
@@ -94,9 +94,9 @@ The eigenvalue problem takes the form:
    E_{n,3} \\
    E_{n,4} \\
 \end{bmatrix}
-\]
+\end{equation}
 Letting $m=1$ and $k=1$, the relation between coupled coordinates and normal mode coordinates is, $\pmb{\dot{X}}=\pmb{\psi}\pmb{\dot{Q}}$:
-\[
+\begin{equation}
 \begin{bmatrix}
    \dot{x}_1\\
    \dot{x}_2\\
@@ -115,9 +115,9 @@ Letting $m=1$ and $k=1$, the relation between coupled coordinates and normal mod
    \dot{Q}_3\\
    \dot{Q}_4\\
 \end{bmatrix}
-\]
+\end{equation}
 If we take the 2 atom case:
-\[
+\begin{equation}
 \begin{bmatrix}
    m & 0  \\
    0 & m  \\
@@ -135,8 +135,8 @@ If we take the 2 atom case:
    E_{n,1} \\
    E_{n,2} \\
 \end{bmatrix}
-\]
-\[
+\end{equation}
+\begin{equation}
 \begin{bmatrix}
    \dot{P}_1\\
    \dot{P}_2\\
@@ -149,18 +149,19 @@ If we take the 2 atom case:
    \dot{x}_1\\
    \dot{x}_2\\
 \end{bmatrix}
-\]
+\end{equation}
 Expressing $P$ in terms of $Q$:
 \begin{align}
 \dot{P}_1=\frac{\sqrt{2}\dot{Q}_1}{2}+\frac{\dot{Q}_3}{2}-\frac{\dot{Q}_4}{2}\\
-\dot{P}_2=\frac{\sqrt{2}\dot{Q}_2}{2}-\frac{\dot{Q}_3}{2}-\frac{\dot{Q}_4}{2}\\
+\dot{P}_2=\frac{\sqrt{2}\dot{Q}_2}{2}-\frac{\dot{Q}_3}{2}-\frac{\dot{Q}_4}{2}
+\end{align}
 %P_1=\frac{\sqrt{2}Q_2}{2}+\frac{\sqrt{2}Q_4}{2}\\
 %P_2=-\frac{\sqrt{2}Q_1}{2}-\frac{\sqrt{2}Q_3}{2}
-\end{align}
 Without taking $<\dot{Q}(\tau)\dot{Q}(0)>$, the Fourier transform of the set of $\dot{Q}$ using the output velocites from MD gives
 \begin{figure}[!h]
 \centering
-\includegraphics[trim = 40mm 0mm 10mm 0mm,scale=0.5,angle=0]{noxcorr.eps}
+%\includegraphics[trim = 40mm 0mm 10mm 0mm,scale=0.5,angle=0]{noxcorr.eps}
+\includegraphics{noxcorr.eps}
 \caption{Plots of power spectrums.}
 \label{fig:awesome_image}
 \end{figure}

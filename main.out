@@ -4,7 +4,7 @@
 \BOOKMARK [2][-]{subsection.2.1.1}{Green-Kubo Relation}{section.2.1}
 \BOOKMARK [2][-]{subsection.2.1.2}{The Direct Method}{section.2.1}
 \BOOKMARK [1][-]{section.2.2}{Mode by Mode Methods}{chapter.2}
-\BOOKMARK [2][-]{subsection.2.2.1}{SMRT-BTE}{section.2.2}
+\BOOKMARK [2][-]{subsection.2.2.1}{Phonon Boltzmann Transport Equation}{section.2.2}
 \BOOKMARK [2][-]{subsection.2.2.2}{Lattice Dynamics}{section.2.2}
 \BOOKMARK [2][-]{subsection.2.2.3}{Normal Mode Decomposition}{section.2.2}
 \BOOKMARK [1][-]{section.2.3}{Bulk Comparison}{chapter.2}
@@ -22,8 +22,10 @@
 \BOOKMARK [2][-]{subsection.4.3.3}{Thermal Conductivity}{section.4.3}
 \BOOKMARK [1][-]{section.4.4}{Superlattice phonons}{chapter.4}
 \BOOKMARK [1][-]{section.4.5}{Summary}{chapter.4}
-\BOOKMARK [0][-]{chapter.5}{Conclusion and Future Work}{}
-\BOOKMARK [0][-]{chapter.5}{Bibliography}{}
+\BOOKMARK [0][-]{chapter.5}{Contributions and Future Research}{}
+\BOOKMARK [1][-]{section.5.1}{Contributions}{chapter.5}
+\BOOKMARK [1][-]{section.5.2}{Future Research}{chapter.5}
+\BOOKMARK [0][-]{section.5.2}{Bibliography}{}
 \BOOKMARK [0][-]{appendix.A}{The importance of eigenvectors}{}
 \BOOKMARK [0][-]{appendix.B}{Insight into the presence of additional peaks}{}
 \BOOKMARK [0][-]{appendix.C}{Size effects in superlattices}{}
