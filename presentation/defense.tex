@@ -1,0 +1,261 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%  This Beamer template was created by Cameron Bracken.
+%%  Anyone can freely use or modify it for any purpose
+%%  without attribution.
+%%
+%%  Last Modified: January 9, 2009
+%%
+
+\documentclass[xcolor=x11names,compress]{beamer}
+
+%% General document %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{graphicx}
+\usepackage{epstopdf}
+%\usepackage{tikz}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% Beamer Layout %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\useoutertheme[subsection=false,shadow]{miniframes}
+\useinnertheme{default}
+\usefonttheme{serif}
+\usepackage{palatino}
+
+\setbeamersize{text margin left=5pt,text margin right=5pt}
+
+\setbeamertemplate{navigation symbols}{}
+\setbeamerfont{title like}{shape=\scshape}
+\setbeamerfont{frametitle}{shape=\scshape}
+
+\setbeamercolor*{lower separation line head}{bg=DeepSkyBlue4} 
+\setbeamercolor*{normal text}{fg=black,bg=white} 
+\setbeamercolor*{alerted text}{fg=red} 
+\setbeamercolor*{example text}{fg=black} 
+\setbeamercolor*{structure}{fg=black} 
+ 
+\setbeamercolor*{palette tertiary}{fg=black,bg=black!10} 
+\setbeamercolor*{palette quaternary}{fg=black,bg=black!10} 
+
+\renewcommand{\(}{\begin{columns}}
+\renewcommand{\)}{\end{columns}}
+\newcommand{\<}[1]{\begin{column}{#1}}
+\renewcommand{\>}{\end{column}}
+
+\graphicspath{{/home/schuberm/Dropbox/git/plots.nogit/images/}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{document}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{\scshape Introduction}
+\begin{frame}
+\title{Phonon Properties in Superlattices}
+%\subtitle{SUBTITLE}
+\author{
+	Samuel Huberman\\
+%	{\it Humboldt State University}\\
+}
+\date{
+%	\begin{tikzpicture}[decoration=Koch curve type 2] 
+%		\draw[DeepSkyBlue4] decorate{ decorate{ decorate{ (0,0) -- (3,0) }}}; 
+%	\end{tikzpicture}  
+	\\
+	\vspace{1cm}
+	\today
+}
+\titlepage
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{\scshape Background and Context}
+\begin{frame}{Recent Papers}
+\begin{itemize}
+\item Garg et al. ``High Thermal Conductivity in Short-Period Superlattices''
+\begin{itemize}
+\item Noted the importance of interfacial disorder upon thermal conductivity predictions
+\end{itemize}
+\vspace{0.5cm}
+\item Luckyanova, Garg et al. ``Coherent Phonon Heat Conduction in Superlattices'' 
+\begin{itemize}
+\item Reported linear increase in thermal conductivity with increasing number of layers
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Superlattice Phonons}
+\begin{frame}{Superlattice Phonons}
+\begin{columns}
+\column{.5\textwidth}
+\textbf{Coherent Phonons}
+\begin{itemize}
+\item Satisfy Bragg reflection
+\begin{equation*}\label{EQ:Coh}
+2D \cos \theta = m \lambda
+\end{equation*}
+\item Brillouin oscillations
+\item Impulse stimulate Raman scattering
+\end{itemize}
+Do \textit{NOT} transport heat
+\column{.5\textwidth}
+\textbf{Coherent Phonon Effects}
+\begin{itemize}
+\item Coherence length $(l_c)$ is defined as the distance a wave travels prior to the randomization of its phase
+\item $\Lambda$ == $l_c$?
+\end{itemize}
+If a superlattice phonon has $l_c>D$, indicative of \textit{coherent transport}
+\end{columns}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{MD Domain}
+\begin{frame}{\small{4x4}}
+\begin{figure}[!h]
+\vspace*{-0.5cm}
+\begin{center}
+\scalebox{0.2}{ \includegraphics{/home/schuberm/Dropbox/git/plots.nogit/images/4p_perfect.eps}}
+\renewcommand{\figure}{Fig.}
+\end{center}
+\end{figure}
+\begin{figure}[!h]
+\vspace*{-0.25cm}
+\begin{center}
+\scalebox{0.2}{ \includegraphics{/home/schuberm/Dropbox/git/plots.nogit/images/4p_mixed.eps}}
+\label{fig:mixed}
+\end{center}
+\end{figure}
+\end{frame}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{\scshape Methodology}
+\subsection{Dispersion}
+\begin{frame}{\small{Dispersion}}
+\begin{figure}[!h]
+\vspace*{-0.5cm}
+\begin{center}
+\scalebox{0.45}{ \includegraphics{/home/schuberm/Dropbox/git/plots.nogit/images/dispersion.eps}}
+\renewcommand{\figure}{Fig.}
+\label{fig:sed}
+\end{center}
+\end{figure}
+\begin{figure}[!h]
+\vspace*{-0.25cm}
+\begin{center}
+\scalebox{0.45}{ \includegraphics{/home/schuberm/Dropbox/git/plots.nogit/images/dispersion_ip.eps}}
+\renewcommand{\figure}{Fig.}
+\label{fig:dispersion}
+\end{center}
+\end{figure}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{SED}
+\begin{frame}{SED}
+\begin{columns}
+\column{.075\textwidth}
+\begin{figure}[t]
+\vspace*{-1cm}
+%\begin{center}
+\includegraphics[height=70mm]{/home/schuberm/Dropbox/git/plots.nogit/images/4p_dispersion_only.eps}
+\renewcommand{\figure}{Fig.}
+\label{fig:disp_4p}
+%\end{center}
+\end{figure}
+\column{.91\textwidth}
+\begin{figure}[t]
+%\begin{center}
+\vspace*{-1cm}
+\scalebox{0.60}{\includegraphics{/home/schuberm/Dropbox/git/plots.nogit/images/sed.eps}}
+\renewcommand{\figure}{Fig.}
+%\caption{(Colour online) Spectral energy density plots for the selected modes along k=[1,0,0] of a 4x4 superlattice as shown in Figure~\ref{fig:dispersion}. Dark blue corresponds to a superlattice without mixing, red corresponds to mixing of 80/20 and light blue corresponds to mixing of 60/40.}
+\label{fig:sed}
+%\end{center}
+\end{figure}
+\end{columns}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{\scshape Results}
+\subsection{Lifetimes}
+\begin{frame}{Lifetimes}
+\begin{figure}[!h]
+\begin{center}
+\scalebox{0.55}{\includegraphics{/home/schuberm/Dropbox/git/plots.nogit/images/lifvomega_pres.eps}}
+\renewcommand{\figure}{Fig.}
+\label{fig:lifetimes}
+\end{center}
+\end{figure}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{MFP}
+\begin{frame}{MFP}
+\begin{figure}[!h]
+\begin{center}
+\scalebox{0.55}{\includegraphics{/home/schuberm/Dropbox/git/plots.nogit/images/MFP_cp_pres.eps}}
+\renewcommand{\figure}{Fig.}
+\label{fig:sed}
+\end{center}
+\end{figure}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{GK}
+
+\begin{figure}%[H]
+\begin{center}
+\includegraphics[width=0.3\textwidth]{/home/schuberm/Dropbox/git/plots.nogit/images/GK_cp5.eps} \hspace{0.05\textwidth}%
+\includegraphics[width=0.3\textwidth]{/home/schuberm/Dropbox/git/plots.nogit/images/GK_cp7.eps} \\[2em]
+%\end{center}
+%\end{figure}
+%\column{.5\textwidth}
+%\begin{figure}%[H]
+%\begin{center}
+\includegraphics[width=0.3\textwidth]{/home/schuberm/Dropbox/git/plots.nogit/images/GK_cp8.eps} \hspace{0.05\textwidth}%
+\includegraphics[width=0.3\textwidth]{/home/schuberm/Dropbox/git/plots.nogit/images/GK_cp9.eps} \par
+\end{center}
+\end{figure}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{NMD vs GK}
+\begin{figure}%[H]
+\begin{center}
+\scalebox{0.75}{\includegraphics{/home/schuberm/Dropbox/git/plots.nogit/images/KvL_24814.eps}}
+\renewcommand{\figure}{Fig.}
+\caption{Comparison between thermal conductivity predictions from GK and NMD.}
+\label{FIG:NMD_v_GK}
+\end{center}
+\end{figure}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Contributions}
+\begin{itemize}
+\item Validated GK,DM,ALD,NMD methods for bulk
+\item Validated GK,ALD,NMD methods for superlattices
+\item Bulk properties are not representative of short-period superlattices
+\item Mixing \textit{breaks} secondary periodicity
+\item Coherent effects = dispersion effects
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}
