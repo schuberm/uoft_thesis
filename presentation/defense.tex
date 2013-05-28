@@ -1,48 +1,19 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%  This Beamer template was created by Cameron Bracken.
-%%  Anyone can freely use or modify it for any purpose
-%%  without attribution.
-%%
-%%  Last Modified: January 9, 2009
-%%
-
-\documentclass[xcolor=x11names,compress]{beamer}
-
-%% General document %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass{beamer}
 \usepackage{graphicx}
 \usepackage{epstopdf}
-%\usepackage{tikz}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{multirow}
+\usepackage{booktabs}
 
-%% Beamer Layout %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\useoutertheme[subsection=false,shadow]{miniframes}
-\useinnertheme{default}
-\usefonttheme{serif}
-\usepackage{palatino}
+\usetheme[
+        %url={nano.uoft.ca},
+        %numbering={false},
+        menuwidth={0.3\paperwidth}
+        ]{uoft}
 
-\setbeamersize{text margin left=5pt,text margin right=5pt}
-
-\setbeamertemplate{navigation symbols}{}
-\setbeamerfont{title like}{shape=\scshape}
-\setbeamerfont{frametitle}{shape=\scshape}
-
-\setbeamercolor*{lower separation line head}{bg=DeepSkyBlue4} 
-\setbeamercolor*{normal text}{fg=black,bg=white} 
-\setbeamercolor*{alerted text}{fg=red} 
-\setbeamercolor*{example text}{fg=black} 
-\setbeamercolor*{structure}{fg=black} 
- 
-\setbeamercolor*{palette tertiary}{fg=black,bg=black!10} 
-\setbeamercolor*{palette quaternary}{fg=black,bg=black!10} 
-
-\renewcommand{\(}{\begin{columns}}
-\renewcommand{\)}{\end{columns}}
-\newcommand{\<}[1]{\begin{column}{#1}}
-\renewcommand{\>}{\end{column}}
-
-\graphicspath{{/home/schuberm/Dropbox/git/plots.nogit/images/}}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+\setbeamercovered{transparent=20}
+\graphicspath{
+{/home/schuberm/Dropbox/git/plots.nogit/images/}
+{/Users/mullspace/Dropbox/git/plots.nogit/images/}}
 
 \begin{document}
 
@@ -118,14 +89,14 @@ If a superlattice phonon has $l_c>D$, indicative of \textit{coherent transport}
 \begin{figure}[!h]
 \vspace*{-0.5cm}
 \begin{center}
-\scalebox{0.2}{ \includegraphics{/home/schuberm/Dropbox/git/plots.nogit/images/4p_perfect.eps}}
+\scalebox{0.2}{ \includegraphics{4p_perfect.eps}}
 \renewcommand{\figure}{Fig.}
 \end{center}
 \end{figure}
 \begin{figure}[!h]
 \vspace*{-0.25cm}
 \begin{center}
-\scalebox{0.2}{ \includegraphics{/home/schuberm/Dropbox/git/plots.nogit/images/4p_mixed.eps}}
+\scalebox{0.2}{ \includegraphics{4p_mixed.eps}}
 \label{fig:mixed}
 \end{center}
 \end{figure}
@@ -141,7 +112,7 @@ If a superlattice phonon has $l_c>D$, indicative of \textit{coherent transport}
 \begin{figure}[!h]
 \vspace*{-0.5cm}
 \begin{center}
-\scalebox{0.45}{ \includegraphics{/home/schuberm/Dropbox/git/plots.nogit/images/dispersion.eps}}
+\scalebox{0.45}{ \includegraphics{dispersion.eps}}
 \renewcommand{\figure}{Fig.}
 \label{fig:sed}
 \end{center}
@@ -149,7 +120,7 @@ If a superlattice phonon has $l_c>D$, indicative of \textit{coherent transport}
 \begin{figure}[!h]
 \vspace*{-0.25cm}
 \begin{center}
-\scalebox{0.45}{ \includegraphics{/home/schuberm/Dropbox/git/plots.nogit/images/dispersion_ip.eps}}
+\scalebox{0.45}{ \includegraphics{dispersion_ip.eps}}
 \renewcommand{\figure}{Fig.}
 \label{fig:dispersion}
 \end{center}
@@ -166,7 +137,7 @@ If a superlattice phonon has $l_c>D$, indicative of \textit{coherent transport}
 \begin{figure}[t]
 \vspace*{-1cm}
 %\begin{center}
-\includegraphics[height=70mm]{/home/schuberm/Dropbox/git/plots.nogit/images/4p_dispersion_only.eps}
+\includegraphics[height=70mm]{4p_dispersion_only.eps}
 \renewcommand{\figure}{Fig.}
 \label{fig:disp_4p}
 %\end{center}
@@ -175,7 +146,7 @@ If a superlattice phonon has $l_c>D$, indicative of \textit{coherent transport}
 \begin{figure}[t]
 %\begin{center}
 \vspace*{-1cm}
-\scalebox{0.60}{\includegraphics{/home/schuberm/Dropbox/git/plots.nogit/images/sed.eps}}
+\scalebox{0.60}{\includegraphics{sed.eps}}
 \renewcommand{\figure}{Fig.}
 %\caption{(Colour online) Spectral energy density plots for the selected modes along k=[1,0,0] of a 4x4 superlattice as shown in Figure~\ref{fig:dispersion}. Dark blue corresponds to a superlattice without mixing, red corresponds to mixing of 80/20 and light blue corresponds to mixing of 60/40.}
 \label{fig:sed}
@@ -191,7 +162,7 @@ If a superlattice phonon has $l_c>D$, indicative of \textit{coherent transport}
 \begin{frame}{Lifetimes}
 \begin{figure}[!h]
 \begin{center}
-\scalebox{0.55}{\includegraphics{/home/schuberm/Dropbox/git/plots.nogit/images/lifvomega_pres.eps}}
+\scalebox{0.55}{\includegraphics{lifvomega_pres.eps}}
 \renewcommand{\figure}{Fig.}
 \label{fig:lifetimes}
 \end{center}
@@ -202,9 +173,10 @@ If a superlattice phonon has $l_c>D$, indicative of \textit{coherent transport}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{MFP}
 \begin{frame}{MFP}
-\begin{figure}[!h]
+\begin{figure}[t]
 \begin{center}
-\scalebox{0.55}{\includegraphics{/home/schuberm/Dropbox/git/plots.nogit/images/MFP_cp_pres.eps}}
+\vspace*{-0.8cm}
+\scalebox{0.55}{\includegraphics{MFP_cp_defense.eps}}
 \renewcommand{\figure}{Fig.}
 \label{fig:sed}
 \end{center}
@@ -213,43 +185,95 @@ If a superlattice phonon has $l_c>D$, indicative of \textit{coherent transport}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{GK}
+%\begin{frame}{GK}
 
-\begin{figure}%[H]
-\begin{center}
-\includegraphics[width=0.3\textwidth]{/home/schuberm/Dropbox/git/plots.nogit/images/GK_cp5.eps} \hspace{0.05\textwidth}%
-\includegraphics[width=0.3\textwidth]{/home/schuberm/Dropbox/git/plots.nogit/images/GK_cp7.eps} \\[2em]
+%\begin{figure}%[H]
+%\begin{center}
+%\includegraphics[width=0.3\textwidth]{GK_cp5.eps} \hspace{0.05\textwidth}%
+%\includegraphics[width=0.3\textwidth]{/home/schuberm/Dropbox/git/plots.nogit/images/GK_cp7.eps} \\[2em]
 %\end{center}
 %\end{figure}
 %\column{.5\textwidth}
 %\begin{figure}%[H]
 %\begin{center}
-\includegraphics[width=0.3\textwidth]{/home/schuberm/Dropbox/git/plots.nogit/images/GK_cp8.eps} \hspace{0.05\textwidth}%
-\includegraphics[width=0.3\textwidth]{/home/schuberm/Dropbox/git/plots.nogit/images/GK_cp9.eps} \par
-\end{center}
-\end{figure}
+%\includegraphics[width=0.3\textwidth]{/home/schuberm/Dropbox/git/plots.nogit/images/GK_cp8.eps} \hspace{0.05\textwidth}%
+%\includegraphics[width=0.3\textwidth]{/home/schuberm/Dropbox/git/plots.nogit/images/GK_cp9.eps} \par
+%\end{center}
+%\end{figure}
 
-\end{frame}
+%\end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{NMD vs GK}
-\begin{figure}%[H]
+\begin{frame}{Cross-Plane Comparison}
+\begin{table*}
 \begin{center}
-\scalebox{0.75}{\includegraphics{/home/schuberm/Dropbox/git/plots.nogit/images/KvL_24814.eps}}
-\renewcommand{\figure}{Fig.}
-\caption{Comparison between thermal conductivity predictions from GK and NMD.}
-\label{FIG:NMD_v_GK}
+\begin{tabular*}{\textwidth}{c@{\extracolsep{\fill}}cccccc}
+\hline\hline\noalign{\smallskip}
+\multicolumn{2}{c}{\multirow{2}{*}{Cross-Plane}}& \multicolumn{4}{c}{$N\times N$ Superlattice} \\
+\cline{3-6}\noalign{\smallskip}
+\hspace{1cm} && $2\times2$ & $4\times4$ & $8\times8$ & $14\times14$  \\
+\noalign{\smallskip}\hline\noalign{\smallskip}
+\multirow{3}{*}{Perfect} &NMD & 0.29 $\pm$ 0.03 & 0.23 $\pm$ 0.02 & 0.32 $\pm$ 0.03 & 0.39 $\pm$ 0.04 \\
+&GK & 0.25 $\pm$ 0.02 & 0.22 $\pm$ 0.02  &  0.29 $\pm$ 0.02  &  0.39 $\pm$ 0.03\\
+&ALD & 0.25 &	0.26  &	0.32	 &0.44\\
+&Thermal Circuit & 0.07  &  0.13  &  0.23  &  0.32\\
+\noalign{\smallskip}\hline
+\multirow{3}{*}{Mixed} &NMD &0.19 $\pm$ 0.02& 0.17 $\pm$ 0.02& 0.28 $\pm$ 0.03 & 0.42$\pm$ 0.04\\
+&GK  & 0.16 $\pm$ 0.01  &  0.18 $\pm$ 0.02 &  0.29 $\pm$ 0.02 &   0.45 $\pm$ 0.06\\
+&Tamura (NMD) & 0.21 $\pm$ 0.02& 0.15 $\pm$ 0.02& 0.30 $\pm$ 0.03& 0.37$\pm$ 0.04\\
+&Tamura (ALD) & 0.12 & 0.19 & 0.26 & 0.40\\
+\hline\hline
+\end{tabular*}
 \end{center}
-\end{figure}
+\renewcommand{\table}{Table.}
+\caption{A comparison of the cross-plane thermal conductivity predictions [W/m K].}
+\label{TB:K_CP}
+\end{table*}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{In-Plane Comparison}
+%\begin{table*}
+\begin{center}
+\resizebox{\linewidth}{!}
+\begin{tabular*}{\textwidth}{c@{\extracolsep{\fill}}cccccc}
+\hline\hline\noalign{\smallskip}
+\multicolumn{2}{c}{\multirow{2}{*}{In-Plane}}&\multicolumn{4}{c}{$N\times N$ Superlattice} \\
+\cline{3-6}\noalign{\smallskip}
+\hspace{1cm} && $2\times2$ & $4\times4$ & $8\times8$ & $14\times14$  \\
+\noalign{\smallskip}\hline\noalign{\smallskip}
+\multirow{2}{*}{Perfect} &NMD &0.52$\pm$ 0.05 & 0.51 $\pm$ 0.05& 0.56 $\pm$ 0.05& 0.60$\pm$ 0.06\\
+&GK &0.53 $\pm$ 0.03 &  0.54 $\pm$ 0.03 &  0.61 $\pm$ 0.05  &  0.66 $\pm$ 0.07 \\
+&ALD & 0.55	& 0.53	&	0.59 	&0.63\\
+\noalign{\smallskip}\hline
+\multirow{3}{*}{Mixed} & NMD &0.21 $\pm$ 0.02 & 0.25 $\pm$ 0.03 & 0.37 $\pm$ 0.04 & 0.47  $\pm$ 0.05\\
+&GK & 0.19 $\pm$ 0.02 &  0.30 $\pm$ 0.01  & 0.43$\pm$ 0.03 &  0.62 $\pm$ 0.07 \\   
+&Tamura (NMD)& 0.22 $\pm$ 0.02 & 0.27 $\pm$ 0.03 & 0.38 $\pm$ 0.04 & 0.45 $\pm$ 0.05\\
+&Tamura (ALD) & 0.17 & 0.25 & 0.34 &0.38\\
+\hline\hline
+\end{tabular*}
+\end{center}
+\renewcommand{\table}{Table.}
+\caption{A comparison of the in-plane thermal conductivity predictions [W/m K].}
+\label{TB:K_IP}
+%\end{table*}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Contributions}
 \begin{itemize}
-\item Validated GK,DM,ALD,NMD methods for bulk
-\item Validated GK,ALD,NMD methods for superlattices
+\item Validated GK, DM, ALD, NMD methods for bulk
+\item First to apply and validate NMD for superlattices
+\item Developed a simple, parallel and open source workflow for NMD
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Conclusions}
+\begin{itemize}
 \item Bulk properties are not representative of short-period superlattices
 \item Mixing \textit{breaks} secondary periodicity
 \item Coherent effects = dispersion effects

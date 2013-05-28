@@ -9,4 +9,9 @@
 *.blg
 *.gz
 *.dvi
+*.toc
+*.out
+*.snm
+*.nav
+*gz(busy)
 *.m
