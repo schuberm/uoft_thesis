@@ -3,6 +3,7 @@
 \usepackage{epstopdf}
 \usepackage{multirow}
 \usepackage{booktabs}
+\usepackage{xcolor}
 
 \usetheme[
         %url={nano.uoft.ca},
@@ -15,89 +16,218 @@
 {/home/schuberm/Dropbox/git/plots.nogit/images/}
 {/Users/mullspace/Dropbox/git/plots.nogit/images/}}
 
+%--------------------------------------------------------------------------
+%DEFINE COMMANDS
+%--------------------------------------------------------------------------
+\newcommand{\EXP}[1]{\exp\mspace{-5.0mu}\left[#1\right]\mspace{-3.0mu}}
+
+\newcommand{\SUM}[2]{\ifthenelse{\equal{#1}{0}}{\sum_{
+\alpha_{#2},b_{#2},l_{#2}}^{3,4L,N}} {\ifthenelse{\equal{#1}{1}}{\sum_{
+\alpha_{#2},b_{#2}}^{3,n}}{\sum_{\pmb{\kappa}#2,\nu#2}^{N,3n}}}}
+
+\newcommand{\ab}[2]{\mspace{-4.0mu}\left(\mspace{-8.0mu}
+\begin{smallmatrix}&\ifthenelse{\equal{#1}{}}{a}{#1} \\&\ifthenelse
+{\equal{#2}{}}{b}{#2}\end{smallmatrix}\mspace{-3.0mu}\right)}
+
+\newcommand{\lO}{\mspace{-4.0mu}\left(\mspace{-8.0mu}
+\begin{smallmatrix}&l \\&0\end{smallmatrix}
+\mspace{-3.0mu}\right)}
+
+\newcommand{\kvba}{\mspace{-4.0mu}\left(\mspace{-8.0mu}
+\begin{smallmatrix} &\pmb{\kappa} &b \\ &\nu &\alpha\end{smallmatrix}
+\mspace{-3.0mu}\right)}
+
+\newcommand{\kvbap}{\mspace{-4.0mu}\left(\mspace{-8.0mu}
+\begin{smallmatrix} &\pmb{\kappa}' &b \\ &\nu' &\alpha\end{smallmatrix}
+\mspace{-3.0mu}\right)}
+
+\newcommand{\kvt}{\mspace{-4.0mu}\left(\mspace{-8.0mu}
+\begin{smallmatrix}&\pmb{\kappa} \\&\nu\end{smallmatrix}
+\mspace{-2.0mu},t\right)}
+
+\newcommand{\kvw}{\mspace{-4.0mu}\left(\mspace{-8.0mu}
+\begin{smallmatrix}&\pmb{\kappa} \\&\nu\end{smallmatrix}
+\mspace{-2.0mu},\omega\right)}
+
+\newcommand{\kv}{\mspace{-4.0mu}\left(\mspace{-8.0mu}
+\begin{smallmatrix}&\pmb{\kappa} \\&\nu\end{smallmatrix}
+\mspace{-3.0mu}\right)}
+
+\newcommand{\kvp}{\mspace{-4.0mu}\left(\mspace{-8.0mu}
+\begin{smallmatrix}&\pmb{\kappa'} \\&\nu'\end{smallmatrix}
+\mspace{-3.0mu}\right)}
+
+\newcommand{\kw}{\mspace{-4.0mu}\left(\mspace{-8.0mu}
+\begin{smallmatrix}&\pmb{\kappa} \\&\omega\end{smallmatrix}
+\mspace{-3.0mu}\right)}
+
+\newcommand{\lbt}{\mspace{-4.0mu}\left(\mspace{-8.0mu}
+\begin{smallmatrix}&l \\&b\end{smallmatrix}\mspace{-2.0mu},t\right)}
+%--------------------------------------------------------------------------
+%END COMMANDS
+%--------------------------------------------------------------------------
+
 \begin{document}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{\scshape Introduction}
 \begin{frame}
-\title{Phonon Properties in Superlattices}
+\Large{Phonon Properties in Superlattices}
 %\subtitle{SUBTITLE}
-\author{
-	Samuel Huberman\\
-%	{\it Humboldt State University}\\
-}
+
+\small{Samuel Huberman}\\
+
 \date{
-%	\begin{tikzpicture}[decoration=Koch curve type 2] 
-%		\draw[DeepSkyBlue4] decorate{ decorate{ decorate{ (0,0) -- (3,0) }}}; 
-%	\end{tikzpicture}  
 	\\
 	\vspace{1cm}
 	\today
 }
-\titlepage
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{\scshape Background and Context}
-\begin{frame}{Recent Papers}
+\section{Background and Motivation}
+\begin{frame}{Why Study Nanoscale Energy Transport}
 \begin{itemize}
-\item Garg et al. ``High Thermal Conductivity in Short-Period Superlattices''
-\begin{itemize}
-\item Noted the importance of interfacial disorder upon thermal conductivity predictions
-\end{itemize}
-\vspace{0.5cm}
-\item Luckyanova, Garg et al. ``Coherent Phonon Heat Conduction in Superlattices'' 
-\begin{itemize}
-\item Reported linear increase in thermal conductivity with increasing number of layers
-\end{itemize}
+\item Power dissipation problem for CPUs and GPUs
+\item Improve performance of solar and thermoelectric technologies
 \end{itemize}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Superlattice Phonons}
-\begin{frame}{Superlattice Phonons}
-\begin{columns}
-\column{.5\textwidth}
-\textbf{Coherent Phonons}
+\begin{frame}{Funny things at the Nanoscale}
 \begin{itemize}
-\item Satisfy Bragg reflection
-\begin{equation*}\label{EQ:Coh}
-2D \cos \theta = m \lambda
-\end{equation*}
-\item Brillouin oscillations
-\item Impulse stimulate Raman scattering
+%\item As size of system decreases, transition from diffusive to ballistic transport
+\item Fourier's Law fails
+%%%
+\begin{equation}\label{EQ:NMD:qdot}
+\begin{split}
+Q\neq-k\frac{dT}{dx}
+\end{split}
+\end{equation}
+%%%
+
+\item Thermal conductivity becomes a function of length, $k(L)$
+
+\item What is responsible for this phenomena?
 \end{itemize}
-Do \textit{NOT} transport heat
-\column{.5\textwidth}
-\textbf{Coherent Phonon Effects}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{How to Study Nanoscale Energy Transport}
+Phonons
 \begin{itemize}
-\item Coherence length $(l_c)$ is defined as the distance a wave travels prior to the randomization of its phase
-\item $\Lambda$ == $l_c$?
+\item Propagating normal modes of vibration
+\item Delocalized in space and time
+\item Identified by the mode tuple ($\pmb{\kappa}$, $\nu$)
+\item Thermal conductivity in terms of phonon properties:
+%%%
+\begin{equation}\label{EQ:M:conductivity}
+\begin{split}
+k_{\mathbf{\alpha}}=&\sum_{\nu,\pmb{\kappa}}^{3n,N} c_{ph}\kv
+v^{2}_{g,\mathbf{\alpha}}\kv \tau\kv
+\end{split}
+\end{equation}
+%%%
+\begin{itemize}
+\item $c_{ph}\kv$: Mode-dependent volumetric specific heat
+\item $\pmb{\mathrm{v}}_{g}\kv$: Mode group velocity
+\item $\tau\kv$: Mode lifetime
 \end{itemize}
-If a superlattice phonon has $l_c>D$, indicative of \textit{coherent transport}
-\end{columns}
+
+\end{itemize}
+CHALLENGE: PREDICT PHONON PROPERTIES
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Methodology}
+\begin{frame}{How to Study Nanoscale Energy Transport: Molecular Dynamics}
+Numerically integrate Newton's equation of motion with an empirically defined interaction
+\begin{equation}
+\begin{split}
+F&=ma\\
+F&=\frac{dE}{d\pmb{r}}\\
+E(r)&=-4\epsilon\left[\left(\frac{\sigma}{r}\right)^6-\left(\frac{\sigma}{r}\right)^{12}\right]
+\end{split}
+\end{equation}
+
+Since MD is classical, mode dependent volumetric specific heat is independent of temperature
+\begin{equation}\label{EQ:Cph}
+c_{ph}\kv=\frac{\partial E}{V\partial T}=\frac{k_B}{V}	
+\end{equation}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{How to Study Nanoscale Energy Transport: Lattice Dynamics}
+
+Solve the eigenvalue problem to obtain frequencies (eigenvalues) and normal modes (eigenvectors)
+
+\begin{equation}
+[D(\pmb{\kappa})-I\omega^2\kv]\pmb{\mathrm{e}}\kv = 0
+\end{equation}
+
+Group velocities from finite differencing
+\begin{equation}\label{EQ:NMD:vg}
+\begin{split}
+\pmb{\mathrm{v}}_{g}\kv=\frac{\partial \omega \kv}{\partial \pmb{\kappa}}
+\end{split}
+\end{equation}
+
+Determined $c_{ph}\kv$, $\pmb{\mathrm{v}}_{g}\kv$. What about $\tau \kv$?
+
+\end{frame}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Normal Mode Decomposition}
+Time derivative of the normal mode coordinate
+%%%
+\begin{equation}\label{EQ:NMD:qdot}
+\begin{split}
+\dot{q}\kvt{}{}{}=&\sum_{\alpha, b, l}^{3,4L,N}\sqrt{\frac{m_b}{N}}\dot{u}_{\alpha}\lbt e^*\kvba\EXP{i\pmb{\kappa}\cdot\mathbf{r}_0\lO}
+\end{split}
+\end{equation}
+%%%
+Power spectrum by Fourier Transform
+%%%
+\begin{equation}\label{EQ:NMD:SED}
+\begin{split}
+T\kvw=&\lim_{\tau_0\rightarrow\infty}\frac{1}{2\tau_0}\left|\frac{1}{\sqrt{2\pi}}\int_{0}^{\tau_0}\dot{q}\kvt\exp(-i\omega t)dt\right|^2
+\end{split}
+\end{equation}
+%%%
+Expected to have Lorentzian form
+%%%
+\begin{equation}\label{EQ:NMD:LOR}
+T\kvw \approx C_0\kv\frac{\Gamma\kv/\pi}{[\omega_0\kv-\omega]^2+\Gamma^2\kv}
+\end{equation}
+%%%
+Fitting yields the lifetime
+%%%
+\begin{equation}\label{EQ:lifetime}
+\tau\kv=\frac{1}{2\Gamma\kv}
+\end{equation}
+%%%
+
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{MD Domain}
-\begin{frame}{\small{4x4}}
-\begin{figure}[!h]
-\vspace*{-0.5cm}
+\begin{frame}{\small{4x4 MD Domain}}
+\begin{figure}[t]
 \begin{center}
-\scalebox{0.2}{ \includegraphics{4p_perfect.eps}}
+\vspace*{-0.8cm}
+\scalebox{0.55}{\includegraphics{4p_ai.eps}}
 \renewcommand{\figure}{Fig.}
-\end{center}
-\end{figure}
-\begin{figure}[!h]
-\vspace*{-0.25cm}
-\begin{center}
-\scalebox{0.2}{ \includegraphics{4p_mixed.eps}}
-\label{fig:mixed}
+\label{fig:md_domain}
 \end{center}
 \end{figure}
 \end{frame}
@@ -106,21 +236,21 @@ If a superlattice phonon has $l_c>D$, indicative of \textit{coherent transport}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{\scshape Methodology}
+\section{Results}
 \subsection{Dispersion}
 \begin{frame}{\small{Dispersion}}
 \begin{figure}[!h]
-\vspace*{-0.5cm}
+\vspace*{-0.6cm}
 \begin{center}
-\scalebox{0.45}{ \includegraphics{dispersion.eps}}
+\scalebox{0.48}{ \includegraphics{dispersion.eps}}
 \renewcommand{\figure}{Fig.}
 \label{fig:sed}
 \end{center}
 \end{figure}
 \begin{figure}[!h]
-\vspace*{-0.25cm}
+\vspace*{-0.4cm}
 \begin{center}
-\scalebox{0.45}{ \includegraphics{dispersion_ip.eps}}
+\scalebox{0.48}{ \includegraphics{dispersion_ip.eps}}
 \renewcommand{\figure}{Fig.}
 \label{fig:dispersion}
 \end{center}
@@ -130,12 +260,13 @@ If a superlattice phonon has $l_c>D$, indicative of \textit{coherent transport}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{SED}
-\begin{frame}{SED}
+\subsection{Power Spectra}
+\begin{frame}{Power Spectrum}
 \begin{columns}
 \column{.075\textwidth}
 \begin{figure}[t]
 \vspace*{-1cm}
+\hspace*{-0.9cm}
 %\begin{center}
 \includegraphics[height=70mm]{4p_dispersion_only.eps}
 \renewcommand{\figure}{Fig.}
@@ -145,7 +276,8 @@ If a superlattice phonon has $l_c>D$, indicative of \textit{coherent transport}
 \column{.91\textwidth}
 \begin{figure}[t]
 %\begin{center}
-\vspace*{-1cm}
+\vspace*{-1.2cm}
+\hspace*{1.9cm}
 \scalebox{0.60}{\includegraphics{sed.eps}}
 \renewcommand{\figure}{Fig.}
 %\caption{(Colour online) Spectral energy density plots for the selected modes along k=[1,0,0] of a 4x4 superlattice as shown in Figure~\ref{fig:dispersion}. Dark blue corresponds to a superlattice without mixing, red corresponds to mixing of 80/20 and light blue corresponds to mixing of 60/40.}
@@ -157,12 +289,12 @@ If a superlattice phonon has $l_c>D$, indicative of \textit{coherent transport}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{\scshape Results}
 \subsection{Lifetimes}
 \begin{frame}{Lifetimes}
 \begin{figure}[!h]
 \begin{center}
-\scalebox{0.55}{\includegraphics{lifvomega_pres.eps}}
+\vspace*{-0.8cm}
+\scalebox{0.55}{\includegraphics{lifvomega_defense.eps}}
 \renewcommand{\figure}{Fig.}
 \label{fig:lifetimes}
 \end{center}
@@ -178,7 +310,7 @@ If a superlattice phonon has $l_c>D$, indicative of \textit{coherent transport}
 \vspace*{-0.8cm}
 \scalebox{0.55}{\includegraphics{MFP_cp_defense.eps}}
 \renewcommand{\figure}{Fig.}
-\label{fig:sed}
+\label{fig:mfp_contribution}
 \end{center}
 \end{figure}
 \end{frame}
@@ -205,63 +337,60 @@ If a superlattice phonon has $l_c>D$, indicative of \textit{coherent transport}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Cross-Plane Comparison}
-\begin{table*}
+\subsection{Thermal conductivity}
+\begin{frame}{Cross-Plane Perfect SL}
+\begin{figure}[t]
 \begin{center}
-\begin{tabular*}{\textwidth}{c@{\extracolsep{\fill}}cccccc}
-\hline\hline\noalign{\smallskip}
-\multicolumn{2}{c}{\multirow{2}{*}{Cross-Plane}}& \multicolumn{4}{c}{$N\times N$ Superlattice} \\
-\cline{3-6}\noalign{\smallskip}
-\hspace{1cm} && $2\times2$ & $4\times4$ & $8\times8$ & $14\times14$  \\
-\noalign{\smallskip}\hline\noalign{\smallskip}
-\multirow{3}{*}{Perfect} &NMD & 0.29 $\pm$ 0.03 & 0.23 $\pm$ 0.02 & 0.32 $\pm$ 0.03 & 0.39 $\pm$ 0.04 \\
-&GK & 0.25 $\pm$ 0.02 & 0.22 $\pm$ 0.02  &  0.29 $\pm$ 0.02  &  0.39 $\pm$ 0.03\\
-&ALD & 0.25 &	0.26  &	0.32	 &0.44\\
-&Thermal Circuit & 0.07  &  0.13  &  0.23  &  0.32\\
-\noalign{\smallskip}\hline
-\multirow{3}{*}{Mixed} &NMD &0.19 $\pm$ 0.02& 0.17 $\pm$ 0.02& 0.28 $\pm$ 0.03 & 0.42$\pm$ 0.04\\
-&GK  & 0.16 $\pm$ 0.01  &  0.18 $\pm$ 0.02 &  0.29 $\pm$ 0.02 &   0.45 $\pm$ 0.06\\
-&Tamura (NMD) & 0.21 $\pm$ 0.02& 0.15 $\pm$ 0.02& 0.30 $\pm$ 0.03& 0.37$\pm$ 0.04\\
-&Tamura (ALD) & 0.12 & 0.19 & 0.26 & 0.40\\
-\hline\hline
-\end{tabular*}
+\vspace*{-0.8cm}
+\scalebox{0.75}{\includegraphics{KvL_cp.eps}}
+\renewcommand{\figure}{Fig.}
+\label{fig:cp}
 \end{center}
-\renewcommand{\table}{Table.}
-\caption{A comparison of the cross-plane thermal conductivity predictions [W/m K].}
-\label{TB:K_CP}
-\end{table*}
-\end{frame}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{In-Plane Comparison}
-%\begin{table*}
-\begin{center}
-\resizebox{\linewidth}{!}
-\begin{tabular*}{\textwidth}{c@{\extracolsep{\fill}}cccccc}
-\hline\hline\noalign{\smallskip}
-\multicolumn{2}{c}{\multirow{2}{*}{In-Plane}}&\multicolumn{4}{c}{$N\times N$ Superlattice} \\
-\cline{3-6}\noalign{\smallskip}
-\hspace{1cm} && $2\times2$ & $4\times4$ & $8\times8$ & $14\times14$  \\
-\noalign{\smallskip}\hline\noalign{\smallskip}
-\multirow{2}{*}{Perfect} &NMD &0.52$\pm$ 0.05 & 0.51 $\pm$ 0.05& 0.56 $\pm$ 0.05& 0.60$\pm$ 0.06\\
-&GK &0.53 $\pm$ 0.03 &  0.54 $\pm$ 0.03 &  0.61 $\pm$ 0.05  &  0.66 $\pm$ 0.07 \\
-&ALD & 0.55	& 0.53	&	0.59 	&0.63\\
-\noalign{\smallskip}\hline
-\multirow{3}{*}{Mixed} & NMD &0.21 $\pm$ 0.02 & 0.25 $\pm$ 0.03 & 0.37 $\pm$ 0.04 & 0.47  $\pm$ 0.05\\
-&GK & 0.19 $\pm$ 0.02 &  0.30 $\pm$ 0.01  & 0.43$\pm$ 0.03 &  0.62 $\pm$ 0.07 \\   
-&Tamura (NMD)& 0.22 $\pm$ 0.02 & 0.27 $\pm$ 0.03 & 0.38 $\pm$ 0.04 & 0.45 $\pm$ 0.05\\
-&Tamura (ALD) & 0.17 & 0.25 & 0.34 &0.38\\
-\hline\hline
-\end{tabular*}
-\end{center}
-\renewcommand{\table}{Table.}
-\caption{A comparison of the in-plane thermal conductivity predictions [W/m K].}
-\label{TB:K_IP}
-%\end{table*}
+\end{figure}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Cross-Plane Mixed SL}
+\begin{figure}[t]
+\begin{center}
+\vspace*{-0.8cm}
+\scalebox{0.75}{\includegraphics{KvL_cp_all.eps}}
+\renewcommand{\figure}{Fig.}
+\label{fig:cp_all}
+\end{center}
+\end{figure}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{In-Plane Perfect SL}
+\begin{figure}[t]
+\begin{center}
+\vspace*{-0.8cm}
+\scalebox{0.75}{\includegraphics{KvL_ip.eps}}
+\renewcommand{\figure}{Fig.}
+\label{fig:ip}
+\end{center}
+\end{figure}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{In-Plane Mixed SL}
+\begin{figure}[t]
+\begin{center}
+\vspace*{-0.8cm}
+\scalebox{0.75}{\includegraphics{KvL_ip_all.eps}}
+\renewcommand{\figure}{Fig.}
+\label{fig:ip_all}
+\end{center}
+\end{figure}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Conclusions}
 \begin{frame}{Contributions}
 \begin{itemize}
 \item Validated GK, DM, ALD, NMD methods for bulk
