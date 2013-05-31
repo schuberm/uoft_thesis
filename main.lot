@@ -3,9 +3,9 @@
 \contentsline {table}{\numberline {2.1}{\ignorespaces A comparison of the thermal conductivity prediction methods for bulk LJ argon at 20 K [W/m K].}}{22}{table.2.1}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {4.1}{\ignorespaces Number of timesteps in the FFT windows and total number of MD timesteps for each superlattice system.}}{35}{table.4.1}
-\contentsline {table}{\numberline {4.2}{\ignorespaces A comparison of the cross-plane thermal conductivity predictions [W/m K].}}{43}{table.4.2}
-\contentsline {table}{\numberline {4.3}{\ignorespaces A comparison of the in-plane thermal conductivity predictions [W/m K].}}{43}{table.4.3}
+\contentsline {table}{\numberline {4.1}{\ignorespaces Number of timesteps in the Fourier sampling windows, total number of MD timesteps for each superlattice system, and the total number of independent MD simulations. The use of $\omega _H\mskip -4.0mu\relax \left (\mskip -8.0mu\relax \def \par }}{35}{table.4.1}
+\contentsline {table}{\numberline {4.2}{\ignorespaces Cross-plane thermal conductivity predictions [W/m K].}}{43}{table.4.2}
+\contentsline {table}{\numberline {4.3}{\ignorespaces In-plane thermal conductivity predictions [W/m K].}}{43}{table.4.3}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }

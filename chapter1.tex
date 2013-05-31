@@ -114,7 +114,7 @@ where $E_i$ is the energy of particle $i$ at position $\bm{r}_i$. $<\bm{S}(t)\cd
 %
 Eq.~\ref{EQ:HCvec} and~\ref{EQ:HCvec_pair} can be easily implemented into a MD code since the quantities with which $\bm{S}$ is calculated, typically, are tracked for every time step. Furthermore, MD is well suited to the task of simulating a system's natural evolution through phase space as the only input required is the interatomic potential, making it an ideal tool to for calculating correlation functions. The MD engine used in this work is  the LAMMPS package, which contains a validated GK algorithm \cite{LAMMPS}. McGaughey examined the time dependence of the HCACF and noted a two stage behaviour for crystals: a rapid initial decay corresponding to the damping of the fluctuations and a slow secondary oscillatory decay, which is believed to be associated with the periodic boundary conditions of the simulation. These oscillations decreased as the simulation size increased \cite{mcgaugheythesis}.
 %
-\begin{figure}
+\begin{figure}[t]
 \begin{center}
 \scalebox{1}{ \includegraphics{GK_bulk.eps}}
 \renewcommand{\figure}{Fig.}
@@ -130,7 +130,7 @@ In the case of amorphous materials, the HCACF does not converge prior to becomin
 The approach used in this work to reduce uncertainty in estimating thermal conductivity is the use a relative error function, $F(t)$ \cite{Chen20102392}
 %
 \begin{equation}\label{EQ:errfunc}
-F(t)= \left\lvert\frac{\sigma(<\bm{S}(t)\cdot\bm{S}(0)>)}{E(<\bm{S}(t)\cdot\bm{S}(0)>)} \right\rvert
+F(t)= \left\lvert\frac{\sigma(<\bm{S}(t)\cdot\bm{S}(0)>)}{E(<\bm{S}(t)\cdot\bm{S}(0)>)} \right\rvert,
 \end{equation}
 %
 where $\sigma$ and $E$ are the standard deviation and mean value of the the HCACF between the time interval $t$ and $t+\delta$. For all the simulations presented in this work, $\delta$ was set to $10^3$ timesteps. The cumulative integral of the HCACF (green line) and the relative error function (blue line) for bulk LJ argon at 20 K are shown in Fig.~\ref{FIG:GK_bulk}.
@@ -164,7 +164,7 @@ A sample temperature profile for LJ argon at 20 K is shown in Fig.~\ref{FIG:DM_b
 In solids, thermal energy is transported by mechanical vibrations (phonons). The Direct and GK methods do not provide any insight into the individual phonon modes, but rather give a macroscopic picture. In order to overcome this limitation of the DM and GK method, scientists have turned to the phonon Boltzmann Transport Equation (BTE) to describe the temporal evolution of the distribution function for a given phonon mode, identified by the wavevector $\pmb{\kappa}$ and branch index $\nu$, subject to the temperature gradient $\nabla T$ \cite{srivastava1990physics} 
 %
 \begin{equation}\label{EQ:BTE}
--c(\pmb{\kappa})\cdot \nabla T\frac{\partial f\kv}{\partial T}=\frac{\partial f\kv}{\partial t}
+-c(\pmb{\kappa})\cdot \nabla T\frac{\partial f\kv}{\partial T}=\frac{\partial f\kv}{\partial t}.
 \end{equation}
 %
 Although analytically intractable, there exists a plethora of computational solutions to the BTE, from Monte Carlo based methods (i.e.: Direct Simulation Monte Carlo)\cite{mazumder2001monte} to the Lattice based methods (i.e.: Lattice Boltzmann Method)\cite{nabovati2011lattice}. Under the relaxation time approximation (RTA), the BTE takes the form
@@ -173,7 +173,7 @@ Although analytically intractable, there exists a plethora of computational solu
 -c(\pmb{\kappa})\cdot \nabla T\frac{\partial f\kv}{\partial T}=\frac{f\kv-f_{eq}\kv}{\tau \kv}
 \end{equation}
 %
-where $\tau \kv$ is the relaxation time. This relaxation time can interpreted in two ways: the average time required for $f\kv$ to relax to $f_{eq}\kv$ or the average time between scattering event of mode ~$\kv$. The thermal conductivity, under the RTA, can be expressed in terms of contributions over all possible phonon modes \cite{srivastava1990physics}
+where $\tau \kv$ is the relaxation time. This relaxation time can interpreted in two ways: the average time required for $f\kv$ to relax to $f_{eq}\kv$ or the average time between scattering events of mode ~$\kv$. The thermal conductivity, under the RTA, can be expressed in terms of contributions over all possible phonon modes \cite{srivastava1990physics}
 %
 \begin{equation}\label{EQ:k_RTA}
 	k_{i}= \sum_{\bm{\kappa},\nu} c_{ph}\kv v^2_{g,i}\kv\tau\kv.
@@ -193,13 +193,14 @@ is the group velocity, which is obtained from harmonic lattice dynamics (HLD).
 
 \subsection{Lattice Dynamics}
 \subsubsection{Harmonic Lattice Dynamics}\label{SEC:HLD}
-\begin{figure}%[ht]
+To illustrate the fundamental concepts applied in lattice dynamics calculations, the following one-dimensional case, shown in Fig.~\ref{FIG:diatomic}, is considered. 
+\begin{figure}[h!]
 \centering
 \includegraphics[scale=1]{1d_diatomic.eps}
 \caption{Diagram of a linear diatomic chain of atoms}
 \label{FIG:diatomic}
 \end{figure}
-To illustrate the fundamental concepts applied in lattice dynamics calculations, the following one-dimensional case, shown in Fig.~\ref{FIG:diatomic}, is considered. Here, $u_n$ is the displacement from equilibrium of the $n$th atom with mass $m$ and $U_n$ is the displacement from equilibrium of the $n$th of atom with mass $M$. Recalling the equations of motion of a linear diatomic chain considering only nearest neighbour interaction ($K_1$ and $K_2$ are the respective spring constants in accordance with Hooke's Law) \cite{dove_introduction_1993-3}:
+Here, $u_n$ is the displacement from equilibrium of the $n$th atom with mass $m$ and $U_n$ is the displacement from equilibrium of the $n$th of atom with mass $M$. Recalling the equations of motion of a linear diatomic chain considering only nearest neighbour interaction ($K_1$ and $K_2$ are the respective spring constants in accordance with Hooke's Law) \cite{dove_introduction_1993-3}:
 %
 \begin{align}
 %\begin{split}
@@ -284,7 +285,11 @@ The dynamical matrix, $D(\pmb{\kappa})$ contains the chunks of three by three fo
 \begin{equation}
 D_{3(b-1)+\alpha,3(b'-1)+\alpha'}(\pmb{\kappa})=\frac{1}{\sqrt{m_bm_{b'}}}\sum_{l'}^N\frac{\partial^2\phi}{\partial r_\alpha \Ob \partial r_{\alpha'} \lbp} \EXP{i\pmb{\kappa}\cdot [\pmb{r}\lbp-\pmb{r}\Ob]}.
 \end{equation}
-Solving this matrix equation over a grid of wavevectors in the first BZ, provides a set of data where frequency is a function of wavector known formerly as dispersion relations.% (unlike the diatomic case, there more than two possible branches, $\nu$, as a result of the greater number of degrees of freedom of the atoms in the unit cell).
+For LJ, the second-order force constants are found using
+\begin{equation}
+\frac{\partial^2\phi}{\partial r_\alpha \Ob \partial r_{\alpha'} \lbp}=\left[\frac{r_{\alpha}r_{\alpha'}}{r^2}\left(\phi''(r)-\frac{1}{r}\phi'(r)\right)+\frac{\delta_{\alpha\alpha'}}{r}\phi'(r)\right].
+\end{equation}
+For more complicated potentials, the second-order force constants are determined through finite-differencing. Solving this matrix equation over a grid of wavevectors in the first BZ, provides a set of data where frequency is a function of wavector known formerly as dispersion relations.% (unlike the diatomic case, there more than two possible branches, $\nu$, as a result of the greater number of degrees of freedom of the atoms in the unit cell).
 
 %%%
 \begin{figure}[t]
