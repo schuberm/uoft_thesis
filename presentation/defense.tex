@@ -91,7 +91,20 @@
 \begin{frame}{Why Study Nanoscale Energy Transport}
 \begin{itemize}
 \item Power dissipation problem for CPUs and GPUs
+\begin{itemize}
+\item Increasing clock speed requires more power
+\end{itemize}
 \item Improve performance of solar and thermoelectric technologies
+\begin{itemize}
+\item Figure of merit:
+%%%
+\begin{equation}\label{EQ:NMD:qdot}
+\begin{split}
+ZT=\frac{\sigma S^2 T}{k}
+\end{split}
+\end{equation}
+%%%
+\end{itemize}
 \end{itemize}
 \end{frame}
 
@@ -127,19 +140,19 @@ Phonons
 %%%
 \begin{equation}\label{EQ:M:conductivity}
 \begin{split}
-k_{\mathbf{\alpha}}=&\sum_{\nu,\pmb{\kappa}}^{3n,N} c_{ph}\kv
-v^{2}_{g,\mathbf{\alpha}}\kv \tau\kv
+k_{\mathbf{\alpha}}=&\sum_{\nu,\pmb{\kappa}}^{3n,N} \textcolor{teal}{c_{ph}\kv}
+\textcolor{red}{v^{2}_{g,\mathbf{\alpha}}\kv} \textcolor{blue}{\tau\kv}
 \end{split}
 \end{equation}
 %%%
 \begin{itemize}
-\item $c_{ph}\kv$: Mode-dependent volumetric specific heat
-\item $\pmb{\mathrm{v}}_{g}\kv$: Mode group velocity
-\item $\tau\kv$: Mode lifetime
+\item $\textcolor{teal}{c_{ph}\kv}$: Mode-dependent volumetric specific heat
+\item $\textcolor{red}{\pmb{\mathrm{v}}_{g}\kv}$: Mode group velocity
+\item $\textcolor{blue}{\tau\kv}$: Mode lifetime
 \end{itemize}
 
 \end{itemize}
-CHALLENGE: PREDICT PHONON PROPERTIES
+\textcolor{orange}{CHALLENGE: PREDICT PHONON PROPERTIES}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -149,21 +162,23 @@ CHALLENGE: PREDICT PHONON PROPERTIES
 Numerically integrate Newton's equation of motion with an empirically defined interaction
 \begin{equation}
 \begin{split}
-F&=ma\\
-F&=\frac{dE}{d\pmb{r}}\\
+\pmb{\mathrm{F}}&=m\pmb{\mathrm{a}}\\
+\pmb{\mathrm{F}}&=\frac{dE}{d\pmb{\mathrm{r}}}\\
 E(r)&=-4\epsilon\left[\left(\frac{\sigma}{r}\right)^6-\left(\frac{\sigma}{r}\right)^{12}\right]
 \end{split}
 \end{equation}
 
 Since MD is classical, mode dependent volumetric specific heat is independent of temperature
 \begin{equation}\label{EQ:Cph}
-c_{ph}\kv=\frac{\partial E}{V\partial T}=\frac{k_B}{V}	
+\textcolor{teal}{c_{ph}\kv}=\frac{\partial E}{V\partial T}=\frac{k_B}{V}	
 \end{equation}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{How to Study Nanoscale Energy Transport: Lattice Dynamics}
+
+$D(\pmb{\kappa})$ contains information about the masses, the geometry and second-order derivatives of interatomic potential.
 
 Solve the eigenvalue problem to obtain frequencies (eigenvalues) and normal modes (eigenvectors)
 
@@ -174,15 +189,13 @@ Solve the eigenvalue problem to obtain frequencies (eigenvalues) and normal mode
 Group velocities from finite differencing
 \begin{equation}\label{EQ:NMD:vg}
 \begin{split}
-\pmb{\mathrm{v}}_{g}\kv=\frac{\partial \omega \kv}{\partial \pmb{\kappa}}
+\textcolor{red}{\pmb{\mathrm{v}}_{g}\kv}=\frac{\partial \omega \kv}{\partial \pmb{\kappa}}
 \end{split}
 \end{equation}
 
-Determined $c_{ph}\kv$, $\pmb{\mathrm{v}}_{g}\kv$. What about $\tau \kv$?
+Determined $\textcolor{teal}{c_{ph}\kv}$, $\textcolor{red}{\pmb{\mathrm{v}}_{g}\kv}$. What about $\textcolor{blue}{\tau\kv}$?
 
 \end{frame}
-
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -191,10 +204,19 @@ Time derivative of the normal mode coordinate
 %%%
 \begin{equation}\label{EQ:NMD:qdot}
 \begin{split}
-\dot{q}\kvt{}{}{}=&\sum_{\alpha, b, l}^{3,4L,N}\sqrt{\frac{m_b}{N}}\dot{u}_{\alpha}\lbt e^*\kvba\EXP{i\pmb{\kappa}\cdot\mathbf{r}_0\lO}
+\dot{q}\kvt{}{}{}=&\sum_{\alpha, b, l}^{3,4L,N}\sqrt{\frac{m_b}{N}}\textcolor{olive}{\dot{u}_{\alpha}\lbt}\textcolor{purple}{e^*\kvba}\EXP{i\pmb{\kappa}\cdot\mathbf{r}_0\lO}
 \end{split}
 \end{equation}
 %%%
+\begin{itemize}
+\item $\textcolor{olive}{\dot{u}_{\alpha}\lbt}$: Atomic velocity from MD
+\item $\textcolor{purple}{e^*\kvba}$: Eigenvector from LD
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Normal Mode Decomposition}
 Power spectrum by Fourier Transform
 %%%
 \begin{equation}\label{EQ:NMD:SED}
@@ -212,15 +234,34 @@ T\kvw \approx C_0\kv\frac{\Gamma\kv/\pi}{[\omega_0\kv-\omega]^2+\Gamma^2\kv}
 Fitting yields the lifetime
 %%%
 \begin{equation}\label{EQ:lifetime}
-\tau\kv=\frac{1}{2\Gamma\kv}
+\textcolor{blue}{\tau\kv}=\frac{1}{2\Gamma\kv}
 \end{equation}
 %%%
 
 \end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{NMD vs ALD for bulk}
+\begin{figure}[t]
+\begin{center}
+\vspace*{-0.8cm}
+\scalebox{0.75}{\includegraphics{NMD_v_ALD_bulk.eps}}
+\renewcommand{\figure}{Fig.}
+\label{fig:nmd_v_ald_bulk}
+\end{center}
+\end{figure}
+\end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{MD Domain}
+\begin{frame}{Superlattices}
+Thermoelectric applications
+
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{\small{4x4 MD Domain}}
 \begin{figure}[t]
 \begin{center}
@@ -231,8 +272,6 @@ Fitting yields the lifetime
 \end{center}
 \end{figure}
 \end{frame}
-
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
