@@ -182,7 +182,7 @@ where $\tau \kv$ is the relaxation time. This relaxation time can interpreted in
 Here $c_{ph}\kv$ is the volumetric specific heat from the classical thermodynamic definition \cite{mcgaugheythesis}
 %
 \begin{equation}\label{EQ:Cph}
-c_{ph}\kv=\frac{\partial E}{V\partial T}=\frac{\partial \omega \kv}{\partial \pmb{\kappa}}
+c_{ph}\kv=\frac{\partial E}{V\partial T}=\frac{k_\mathrm{B}}{V}
 \end{equation}
 %
 and
@@ -522,7 +522,7 @@ ALD & 1.3 & 1.4\\
 \label{TB:K_compare}
 \end{table}
 
-The results in Table~\ref{TB:K_compare} are in good agreement with Turney et. al \cite{PhysRevB.79.064301}. GK, NMD and ALD predictions differ by less than 10\%. Note that the ALD predictions is greater than the NMD predictions, which is likely a consequence of the higher order phonon interactions captured by the NMD but not but the ALD. This is confirmed by observing that the longer lived modes tend to be larger in ALD than in NMD, as can be seen in Figure~\ref{FIG:NMD_v_ALD}. The DM result obtained in this current work is 20\% greater than Turney's prediction. This difference is attributed to a combination of size effects and different implementation (an imposed heat flux compared to an imposed temperature difference).
+The results in Table~\ref{TB:K_compare} are in good agreement with Turney \textit{et. al} \cite{PhysRevB.79.064301}. GK, NMD and ALD predictions differ by less than 10\%. Note that the ALD predictions is greater than the NMD predictions, which is likely a consequence of the higher order phonon interactions captured by the NMD but not but the ALD. This is confirmed by observing that the longer lived modes tend to be larger in ALD than in NMD, as can be seen in Figure~\ref{FIG:NMD_v_ALD}. The DM result obtained in this current work is 20\% greater than Turney's prediction. This difference is attributed to a combination of size effects and different implementation (an imposed heat flux compared to an imposed temperature difference).
  
 Size effects in the estimate of bulk (or, more generally, systems where periodic boundary conditions are used) thermal conductivity occur as a result of the finite domain used in the MD simulations, finite number of atoms, or in HLD/ALD calculations, finite number of wavevectors. Although work has been done to improve the understanding of these effects \cite{PhysRevB.81.214305}, a detailed study on the effect of finite size on the individual phonon properties has not been published because of the computational cost being the primary obstacle. Size effects are further discussed in Chapter~\ref{CHP:SL}.
 
