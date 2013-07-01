@@ -1,15 +1,15 @@
 \chapter{Review of Thermal Conductivity Prediction Methods}\label{CHP:background}
-Four methods to predict thermal conductivity are presented and a comparison for bulk Lennard-Jones (LJ) argon is offered. The methods are divided into two categories: macroscopic oriented (Green-Kubo and Direct Method), which only provide thermal conductivity as output, and mode oriented methods (Anharmonic Lattice Dynamics and Normal Mode Decomposition), which provide individual phonon properties that can then be used to estimate thermal conductivity.
+Four methods to predict thermal conductivity are presented and a comparison for bulk Lennard-Jones (LJ) argon is offered. The methods are divided into two categories: macroscopic-oriented method (GK and DM), which only provide thermal conductivity as output, and mode-oriented methods (ALD and NMD), which provide individual phonon properties that can then be used to estimate thermal conductivity.
 
 \section{Macroscopic Methods}
 \subsection{Green-Kubo Relation}
-\subsubsection{Fluctuation-Dissipation Theorem}
+\subsubsection{Fluctuation-Dissipation theorem}
 
-The question of predicting transport coefficients was a popular topic in the 1950 and 1960s. Green was one of the first to use relate time correlation functions to transport coefficients \cite{green1954markoff}. Correlation functions were previously used to predict the absorption of electromagnetic radiation \cite{gordon1968correlation} and Raman light scattering \cite{gordon1965molecular}. These systems were manageable since the external field acted as a perturbation to the system's Hamiltonian.
+The question of predicting transport coefficients was a popular topic in the 1950 and 1960s. Green was one of the first to use relate time correlation functions to transport coefficients \cite{green1954markoff}. Correlation functions were previously used to predict the absorption of electromagnetic radiation \cite{gordon1968correlation} and Raman scattering responses\cite{gordon1965molecular}. These systems were manageable since the external field acted as a perturbation to the system's Hamiltonian.
 
-For transport coefficients like the diffusion coeffcient, which relates a concentration gradient to the mass flux, or thermal conductivity, which relates a temperature gradient to the heat flux, there is no clear method to recast these gradients as perturbations into the systems Hamiltonian \cite {mcquarrie2000statistical}. Green was able to apply time correlation functions to this problem by assuming that the transport process are Markovian and the deviations from equilibrium are small \cite{green1954markoff} and obtain expressions for shear and bulk viscosity, diffusion, thermal conductivity and thermal diffusion.
+For transport coefficients like the diffusion coefficient, which relates a concentration gradient to the mass flux, or thermal conductivity, which relates a temperature gradient to the heat flux, there is no clear method to recast these gradients as perturbations into the systems Hamiltonian \cite {mcquarrie2000statistical}. Green was able to apply time correlation functions to this problem by assuming that the transport process are Markovian and the deviations from equilibrium are small \cite{green1954markoff} and obtain expressions for shear and bulk viscosity, diffusion, thermal conductivity and thermal diffusion.
 
-The logic behind these relations is independent of the physical process and is formally referred to as the Fluctuation-Dissipation Theorem (FDT). The FDT first stated by Harry Nyquist (in relation to Nyquist noise), was later reformulated by Ryogo Kubo to relate transport coefficients to time correlation functions \cite{JPSJ.12.570} under an external force (it is worthwhile to distinguish between external and internal forces, electrical conductivity under and applied electric field versus the internal viscosity of a fluid)\cite{zwanzig1965time}. What follows is an outline of the logic of Kubo's generalization of the FDT using Helfand's approach as reviewed by McQuarrie \cite{mcquarrie2000statistical} through the statistical version of the diffusion equation
+The logic behind these relations is independent of the physical process and is formally referred to as the Fluctuation-Dissipation theorem. The Fluctuation-Dissipation theorem first stated by Harry Nyquist (in relation to Nyquist noise), was later reformulated by Ryogo Kubo to relate transport coefficients to time correlation functions \cite{JPSJ.12.570} under an external force (it is worthwhile to distinguish between external and internal forces, electrical conductivity under and applied electric field versus the internal viscosity of a fluid)\cite{zwanzig1965time}. What follows is an outline of the logic of Kubo's generalization of the Fluctuation-Dissipation theorem using Helfand's approach as reviewed by McQuarrie \cite{mcquarrie2000statistical} through the statistical version of the diffusion equation
 %
 \begin{equation}
 \begin{split}
@@ -53,7 +53,7 @@ $<A(t)A(0)>$ refers to the equilibrium time correlation of observable A
 &=\frac{1}{N}\sum_{i=1}^NA(t_i)A(t_i+\delta t)
 \end{split}
 \end{equation}
-From the ergodic hypothesis, which states that the statistical properties of a large number of observations at $N$ arbitrary times from a single system are equivalent to the statistical properties of $N$ obervations made from $N$ equivalent systems made at the same time, the correlation function can be rewritten as an ensemble average \cite{mcquarrie2000statistical}
+From the ergodic hypothesis, which states that the statistical properties of a large number of observations at $N$ arbitrary times from a single system are equivalent to the statistical properties of $N$ observations made from $N$ equivalent systems made at the same time, the correlation function can be rewritten as an ensemble average \cite{mcquarrie2000statistical}
 \begin{equation}
 <A( t)A(0)>=\int \int A(t,p,q)A(0,p,q) f(p,q) dpdq 
 \end{equation}
@@ -159,21 +159,21 @@ The applicability of direct method is questionable in situations where the tempe
 A sample temperature profile for LJ argon at 20 K is shown in Fig.~\ref{FIG:DM_bulk}. The peak and valley are the locations of the hot source and cold sink respectively. Slope of the red line corresponds to the thermal conductivity.
 %
 \section{Mode by Mode Methods}
-\subsection{Phonon Boltzmann Transport Equation}
+\subsection{Phonon Boltzmann Transport Equation (BTE)}
 %
-In solids, thermal energy is transported by mechanical vibrations (phonons). The Direct and GK methods do not provide any insight into the individual phonon modes, but rather give a macroscopic picture. In order to overcome this limitation of the DM and GK method, scientists have turned to the phonon Boltzmann Transport Equation (BTE) to describe the temporal evolution of the distribution function for a given phonon mode, identified by the wavevector $\pmb{\kappa}$ and branch index $\nu$, subject to the temperature gradient $\nabla T$ \cite{srivastava1990physics} 
+In crystalline semiconductors \footnote{In metals, electrons will carry a non-negligible portion of the thermal energy.}, thermal energy is transported by quantized mechanical vibrations (phonons). The Direct and GK methods do not provide any insight into the individual phonon modes, but rather give a macroscopic picture. In order to overcome this limitation of the DM and GK method, scientists have turned to the phonon BTE to describe the temporal evolution of the distribution function for a given phonon mode, identified by the wavevector $\pmb{\kappa}$ and branch index $\nu$, subject to the temperature gradient $\nabla T$ \cite{srivastava1990physics} 
 %
 \begin{equation}\label{EQ:BTE}
 -c(\pmb{\kappa})\cdot \nabla T\frac{\partial f\kv}{\partial T}=\frac{\partial f\kv}{\partial t}.
 \end{equation}
 %
-Although analytically intractable, there exists a plethora of computational solutions to the BTE, from Monte Carlo based methods (i.e.: Direct Simulation Monte Carlo)\cite{mazumder2001monte} to the Lattice based methods (i.e.: Lattice Boltzmann Method)\cite{nabovati2011lattice}. Under the relaxation time approximation (RTA), the BTE takes the form
+Although analytically intractable, there exists a plethora of computational solutions to the BTE, from Monte Carlo-based methods (i.e.: Direct Simulation Monte Carlo)\cite{mazumder2001monte} to lattice-based methods (i.e.: Lattice Boltzmann Method)\cite{nabovati2011lattice}. Under the relaxation time approximation, the BTE takes the form
 %
 \begin{equation}\label{EQ:BTE_lin}
 -c(\pmb{\kappa})\cdot \nabla T\frac{\partial f\kv}{\partial T}=\frac{f\kv-f_{eq}\kv}{\tau \kv}
 \end{equation}
 %
-where $\tau \kv$ is the relaxation time. This relaxation time can interpreted in two ways: the average time required for $f\kv$ to relax to $f_{eq}\kv$ or the average time between scattering events of mode ~$\kv$. The thermal conductivity, under the RTA, can be expressed in terms of contributions over all possible phonon modes \cite{srivastava1990physics}
+where $\tau \kv$ is the relaxation time. This relaxation time can interpreted in two ways: the average time required for $f\kv$ to relax to $f_{eq}\kv$ or the average time between scattering events of mode ~$\kv$. The thermal conductivity, under the relaxation time approximation, can be expressed in terms of contributions over all possible phonon modes \cite{srivastava1990physics}
 %
 \begin{equation}\label{EQ:k_RTA}
 	k_{i}= \sum_{\bm{\kappa},\nu} c_{ph}\kv v^2_{g,i}\kv\tau\kv.
@@ -219,10 +219,10 @@ and recognizing that the solutions to these equations will have the plane wave f
 Upon the application of the proper boundary conditions (the Born-von Karman periodic boundary, where the last atom in the chain is equivalent to the first in the chain), a discrete set of allowed values of $\kappa$ emerges (this condition is not affected by the fact that the masses of the chain alternate):
 %
 \begin{align}
-	\pmb{\kappa}=\frac{2\pi m}{Na}
+	\pmb{\kappa}=\frac{2\pi p}{Na}.
 \end{align}
 %
-Each $\pmb{\kappa}$ in this set corresponds to a different phonon mode. As previously mentioned in the three-dimensional version, each mode is identified by the tuple $(\pmb{\kappa},\nu)$ or for syntactic simplicity $\kv$, where $\nu$ is referred as the branch index.  The two coupled ordinary differential equations can be represented in terms of an eigenvalue problem:
+Here, $p$ is any integer from $0$ to $N$. Each $\pmb{\kappa}$ in this set corresponds to a different phonon mode. As previously mentioned in the three-dimensional version, each mode is identified by the tuple $(\pmb{\kappa},\nu)$ or for syntactic simplicity $\kv$, where $\nu$ is referred as the branch index.  The two coupled ordinary differential equations can be represented in terms of an eigenvalue problem:
 %
 \begin{equation}
 \begin{bmatrix}
@@ -243,8 +243,8 @@ Each $\pmb{\kappa}$ in this set corresponds to a different phonon mode. As previ
 \end{bmatrix}
 \end{equation}
 %
-The eigenvalues are the allowed frequencies and the eigenvectors are the allowed amplitudes for a given value of $\pmb{\kappa}$. The range of wavevectors, which operate in reciprocal space,  $\frac{-\pi}{a}\leq \pmb{\kappa}\leq\frac{\pi}{a}$ gives the first Brillouin Zone (BZ). Because of the periodic nature of the lattice and hence $\pmb{\kappa}$, values outside this region may be folded back over so as to be included in the first BZ.
-Applying this approach to a genuine lattice structure requires information about the interatomic potentials, which define the spring constants $K_1$ and $K_2$. For rare gas solids like argon, the LJ potential describes the interatomic energy
+The eigenvalues are the allowed frequencies and the eigenvectors are the allowed amplitudes for a given value of $\pmb{\kappa}$. The range of wavevectors, which operate in reciprocal space,  $\frac{-\pi}{a}\leq \pmb{\kappa}\leq\frac{\pi}{a}$ gives the first Brillouin zone. Because of the periodic nature of the lattice and hence $\pmb{\kappa}$, values outside this region may be folded back over so as to be included in the first Brillouin zone.
+Applying this approach to a genuine lattice structure requires information about the interatomic potentials, which define the spring constants $K_1$ and $K_2$. For argon, the LJ potential describes the interatomic energy
 \begin{align}
 	\phi(r)=-4\epsilon\left[\left(\frac{\sigma}{r}\right)^6-\left(\frac{\sigma}{r}\right)^{12}\right].
 \end{align}
@@ -274,9 +274,13 @@ Under this approximation, the force acting on atom $u_n$ as a result of displace
   \frac{\partial^2 \phi}{\partial u^n_i\partial U^n_i} & \frac{\partial^2 \phi}{\partial u^n_i\partial U^n_j} &\frac{\partial^2 \phi}{\partial u^n_i\partial U^n_k}\\
   \frac{\partial^2 \phi}{\partial u^n_j\partial U^n_i} & \frac{\partial^2 \phi}{\partial u^n_j\partial U^n_j} &\frac{\partial^2 \phi}{\partial u^n_j\partial U^n_k}\\
 \frac{\partial^2 \phi}{\partial u^n_k\partial U^n_i} & \frac{\partial^2 \phi}{\partial u^n_k\partial U^n_j} &\frac{\partial^2 \phi}{\partial u^n_k\partial U^n_k}
- \end{bmatrix}
+ \end{bmatrix}.
 \end{equation}
-Provided with the knowledge of these harmonic force constants, the general form of the eigenvalue problem is then constructed \cite{dove_introduction_1993-3}
+For LJ, the second-order force constants are found using
+\begin{equation}
+\frac{\partial^2\phi}{\partial r_\alpha \Ob \partial r_{\alpha'} \lbp}=\left[\frac{r_{\alpha}r_{\alpha'}}{r^2}\left(\phi''(r)-\frac{1}{r}\phi'(r)\right)+\frac{\delta_{\alpha\alpha'}}{r}\phi'(r)\right].
+\end{equation}
+For more complicated potentials, the second-order force constants are determined through finite-differencing. Provided with the knowledge of these harmonic force constants, the general form of the eigenvalue problem is then constructed \cite{dove_introduction_1993-3}
 \begin{equation}
 [D(\pmb{\kappa})-I\omega^2\kv]\pmb{\mathrm{e}}\kv = 0
 \end{equation}
@@ -285,11 +289,7 @@ The dynamical matrix, $D(\pmb{\kappa})$ contains the chunks of three by three fo
 \begin{equation}
 D_{3(b-1)+\alpha,3(b'-1)+\alpha'}(\pmb{\kappa})=\frac{1}{\sqrt{m_bm_{b'}}}\sum_{l'}^N\frac{\partial^2\phi}{\partial r_\alpha \Ob \partial r_{\alpha'} \lbp} \EXP{i\pmb{\kappa}\cdot [\pmb{r}\lbp-\pmb{r}\Ob]}.
 \end{equation}
-For LJ, the second-order force constants are found using
-\begin{equation}
-\frac{\partial^2\phi}{\partial r_\alpha \Ob \partial r_{\alpha'} \lbp}=\left[\frac{r_{\alpha}r_{\alpha'}}{r^2}\left(\phi''(r)-\frac{1}{r}\phi'(r)\right)+\frac{\delta_{\alpha\alpha'}}{r}\phi'(r)\right].
-\end{equation}
-For more complicated potentials, the second-order force constants are determined through finite-differencing. Solving this matrix equation over a grid of wavevectors in the first BZ, provides a set of data where frequency is a function of wavector known formerly as dispersion relations.% (unlike the diatomic case, there more than two possible branches, $\nu$, as a result of the greater number of degrees of freedom of the atoms in the unit cell).
+Solving this matrix equation over a grid of wavevectors in the first Brouillin zone, provides a set of data where frequency is a function of wavevector known formerly as dispersion relations.% (unlike the diatomic case, there more than two possible branches, $\nu$, as a result of the greater number of degrees of freedom of the atoms in the unit cell).
 
 %%%
 \begin{figure}[t]
@@ -324,7 +324,7 @@ The anharmonic component is responsible for the scattering between phonon modes 
 \end{split}
 \end{equation}
 %
-where $\psi \kv$ is the occupation number of mode $\kv$ and $\psi \kv+1$ is the addition of a phonon to $\kv$ as a consequence of an interaction. Thus, the anharmonicity allows for the energy to transfer between distinct modes. The linewidth quantifies the probability of interaction of state $\kv$ with all other states in the system. After some tedious algebra to evaluate Eq.~\ref{EQ:pert_anh}, the expression for the linewidth is
+where $\psi \kv$ is the occupation number of mode ~$\kv$ and $\psi \kv+1$ is the addition of a phonon to ~$\kv$ as a consequence of an interaction. Thus, the anharmonicity allows for the energy to transfer between distinct modes. The linewidth quantifies the probability of interaction of state ~$\kv$ with all other states in the system. After some tedious algebra to evaluate Eq.~\ref{EQ:pert_anh}, the expression for the linewidth is
 \begin{equation}\label{EQ:Gamma_anh}
 \begin{split}
 \Gamma \kv &= \\
@@ -370,7 +370,7 @@ The probability of a phonon scattering from $\bm{\kappa}$ to state $\bm{\kappa}'
 \end{comment}
 
 \subsection{Normal Mode Decomposition}
-As it happens, the usefulness of the time correlation functions extends well beyond the FDT. A simple example is the Wiener-Khintchine Theorem (WKT), which relates the correlation function of a continuous stationary random process to its spectral density \cite{mcquarrie2000statistical}.
+As it happens, the usefulness of the time correlation functions extends well beyond the Fluctuation-Dissipation theorem. A simple example is the Wiener-Khintchine theorem, which relates the correlation function of a continuous stationary random process to its spectral density \cite{mcquarrie2000statistical}.
 \begin{comment}
 The correlation function of a time-dependent quantity (i.e: position, velocity, etc.) is defined as the average behaviour in time of said quantity \cite{mcquarrie2000statistical}
 %
@@ -408,7 +408,7 @@ From the Parseval's theorem equality
 <x^2>=\frac{1}{2\pi}\int_{-\infty}^{\infty}|X(\omega)|^2d\omega.
 \end{equation}
 %
-To offer an intuitive interpretation of this result, take $x(t)$ to be an electric current and $<x^2>$ to be the average power dissipated as the current passes through a circuit. In this case, $X(\omega)d\omega$ will be the average power dissipated with frequencies between $\omega$ and $\omega+d\omega$. The WKT extends this result to the correlation function
+To offer an intuitive interpretation of this result, take $x(t)$ to be an electric current and $<x^2>$ to be the average power dissipated as the current passes through a circuit. In this case, $X(\omega)d\omega$ will be the average power dissipated with frequencies between $\omega$ and $\omega+d\omega$. The Wiener-Khintchine theorem extends this result to the correlation function
 %
 \begin{equation}
 C(t)=\frac{1}{2\pi}\int_{-\infty}^{\infty}C(\omega)\exp(i\omega t)d\omega
@@ -424,13 +424,13 @@ Taking an example from Dove \cite{dove_introduction_1993-3}, let $x$ have only t
 C(t)=\exp\left (-|t|\Gamma \right ).
 \end{equation}
 %
-The spectral density is then
+The spectral energy density (SED) is then
 \begin{equation}\label{EQ:lorentzian_1}
 C(\omega)=\int_{-\infty}^{\infty}\exp\left (-|t|\Gamma \right ) \exp(-i\omega t)dt=\frac{2\Gamma}{\omega^2 +\Gamma^2}
 \end{equation}
-which is a Lorentzian centred about zero frequency and $\Gamma$ is the half width at half-maximum (HWHM).%In the past decade, significant progress has been to computationally predict this property. Broido et al. used Density Functional Perturbation Theory (DFPT) \cite{Broido1} while Esfarjani et al. used a DFT-MD approach \cite{PhysRevB.84.085204}. %If one use HLD to obtain the group velocities, we have the same inputs for Eq.~\ref{EQ:k_RTA}, the final and missing piece is the lifetime of a given mode $\tau\kv$.
+which is a Lorentzian centred about zero frequency and $\Gamma$ is the half width at half-maximum.%In the past decade, significant progress has been to computationally predict this property. Broido et al. used Density Functional Perturbation Theory (DFPT) \cite{Broido1} while Esfarjani et al. used a DFT-MD approach \cite{PhysRevB.84.085204}. %If one use HLD to obtain the group velocities, we have the same inputs for Eq.~\ref{EQ:k_RTA}, the final and missing piece is the lifetime of a given mode $\tau\kv$.
 
-Normal Mode Decomposition (NMD), outlined by McGaughey and Kaviany \cite{PhysRevB.71.184305}, Turney et al.\cite {PhysRevB.81.081411} and Larkin et al.,\cite{jason_inpress} is an alternative to ALD to obtaining the inputs for Eq.~\ref{EQ:k_RTA}. Although this approach relies on the empirical potentials of classical MD, the complete anharmonicity is considered, an advantage it possesses over other methods, like DFPT and ALD which truncate terms beyond the third order. NMD is an algorithm that combines time-dependent information from molecular dynamics and the harmonic solutions from lattice dynamics to infer the phonon lifetimes. From HLD, the displacement of atom $b$ in unit cell $l$ at time $t$ is represented as a superposition of waves of wavevector $\bm{\kappa}$ with amplitude $\bm{U}\kvb$
+Normal Mode Decomposition (NMD), outlined by McGaughey and Kaviany \cite{PhysRevB.71.184305}, Turney et al.\cite {PhysRevB.81.081411} and Larkin et al. \cite{jason_inpress}, is an alternative to ALD to obtaining the inputs for Eq.~\ref{EQ:k_RTA}. Although this approach relies on the empirical potentials of classical MD, the complete anharmonicity is considered, an advantage it possesses over other methods, like DFPT and ALD which truncate terms beyond the third order. NMD is an algorithm that combines time-dependent information from molecular dynamics and the harmonic solutions from lattice dynamics to infer the phonon lifetimes. From HLD, the displacement of atom $b$ in unit cell $l$ at time $t$ is represented as a superposition of waves of wavevector $\bm{\kappa}$ with amplitude $\bm{U}\kvb$
 %
 \begin{equation}\label{EQ:superposition}
 \bm{u}\lbt=\sum_{\bm{\kappa},\nu}\bm{U}\kvb \exp(i[\bm{\kappa}\cdot\bm{r}\lb-\omega\kv t])=\frac{1}{\sqrt{Nm_b}}\sum_{\bm{\kappa},\nu}\bm{e}\kvb \exp \left[ i\bm{\kappa}\cdot\bm{r}\lb \right]Q\kv
@@ -472,7 +472,7 @@ The first term on the right hand side corresponds to the kinetic energy while th
 C\kvt=\lim_{T \rightarrow \infty}\frac{1}{T}\int_{0}^{T}\dot{Q}\kvtt \dot{Q}\kvt dt.
 \end{equation}
 %
-The spectral energy density (SED) or equivalently, the power spectrum, from the WKT, is thus
+The SED or equivalently, the power spectrum, from the Wiener-Khintchine theorem, is thus
 %
 \begin{equation}\label{EQ:NMD:SED}
 C\kvw=\int_{-\infty}^{\infty}C\kvt \exp(-i\omega t)dt
@@ -484,7 +484,7 @@ which, like Eq.~\ref{EQ:lorentzian_1}, is a Lorentzian centered at $\omega_0\kv$
 C\kvw=\frac{C_0\kv}{2}\frac{\Gamma\kv/\pi}{(\omega_0\kv-\omega)^2+\Gamma^2\kv}.
 \end{equation}
 %
-The HWHM, $\Gamma\kv$, is related through ALD theory \cite{PhysRev.128.2589} to the phonon lifetime by Eq.~\ref{EQ:lifetime} and thus can be interpreted in a similar manner. If interatomic potential is harmonic (i.e.: the springs are linear), the SED will be a Delta function at $\omega\kv$. In the anharmonic case (i.e.: LJ potential), these Delta functions broaden into Lorentzians, which corresponds to scattering processes, indicating a non-zero probability of a phonon transitioning from one state to another.
+The half width at half-maximum, $\Gamma\kv$, is related through ALD theory \cite{PhysRev.128.2589} to the phonon lifetime by Eq.~\ref{EQ:lifetime} and thus can be interpreted in a similar manner. If interatomic potential is harmonic (i.e.: the springs are linear), the SED will be a Delta function at $\omega\kv$. In the anharmonic case (i.e.: LJ potential), these Delta functions broaden into Lorentzians, which corresponds to scattering processes, indicating a non-zero probability of a phonon transitioning from one state to another.
 The NMD algorithm was implemented in MATLAB because of the simplicity to harness the embarrassingly parallel problem of looping over all wavevectors and polarization branches. A sample script is provided in Appendix~\ref{appendixf}.
 
 %%%
@@ -518,12 +518,45 @@ ALD & 1.3 & 1.4\\
 \end{tabular*}
 \end{center}
 \renewcommand{\table}{Table.}
-\caption{A comparison of the thermal conductivity prediction methods for bulk LJ argon at 20 K [W/m K].}
+\caption{A comparison of the thermal conductivity prediction methods for bulk LJ argon at 20 K [W/m-K].}
 \label{TB:K_compare}
 \end{table}
 
 The results in Table~\ref{TB:K_compare} are in good agreement with Turney \textit{et. al} \cite{PhysRevB.79.064301}. GK, NMD and ALD predictions differ by less than 10\%. Note that the ALD predictions is greater than the NMD predictions, which is likely a consequence of the higher order phonon interactions captured by the NMD but not but the ALD. This is confirmed by observing that the longer lived modes tend to be larger in ALD than in NMD, as can be seen in Figure~\ref{FIG:NMD_v_ALD}. The DM result obtained in this current work is 20\% greater than Turney's prediction. This difference is attributed to a combination of size effects and different implementation (an imposed heat flux compared to an imposed temperature difference).
- 
-Size effects in the estimate of bulk (or, more generally, systems where periodic boundary conditions are used) thermal conductivity occur as a result of the finite domain used in the MD simulations, finite number of atoms, or in HLD/ALD calculations, finite number of wavevectors. Although work has been done to improve the understanding of these effects \cite{PhysRevB.81.214305}, a detailed study on the effect of finite size on the individual phonon properties has not been published because of the computational cost being the primary obstacle. Size effects are further discussed in Chapter~\ref{CHP:SL}.
 
-As the general bulk LJ system has been well studied, in the following chapter we move on to the challenge of studying non-bulk systems, namely interfaces. The models of estimating phonon transport across an interface are reviewed and the NMD method is applied to the problem of predicting phonon properties near an interface.
+As the general bulk LJ system has been well studied \cite{mcgaugheythesis,turneythesis}, in the following chapter we move on to the challenge of studying non-bulk systems, namely interfaces. The models of estimating phonon transport across an interface are reviewed and the NMD method is applied to the problem of predicting phonon properties near an interface.
+
+\section {Modeling Limitations and Challenges}
+
+Before moving on to more complicated systems, it is worth mentioning the challenges and limitations that exist when studying the thermal transport of any system. The accuracy of any model relies upon the accuracy of the inputs. As the interatomic potential is a required input for classical MD, its accuracy is crucial in order to make realistic predictions. Common potentials like Stillinger-Weber potentials for silicon \cite{PhysRevB.65.144306} and the reactive empirical bond order (REBO) potential for carbon \cite{lukes2007thermal} cannot be used to accurately predict thermal conductivity, but can be used to examine qualitative trends \cite{landrythesis}. One possible improvement is to use DFT to generate the phonon dispersion that can then be matched with the dispersion from an empirical potential using HLD.
+
+At higher temperatures, the anharmonicity of the interatomic potential can no longer be treated as a perturbation of the harmonic system. Thus mode-based approaches like ALD and NMD fail because the harmonic system is not a sufficient approximation of the anharmonic system. For LJ, ALD and NMD can be applied up to a 40 K \cite{PhysRevB.79.064301}. The GK and DM approaches, however, are advantageous in such scenarios, since no assumption about the modes in the system is required.
+
+Size effects in the estimate of bulk (or, more generally, systems where periodic boundary conditions are used) thermal conductivity occur as a result of the finite domain used in the MD simulations, finite number of atoms, or in HLD/ALD calculations, finite number of wavevectors. Although work has been done to improve the understanding of these effects \cite{PhysRevB.81.214305}, a detailed study on the effect of finite size on the individual phonon properties has not been published because of the computational cost to do so being the primary obstacle. Size effects are further discussed in Chapter~\ref{CHP:SL} and convergence studies are presented in Appendix~\ref{appendixc}.
+
+Ultimately, computational methods are limited by the computational cost. The computational complexities with respect to the number of atoms of the methods presented in this chapter is presented in Table~\ref{TB:compcomplex}. Algorithmic improvements and parallel implementations will allow larger systems and longer time scales to be studied with greater physical accuracy.
+
+\begin{table}[h!]
+\begin{center}
+\begin{tabular*}{\textwidth}{c@{\extracolsep{\fill}}cc}
+\hline\hline\noalign{\smallskip}
+Method & Computational Complexity\\
+\noalign{\smallskip}\hline\noalign{\smallskip}
+Green-Kubo & $nN$\\
+Direct Method & $nN$ \\
+NMD & $4nN$\\
+ALD & $n^4$\\
+\hline\hline
+\end{tabular*}
+\end{center}
+\renewcommand{\table}{Table.}
+\caption{The worst case computational complexities for GK, DM, ALD, and NMD.}
+\label{TB:compcomplex}
+\end{table}
+
+%Finite temperature
+%Finite size
+%Finite time
+%Design of interatomic potential
+%Classical phonon vs Quantum phonon
+%Anharmonicity increases with temperature

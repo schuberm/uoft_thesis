@@ -98,12 +98,12 @@
 
 \urlstyle{rm}
 
-\hypersetup{
-colorlinks,
-citecolor=blue,
-linkcolor=red,
-urlcolor=blue
-}
+%\hypersetup{
+%colorlinks,
+%citecolor=blue,
+%linkcolor=red,
+%urlcolor=blue
+%}
 
 \lstset{ 
         language=Matlab,                                % choose the language of the code
@@ -149,7 +149,7 @@ urlcolor=blue
 \degree{Masters of Applied Science}
 \department{Mechanical and Industrial Engineering}
 \gradyear{2013}
-\author{Samuel Huberman}
+\author{Samuel C. Huberman}
 \title{Phonon Properties in Superlattices}
 
 %% *** NOTE ***
@@ -193,7 +193,7 @@ urlcolor=blue
 \begin{abstract}
 %% *** Put your Abstract here. ***
 %% (At most 150 words for M.Sc. or 350 words for Ph.D.)
-We use normal mode decomposition and anharmonic lattice dynamics to obtain phonon properties from quasi-harmonic lattice dynamics calculations and classical molecular dynamics simulations in unstrained Lennard-Jones argon superlattices with perfect and mixed interfaces. Debye scaling ($\omega^{-2}$) of phonon lifetimes is found at low frequencies in both perfect and mixed superlattices and Rayleigh scaling ($\omega^{-4}$) for intermediate frequencies in mixed superlattices. We find that mixing reduces a phonon's mean free path and for short-period superlattices, lifetimes below the Ioffe-Regel limit are observed. The relaxation-time approximation of the Boltzmann transport equation is used to predict cross-plane and in-plane thermal conductivity. The assumption of perturbative disorder, where Tamura elastic mass defect scattering theory can be applied, was found to be valid for predicting cross-plane (CP) thermal conductivities but not in-plane (IP) thermal conductivities in mixed superlattices.
+We use normal mode decomposition to obtain phonon properties from quasi-harmonic lattice dynamics calculations and classical molecular dynamics simulations in unstrained Lennard-Jones argon superlattices with perfect and mixed interfaces. Debye scaling ($\omega^{-2}$) of phonon lifetimes at low frequencies in both perfect and mixed superlattices and Rayleigh scaling ($\omega^{-4}$) for intermediate frequencies in mixed superlattices is observed. For short period superlattices, lifetimes below the Ioffe-Regel limit are observed. The relaxation-time approximation of the Boltzmann transport equation is used to predict cross-plane and in-plane thermal conductivity. We find that using a dispersion relation which includes the secondary periodicity is required to predict thermal conductivity. The assumption of perturbative disorder, where Tamura elastic mass defect scattering theory can be applied, was found to be valid for predicting cross-plane thermal conductivities but not in-plane thermal conductivities in mixed superlattices.
 \end{abstract}
 
 %% Anything placed between the abstract and table of contents will
@@ -213,10 +213,16 @@ We use normal mode decomposition and anharmonic lattice dynamics to obtain phono
 
 %% This generates an "acknowledgements" section, if needed
 %% (uncomment to have it appear in the document).
-%\begin{acknowledgements}
+\begin{acknowledgements}
 %% *** Put your Acknowledgements here. ***
-%\end{acknowledgements}
-
+\indent I thank Shannon Bingeman, my best friend, for her unwavering support and tireless affection.
+I thank my supervisor Cristina Amon for allowing me to pursue my interests and helping me overcome the obstacles I faced along this journey. I am grateful to all the members of the ATOMS lab at the University of Toronto.
+I thank Alan McGaughey at Carnegie Mellon University for helping me become a better researcher. I thank Jason Larkin at Carnegie Mellon University for sharing his knowledge and time.
+I thank Charles Ward and Chandra Veer Singh from the University of Toronto for serving on my MASc thesis committee.
+I thank the National Science and Engineering Research Council (NSERC) of Canada for funding this work through their Post Graduate Scholarship program.
+I thank my parents and my sister for their love and support.
+\end{acknowledgements}
+\newpage
 \begin{singlespace}
 %% This generates the Table of Contents (on a separate page).
 \tableofcontents

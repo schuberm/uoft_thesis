@@ -1,21 +1,22 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {2.1}{\ignorespaces A comparison of the thermal conductivity prediction methods for bulk LJ argon at 20 K [W/m K].}}{22}{table.2.1}
+\contentsline {table}{\numberline {2.1}{\ignorespaces A comparison of the thermal conductivity prediction methods for bulk LJ argon at 20 K [W/m-K].}}{22}{table.2.1}
+\contentsline {table}{\numberline {2.2}{\ignorespaces The worst case computational complexities for GK, DM, ALD, and NMD.}}{24}{table.2.2}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {4.1}{\ignorespaces Number of timesteps in the Fourier sampling windows, total number of MD timesteps for each superlattice system, and the total number of independent MD simulations.}}{35}{table.4.1}
-\contentsline {table}{\numberline {4.2}{\ignorespaces Cross-plane thermal conductivity predictions [W/m K].}}{43}{table.4.2}
-\contentsline {table}{\numberline {4.3}{\ignorespaces In-plane thermal conductivity predictions [W/m K].}}{43}{table.4.3}
+\contentsline {table}{\numberline {4.1}{\ignorespaces Number of timesteps in the Fourier sampling windows, total number of MD timesteps for each superlattice system, and the total number of independent MD simulations.}}{36}{table.4.1}
+\contentsline {table}{\numberline {4.2}{\ignorespaces Cross-plane thermal conductivity predictions [W/m-K].}}{44}{table.4.2}
+\contentsline {table}{\numberline {4.3}{\ignorespaces In-plane thermal conductivity predictions [W/m-K].}}{44}{table.4.3}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {C.1}{\ignorespaces A comparison of the CP thermal conductivity GK predictions [W/m K].}}{71}{table.C.1}
-\contentsline {table}{\numberline {C.2}{\ignorespaces A comparison of the IP thermal conductivity GK predictions [W/m K].}}{71}{table.C.2}
-\contentsline {table}{\numberline {C.3}{\ignorespaces A comparison of the CP thermal conductivity NMD predictions [W/m K].}}{72}{table.C.3}
-\contentsline {table}{\numberline {C.4}{\ignorespaces A comparison of the IP thermal conductivity NMD predictions [W/m K].}}{72}{table.C.4}
-\contentsline {table}{\numberline {C.5}{\ignorespaces A comparison of the CP thermal conductivity ALD predictions [W/m K].}}{72}{table.C.5}
-\contentsline {table}{\numberline {C.6}{\ignorespaces A comparison of the IP thermal conductivity ALD predictions [W/m K].}}{72}{table.C.6}
+\contentsline {table}{\numberline {C.1}{\ignorespaces A comparison of the CP thermal conductivity GK predictions [W/m-K].}}{73}{table.C.1}
+\contentsline {table}{\numberline {C.2}{\ignorespaces A comparison of the IP thermal conductivity GK predictions [W/m-K].}}{73}{table.C.2}
+\contentsline {table}{\numberline {C.3}{\ignorespaces A comparison of the CP thermal conductivity NMD predictions [W/m-K].}}{74}{table.C.3}
+\contentsline {table}{\numberline {C.4}{\ignorespaces A comparison of the IP thermal conductivity NMD predictions [W/m-K].}}{74}{table.C.4}
+\contentsline {table}{\numberline {C.5}{\ignorespaces A comparison of the CP thermal conductivity ALD predictions [W/m-K].}}{74}{table.C.5}
+\contentsline {table}{\numberline {C.6}{\ignorespaces A comparison of the IP thermal conductivity ALD predictions [W/m-K].}}{74}{table.C.6}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
