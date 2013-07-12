@@ -4,7 +4,7 @@
 \contentsline {subsection}{\numberline {2.1.1}Green-Kubo Relation}{3}{subsection.2.1.1}
 \contentsline {subsubsection}{Fluctuation-Dissipation theorem}{3}{section*.3}
 \contentsline {subsubsection}{Green-Kubo in Molecular Dynamics}{6}{section*.4}
-\contentsline {subsection}{\numberline {2.1.2}The Direct Method}{9}{subsection.2.1.2}
+\contentsline {subsection}{\numberline {2.1.2}The direct method}{9}{subsection.2.1.2}
 \contentsline {section}{\numberline {2.2}Mode by Mode Methods}{10}{section.2.2}
 \contentsline {subsection}{\numberline {2.2.1}Phonon Boltzmann Transport Equation (BTE)}{10}{subsection.2.2.1}
 \contentsline {subsection}{\numberline {2.2.2}Lattice Dynamics}{11}{subsection.2.2.2}
@@ -30,13 +30,13 @@
 \contentsline {subsubsection}{Mixed superlattices}{46}{section*.8}
 \contentsline {section}{\numberline {4.4}Superlattice phonons}{47}{section.4.4}
 \contentsline {section}{\numberline {4.5}Summary}{51}{section.4.5}
-\contentsline {chapter}{\numberline {5}Contributions and Future Research}{52}{chapter.5}
-\contentsline {section}{\numberline {5.1}Contributions}{52}{section.5.1}
-\contentsline {section}{\numberline {5.2}Future Research}{53}{section.5.2}
-\contentsline {chapter}{Bibliography}{54}{section.5.2}
-\contentsline {chapter}{\numberline {A}The importance of eigenvectors}{66}{appendix.A}
-\contentsline {chapter}{\numberline {B}Insight into the presence of additional peaks}{69}{appendix.B}
-\contentsline {chapter}{\numberline {C}Size effects in superlattices}{73}{appendix.C}
-\contentsline {chapter}{\numberline {D}LAMMPS input script}{75}{appendix.D}
-\contentsline {chapter}{\numberline {E}GULP input script}{78}{appendix.E}
-\contentsline {chapter}{\numberline {F}Matlab NMD script}{80}{appendix.F}
+\contentsline {chapter}{\numberline {5}Contributions and Future Research}{53}{chapter.5}
+\contentsline {section}{\numberline {5.1}Contributions}{53}{section.5.1}
+\contentsline {section}{\numberline {5.2}Future Research}{54}{section.5.2}
+\contentsline {chapter}{Bibliography}{55}{section.5.2}
+\contentsline {chapter}{\numberline {A}The importance of eigenvectors}{68}{appendix.A}
+\contentsline {chapter}{\numberline {B}Insight into the presence of additional peaks}{71}{appendix.B}
+\contentsline {chapter}{\numberline {C}Size effects in superlattices}{75}{appendix.C}
+\contentsline {chapter}{\numberline {D}LAMMPS input script}{77}{appendix.D}
+\contentsline {chapter}{\numberline {E}GULP input script}{80}{appendix.E}
+\contentsline {chapter}{\numberline {F}Matlab NMD script}{82}{appendix.F}

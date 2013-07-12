@@ -1,5 +1,5 @@
 \chapter{Review of Thermal Conductivity Prediction Methods}\label{CHP:background}
-Four methods to predict thermal conductivity are presented and a comparison for bulk Lennard-Jones (LJ) argon is offered. The methods are divided into two categories: macroscopic-oriented method (GK and DM), which only provide thermal conductivity as output, and mode-oriented methods (ALD and NMD), which provide individual phonon properties that can then be used to estimate thermal conductivity.
+Four methods to predict thermal conductivity are presented and a comparison for bulk Lennard-Jones (LJ) argon is offered. The methods are divided into two categories: macroscopic-oriented method (Green-Kubo and direct method), which only provide thermal conductivity as output, and mode-oriented methods (ALD and NMD), which provide individual phonon properties that can then be used to estimate thermal conductivity.
 
 \section{Macroscopic Methods}
 \subsection{Green-Kubo Relation}
@@ -94,7 +94,7 @@ and thus arriving at an expression for the diffusion coefficient in terms of the
 
 \subsubsection {Green-Kubo in Molecular Dynamics}
 
-The Green-Kubo (GK) relation for thermal conductivity falls out of the fluctuation-dissipation theorem and the assumptions made therein, namely that the perturbations to the system's Hamiltonian are small and that the stochastic processes are Markoffian (independent of the previous state or equivalently, memoryless) \cite{green:398}. The thermal conductivity can be related to the fluctuations of the heat current vector, $\bm{S}$, over long periods of time
+The Green-Kubo relation for thermal conductivity falls out of the fluctuation-dissipation theorem and the assumptions made therein, namely that the perturbations to the system's Hamiltonian are small and that the stochastic processes are Markoffian (independent of the previous state or equivalently, memoryless) \cite{green:398}. The thermal conductivity can be related to the fluctuations of the heat current vector, $\bm{S}$, over long periods of time
 %
 \begin{equation}\label{EQ:intHCACF}
 k=\frac{1}{k_B V T^2}\int_0^{\infty}\frac{<\bm{S}(t)\cdot\bm{S}(0)>}{3}dt.
@@ -112,7 +112,7 @@ where $E_i$ is the energy of particle $i$ at position $\bm{r}_i$. $<\bm{S}(t)\cd
 \bm{S}=\sum_ie_i\bm{v}_i+\frac{1}{2}\sum_{i,j}(\bm{F}_{ij}\cdot\bm{v}_{i})\bm{r}_{ij}.
 \end{equation}
 %
-Eq.~\ref{EQ:HCvec} and~\ref{EQ:HCvec_pair} can be easily implemented into a MD code since the quantities with which $\bm{S}$ is calculated, typically, are tracked for every time step. Furthermore, MD is well suited to the task of simulating a system's natural evolution through phase space as the only input required is the interatomic potential, making it an ideal tool to for calculating correlation functions. The MD engine used in this work is  the LAMMPS package, which contains a validated GK algorithm \cite{LAMMPS}. McGaughey examined the time dependence of the HCACF and noted a two stage behaviour for crystals: a rapid initial decay corresponding to the damping of the fluctuations and a slow secondary oscillatory decay, which is believed to be associated with the periodic boundary conditions of the simulation. These oscillations decreased as the simulation size increased \cite{mcgaugheythesis}.
+Eq.~\ref{EQ:HCvec} and~\ref{EQ:HCvec_pair} can be easily implemented into a MD code since the quantities with which $\bm{S}$ is calculated, typically, are tracked for every time step. Furthermore, MD is well suited to the task of simulating a system's natural evolution through phase space as the only input required is the interatomic potential, making it an ideal tool to for calculating correlation functions. The MD engine used in this work is  the LAMMPS package, which contains a validated Green-Kubo algorithm \cite{LAMMPS}. McGaughey examined the time dependence of the HCACF and noted a two stage behaviour for crystals: a rapid initial decay corresponding to the damping of the fluctuations and a slow secondary oscillatory decay, which is believed to be associated with the periodic boundary conditions of the simulation. These oscillations decreased as the simulation size increased \cite{mcgaugheythesis}.
 %
 \begin{figure}[t]
 \begin{center}
@@ -135,7 +135,7 @@ F(t)= \left\lvert\frac{\sigma(<\bm{S}(t)\cdot\bm{S}(0)>)}{E(<\bm{S}(t)\cdot\bm{S
 %
 where $\sigma$ and $E$ are the standard deviation and mean value of the the HCACF between the time interval $t$ and $t+\delta$. For all the simulations presented in this work, $\delta$ was set to $10^3$ timesteps. The cumulative integral of the HCACF (green line) and the relative error function (blue line) for bulk LJ argon at 20 K are shown in Fig.~\ref{FIG:GK_bulk}.
 
-\subsection{The Direct Method}
+\subsection{The direct method}
 
 The direct method uses a non-equilibrium steady-state approach to determine thermal conductivity. A one-dimension heat flux is generated through the MD simulation, by keeping the boundaries or specific regions of the simulation at fixed, but different, temperatures, such that the boundaries behave like a hot and cold thermodynamic bath. From Fourier's law, the thermal conductivity can be predicted once the heat flux has converged
 %
@@ -151,7 +151,7 @@ The applicability of direct method is questionable in situations where the tempe
 \begin{center}
 \scalebox{1}{ \includegraphics{DM_bulk.eps}}
 \renewcommand{\figure}{Fig.}
-\caption{Temperature profile from the Direct Method simulation of bulk LJ argon at 20 K. Absolute value of the slope of the red line corresponds to the thermal conductivity.}
+\caption{Temperature profile from the direct method simulation of bulk LJ argon at 20 K. Absolute value of the slope of the red line corresponds to the thermal conductivity.}
 \label{FIG:DM_bulk}
 \end{center}
 \end{figure}
@@ -161,7 +161,7 @@ A sample temperature profile for LJ argon at 20 K is shown in Fig.~\ref{FIG:DM_b
 \section{Mode by Mode Methods}
 \subsection{Phonon Boltzmann Transport Equation (BTE)}
 %
-In crystalline semiconductors \footnote{In metals, electrons will carry a non-negligible portion of the thermal energy.}, thermal energy is transported by quantized mechanical vibrations (phonons). The Direct and GK methods do not provide any insight into the individual phonon modes, but rather give a macroscopic picture. In order to overcome this limitation of the DM and GK method, scientists have turned to the phonon BTE to describe the temporal evolution of the distribution function for a given phonon mode, identified by the wavevector $\pmb{\kappa}$ and branch index $\nu$, subject to the temperature gradient $\nabla T$ \cite{srivastava1990physics} 
+In crystalline semiconductors \footnote{In metals, electrons will carry a non-negligible portion of the thermal energy.}, thermal energy is transported by quantized mechanical vibrations (phonons). The Direct and Green-Kubo methods do not provide any insight into the individual phonon modes, but rather give a macroscopic picture. In order to overcome this limitation of the direct method and Green-Kubo method, scientists have turned to the phonon BTE to describe the temporal evolution of the distribution function for a given phonon mode, identified by the wavevector $\pmb{\kappa}$ and branch index $\nu$, subject to the temperature gradient $\nabla T$ \cite{srivastava1990physics} 
 %
 \begin{equation}\label{EQ:BTE}
 -c(\pmb{\kappa})\cdot \nabla T\frac{\partial f\kv}{\partial T}=\frac{\partial f\kv}{\partial t}.
@@ -289,7 +289,7 @@ The dynamical matrix, $D(\pmb{\kappa})$ contains the chunks of three by three fo
 \begin{equation}
 D_{3(b-1)+\alpha,3(b'-1)+\alpha'}(\pmb{\kappa})=\frac{1}{\sqrt{m_bm_{b'}}}\sum_{l'}^N\frac{\partial^2\phi}{\partial r_\alpha \Ob \partial r_{\alpha'} \lbp} \EXP{i\pmb{\kappa}\cdot [\pmb{r}\lbp-\pmb{r}\Ob]}.
 \end{equation}
-Solving this matrix equation over a grid of wavevectors in the first Brouillin zone, provides a set of data where frequency is a function of wavevector known formerly as dispersion relations.% (unlike the diatomic case, there more than two possible branches, $\nu$, as a result of the greater number of degrees of freedom of the atoms in the unit cell).
+Solving this matrix equation over a grid of wavevectors in the first Brillouin zone, provides a set of data where frequency is a function of wavevector known formerly as dispersion relations.% (unlike the diatomic case, there more than two possible branches, $\nu$, as a result of the greater number of degrees of freedom of the atoms in the unit cell).
 
 %%%
 \begin{figure}[t]
@@ -502,7 +502,7 @@ The NMD algorithm was implemented in MATLAB because of the simplicity to harness
 
 \section {Bulk Comparison}
 
-As a straightforward example, the four methods discussed in the previous sections are applied to predict the bulk thermal conductivity of LJ argon at 20 K. For GK, NMD and ALD, $N_{x,y,z}=8$ was used. The DM method used $N_{x}=144$ and $N_{y,z}=4$. Example scripts used for NMD are available in the Appendix~\ref{appendixd},~\ref{appendixe} and~\ref{appendixf}.
+As a straightforward example, the four methods discussed in the previous sections are applied to predict the bulk thermal conductivity of LJ argon at 20 K. For Green-Kubo, NMD and ALD, $N_{x,y,z}=8$ was used. The direct method method used $N_{x}=144$ and $N_{y,z}=4$. Example scripts used for NMD are available in the Appendix~\ref{appendixd},~\ref{appendixe} and~\ref{appendixf}.
 
 \begin{table}[h!]
 \begin{center}
@@ -511,7 +511,7 @@ As a straightforward example, the four methods discussed in the previous section
 Method & Thermal Conductivity (Current Work) & Thermal Conductivity \cite{PhysRevB.79.064301} \\
 \noalign{\smallskip}\hline\noalign{\smallskip}
 Green-Kubo & 1.2 & 1.2\\
-Direct Method & 1.7 & 1.4 \\
+direct method & 1.7 & 1.4 \\
 NMD & 1.2 & 1.3\\
 ALD & 1.3 & 1.4\\
 \hline\hline
@@ -522,7 +522,7 @@ ALD & 1.3 & 1.4\\
 \label{TB:K_compare}
 \end{table}
 
-The results in Table~\ref{TB:K_compare} are in good agreement with Turney \textit{et. al} \cite{PhysRevB.79.064301}. GK, NMD and ALD predictions differ by less than 10\%. Note that the ALD predictions is greater than the NMD predictions, which is likely a consequence of the higher order phonon interactions captured by the NMD but not but the ALD. This is confirmed by observing that the longer lived modes tend to be larger in ALD than in NMD, as can be seen in Figure~\ref{FIG:NMD_v_ALD}. The DM result obtained in this current work is 20\% greater than Turney's prediction. This difference is attributed to a combination of size effects and different implementation (an imposed heat flux compared to an imposed temperature difference).
+The results in Table~\ref{TB:K_compare} are in good agreement with Turney \textit{et. al} \cite{PhysRevB.79.064301}. Green-Kubo, NMD and ALD predictions differ by less than 10\%. Note that the ALD predictions is greater than the NMD predictions, which is likely a consequence of the higher order phonon interactions captured by the NMD but not but the ALD. This is confirmed by observing that the longer lived modes tend to be larger in ALD than in NMD, as can be seen in Figure~\ref{FIG:NMD_v_ALD}. The direct method result obtained in this current work is 20\% greater than Turney's prediction. This difference is attributed to a combination of size effects and different implementation (an imposed heat flux compared to an imposed temperature difference).
 
 As the general bulk LJ system has been well studied \cite{mcgaugheythesis,turneythesis}, in the following chapter we move on to the challenge of studying non-bulk systems, namely interfaces. The models of estimating phonon transport across an interface are reviewed and the NMD method is applied to the problem of predicting phonon properties near an interface.
 
@@ -530,7 +530,7 @@ As the general bulk LJ system has been well studied \cite{mcgaugheythesis,turney
 
 Before moving on to more complicated systems, it is worth mentioning the challenges and limitations that exist when studying the thermal transport of any system. The accuracy of any model relies upon the accuracy of the inputs. As the interatomic potential is a required input for classical MD, its accuracy is crucial in order to make realistic predictions. Common potentials like Stillinger-Weber potentials for silicon \cite{PhysRevB.65.144306} and the reactive empirical bond order (REBO) potential for carbon \cite{lukes2007thermal} cannot be used to accurately predict thermal conductivity, but can be used to examine qualitative trends \cite{landrythesis}. One possible improvement is to use DFT to generate the phonon dispersion that can then be matched with the dispersion from an empirical potential using HLD.
 
-At higher temperatures, the anharmonicity of the interatomic potential can no longer be treated as a perturbation of the harmonic system. Thus mode-based approaches like ALD and NMD fail because the harmonic system is not a sufficient approximation of the anharmonic system. For LJ, ALD and NMD can be applied up to a 40 K \cite{PhysRevB.79.064301}. The GK and DM approaches, however, are advantageous in such scenarios, since no assumption about the modes in the system is required.
+At higher temperatures, the anharmonicity of the interatomic potential can no longer be treated as a perturbation of the harmonic system. Thus mode-based approaches like ALD and NMD fail because the harmonic system is not a sufficient approximation of the anharmonic system. For LJ, ALD and NMD can be applied up to a 40 K \cite{PhysRevB.79.064301}. The Green-Kubo and direct method approaches, however, are advantageous in such scenarios, since no assumption about the modes in the system is required.
 
 Size effects in the estimate of bulk (or, more generally, systems where periodic boundary conditions are used) thermal conductivity occur as a result of the finite domain used in the MD simulations, finite number of atoms, or in HLD/ALD calculations, finite number of wavevectors. Although work has been done to improve the understanding of these effects \cite{PhysRevB.81.214305}, a detailed study on the effect of finite size on the individual phonon properties has not been published because of the computational cost to do so being the primary obstacle. Size effects are further discussed in Chapter~\ref{CHP:SL} and convergence studies are presented in Appendix~\ref{appendixc}.
 
@@ -543,14 +543,14 @@ Ultimately, computational methods are limited by the computational cost. The com
 Method & Computational Complexity\\
 \noalign{\smallskip}\hline\noalign{\smallskip}
 Green-Kubo & $nN$\\
-Direct Method & $nN$ \\
+direct method & $nN$ \\
 NMD & $4nN$\\
 ALD & $n^4$\\
 \hline\hline
 \end{tabular*}
 \end{center}
 \renewcommand{\table}{Table.}
-\caption{The worst case computational complexities for GK, DM, ALD, and NMD.}
+\caption{The worst case computational complexities for Green-Kubo, direct method, ALD, and NMD.}
 \label{TB:compcomplex}
 \end{table}
 

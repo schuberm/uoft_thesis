@@ -1,7 +1,7 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {2.1}{\ignorespaces Integral of HCACF (right axis) and relative error function (left axis). Red vertical line indicates the first point at which the relative error surpasses $10^2$.}}{8}{figure.2.1}
-\contentsline {figure}{\numberline {2.2}{\ignorespaces Temperature profile from the Direct Method simulation of bulk LJ argon at 20 K. Absolute value of the slope of the red line corresponds to the thermal conductivity.}}{10}{figure.2.2}
+\contentsline {figure}{\numberline {2.2}{\ignorespaces Temperature profile from the direct method simulation of bulk LJ argon at 20 K. Absolute value of the slope of the red line corresponds to the thermal conductivity.}}{10}{figure.2.2}
 \contentsline {figure}{\numberline {2.3}{\ignorespaces Diagram of a linear diatomic chain of atoms}}{12}{figure.2.3}
 \contentsline {figure}{\numberline {2.4}{\ignorespaces (a-c) Dispersion and (d) density of states for bulk LJ argon at 20 K.}}{15}{figure.2.4}
 \contentsline {figure}{\numberline {2.5}{\ignorespaces Comparison of lifetimes from NMD and ALD of bulk LJ argon at 20 K.}}{21}{figure.2.5}
@@ -17,7 +17,7 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {B.1}{\ignorespaces Plots of power spectrums.}}{72}{figure.B.1}
+\contentsline {figure}{\numberline {B.1}{\ignorespaces Plots of power spectrums.}}{74}{figure.B.1}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
